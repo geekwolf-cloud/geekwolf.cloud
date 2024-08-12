@@ -1,0 +1,10 @@
+<div class="pagination">
+    <div class="pagination-inner">
+        {% if paginator.previous_page %}
+            <a class="previous" href="{{ paginator.previous_page_path | relative_url }}">Previous</a>
+        {% endif %}
+        {% if paginator.next_page %}
+            <a class="next" href="{{ paginator.next_page_path | relative_url }}">Next</a>
+        {% endif %}
+    </div>
+</div>
