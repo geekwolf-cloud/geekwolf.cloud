@@ -1,0 +1,164 @@
+/* General Body Styles */
+body {
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+.nav-container {
+    width: 250px;
+    background-color: #333;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.site-title {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin-bottom: 20px;
+}
+
+.menu-icon {
+    display: none;
+    cursor: pointer;
+    font-size: 2em;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.site-nav {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.main-navigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.main-navigation li {
+    margin-bottom: 10px;
+}
+
+.main-navigation li a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 10px 0;
+    display: block;
+}
+
+.main-navigation li a:hover {
+    color: #ffcc00;
+}
+
+.tag-cloud-wrapper {
+    margin-top: auto; /* Pushes the tag cloud to the bottom of the nav */
+}
+
+.tag-cloud {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.tag-cloud li {
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+
+.tag-cloud a {
+    text-decoration: none;
+    padding: 5px 10px;
+    background: #ddd;
+    border-radius: 3px;
+}
+
+.tag-cloud a:hover {
+    background: #aaa;
+}
+
+/* Main Content Area */
+main {
+    margin-left: 250px;
+    padding: 20px;
+    flex-grow: 1;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .nav-container {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 10px;
+    }
+
+    .menu-icon {
+        display: block;
+    }
+
+    .site-nav {
+        display: none;
+    }
+
+    .site-nav.active {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        background-color: #333;
+        z-index: 2;
+        top: 0;
+        left: 0;
+    }
+
+    .main-navigation {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    main {
+        margin-left: 0;
+        padding: 10px;
+    }
+
+    /* Show tag cloud in footer only on mobile */
+    .mobile-only {
+        display: block;
+    }
+
+    .desktop-only {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) {
+    /* Hide mobile footer tag cloud on desktop */
+    .mobile-only {
+        display: none;
+    }
+
+    .desktop-only {
+        display: block;
+    }
+
+    body {
+        flex-direction: row;
+    }
+}
