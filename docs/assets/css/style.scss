@@ -3,6 +3,7 @@
 
 @import "{{ site.theme }}";
 
+
 /* General Body Styles */
 body {
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -14,7 +15,7 @@ body {
 
 .nav-container {
     width: 250px;
-    background-color: #333;
+    background-color: #2e7bcf;	
     color: #ffffff;
     display: flex;
     flex-direction: column;
@@ -27,11 +28,20 @@ body {
     box-sizing: border-box;
 }
 
+header { background: #2e7bcf }
+
+.header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+}
+
 .site-title {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.5em;
-    margin-bottom: 20px;
+    margin-right: auto;
 }
 
 .menu-icon {
@@ -39,13 +49,14 @@ body {
     cursor: pointer;
     font-size: 2em;
     color: #ffffff;
-    margin-bottom: 20px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .site-nav {
     display: flex;
     flex-direction: column;
-    height: 100%;
 }
 
 .main-navigation {
@@ -62,7 +73,6 @@ body {
 .main-navigation li a {
     color: #ffffff;
     text-decoration: none;
-    padding: 10px 0;
     display: block;
 }
 
@@ -112,6 +122,15 @@ main {
         height: auto;
         position: relative;
         padding: 10px;
+        text-align: left;
+    }
+
+    .header-content {
+        justify-content: flex-start; /* Left-align site title */
+    }
+
+    .site-title {
+        margin-right: 0;
     }
 
     .menu-icon {
@@ -120,22 +139,32 @@ main {
 
     .site-nav {
         display: none;
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80%;
+        background-color: #2e7bcf;	
+        padding: 10px 0;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        z-index: 2;
+        max-height: 70vh;
     }
 
     .site-nav.active {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        position: absolute;
-        background-color: #333;
-        z-index: 2;
-        top: 0;
-        left: 0;
+        display: block;
     }
 
     .main-navigation {
         flex-direction: column;
         width: 100%;
+        text-align: center;
+        padding: 0 10px;
+    }
+
+    .main-navigation li {
+        margin-bottom: 5px;
     }
 
     main {
@@ -143,7 +172,6 @@ main {
         padding: 10px;
     }
 
-    /* Show tag cloud in footer only on mobile */
     .mobile-only {
         display: block;
     }
@@ -154,7 +182,6 @@ main {
 }
 
 @media (min-width: 769px) {
-    /* Hide mobile footer tag cloud on desktop */
     .mobile-only {
         display: none;
     }
