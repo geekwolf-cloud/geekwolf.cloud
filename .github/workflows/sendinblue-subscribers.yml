@@ -38,7 +38,7 @@ jobs:
             const numberOfSubscribers = data.body.lists[0].totalSubscribers;
             const yamlData = yaml.dump({ subscribers: numberOfSubscribers });
             fs.writeFileSync('docs/_data/subscribers.yml', yamlData);
-console.log(data.body.lists);
+            console.log(data.body.lists);
             console.log('Number of subscribers:', numberOfSubscribers);
           }).catch(error => {
             console.error(error);
