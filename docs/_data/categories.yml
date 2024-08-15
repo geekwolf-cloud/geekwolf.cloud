@@ -1,0 +1,10 @@
+entra-id:
+  name: Entra ID
+microsoft-365:
+  name: Microsoft 365
+google:
+  name: Google
+azure:
+  name: Azure
+on-premises:
+  name: On-Premises

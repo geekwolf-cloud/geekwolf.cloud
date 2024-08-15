@@ -1,0 +1,99 @@
+# You need an app registration per "https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth"
+# I had to grant the following 4 delegated MS Graph permissions: EWS.AccessAsUser.All, offline_access, openid, profile
+# I have assumed we're using a delegated app, where the user logging in has the correct rights (I used Exchange Administrator)
+
+$clientId = "CLIENTID_GUID"
+$tenantId = "TENANTID_GUID"
+
+# Define the mailbox names
+$mbxNames = @(
+    "LIST OF MAILBOXS"
+)
+
+# Set the start date for filtering items
+[datetime]$StartDate = 'DATE TO LOOK FROM'
+
+
+Import-Module MSAL.PS
+
+$scopes = @("https://outlook.office365.com/EWS.AccessAsUser.All")
+
+# Interactive authentication to acquire token
+$authResult = Get-MsalToken -ClientId $clientId -TenantId $tenantId -Scopes $scopes -Interactive
+
+# Output the access token
+$accessToken = $authResult.AccessToken
+Write-Output "Access Token: $accessToken"
+
+
+Add-Type -Path "C:\Program Files\Microsoft\Exchange\Web Services\2.2\Microsoft.Exchange.WebServices.dll"
+
+
+foreach ($mbxName in $mbxNames) {
+    # Define EWS API version and set up the service connection
+    $Service = New-Object Microsoft.Exchange.WebServices.Data.ExchangeService([Microsoft.Exchange.WebServices.Data.ExchangeVersion]::Exchange2010_SP1)
+    
+    $Service.Credentials = New-Object Microsoft.Exchange.WebServices.Data.OAuthCredentials($AccessToken)
+    
+    # Impersonate the mailbox user
+    $service.ImpersonatedUserId = New-Object Microsoft.Exchange.WebServices.Data.ImpersonatedUserId([Microsoft.Exchange.WebServices.Data.ConnectingIdType]::SmtpAddress, $mbxName)
+    $Service.Url = "https://outlook.office365.com/EWS/Exchange.asmx"
+
+    # Bind to the root folder
+    $RootFolderID = New-Object Microsoft.Exchange.WebServices.Data.FolderId([Microsoft.Exchange.WebServices.Data.WellKnownFolderName]::Root, $mbxName)
+    $RootFolder = [Microsoft.Exchange.WebServices.Data.Folder]::Bind($Service, $RootFolderID)
+
+    $AllSubFolders = @($RootFolder)
+
+    $FolderView = New-Object Microsoft.Exchange.WebServices.Data.FolderView(1000)
+    $FolderView.Traversal = [Microsoft.Exchange.WebServices.Data.FolderTraversal]::Deep
+
+    $PR_FOLDER_TYPE = New-Object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition(13825, [Microsoft.Exchange.WebServices.Data.MapiPropertyType]::Integer)
+    $SearchFolder = New-Object Microsoft.Exchange.WebServices.Data.SearchFilter+IsEqualTo($PR_FOLDER_TYPE, "2")
+    $SearchFolderFilterCollection = New-Object Microsoft.Exchange.WebServices.Data.SearchFilter+SearchFilterCollection([Microsoft.Exchange.WebServices.Data.LogicalOperator]::And)
+    $SearchFolderFilterCollection.Add($SearchFolder)
+
+    # Get all of the subfolders by incrementing the Offset until nothing more to get    
+    $MoreResults = $true
+    do {
+        $Response = $RootFolder.FindFolders($SearchFolderFilterCollection, $FolderView)
+        $AllSubFolders += $Response.Folders
+        $MoreResults = $Response.MoreAvailable
+        $FolderView.Offset += $Response.Folders.Count
+    } while ($MoreResults -eq $true)
+
+    $MigrationWizUID = New-Object Microsoft.Exchange.WebServices.Data.ExtendedPropertyDefinition([guid]"{20B5C09F-7CAD-44C6-BDBF-8FCBEEA08565}", "MigrationWiz-UID", [Microsoft.Exchange.WebServices.Data.MapiPropertyType]::String)
+    $SearchFilterMigrationWizUID = New-Object Microsoft.Exchange.WebServices.Data.SearchFilter+Exists($MigrationWizUID)
+    $SearchFilterCollection = New-Object Microsoft.Exchange.WebServices.Data.SearchFilter+SearchFilterCollection([Microsoft.Exchange.WebServices.Data.LogicalOperator]::And)
+    $SearchFilterCollection.Add($SearchFilterMigrationWizUID)
+
+    $PropertySet = New-Object Microsoft.Exchange.WebServices.Data.PropertySet([Microsoft.Exchange.WebServices.Data.BasePropertySet]::FirstClassProperties, $MigrationWizUID)
+    $ItemView = New-Object Microsoft.Exchange.WebServices.Data.ItemView(1000)
+    $ItemView.Traversal = [Microsoft.Exchange.WebServices.Data.FolderTraversal]::Shallow
+    $ItemView.PropertySet = $PropertySet
+
+    foreach ($SubFolder in ($AllSubFolders | Where-Object { $_.DisplayName -like 'All*' })) {
+        do {
+            $ItemResults = $SubFolder.FindItems($SearchFilterCollection, $ItemView)
+            $ItemView.Offset += $ItemResults.Items.Count
+            if ($ItemResults.Items.Count -gt 0) {
+                Write-Host ('Found {0} items in folder {1}' -f $ItemResults.Items.Count, $SubFolder.DisplayName)
+            }
+            foreach ($Item in $ItemResults.Items) {
+                if ($Item.DateTimeCreated -gt $StartDate) {
+                    Write-Host ('Deleting item "{0}"' -f $Item.Subject) -ForegroundColor Green
+
+                    try {
+                        $Item.Delete('HardDelete')
+
+                        # Resetting this back by 1 as we are deleting from this folder so need to restart the search every time
+                        $ItemView.Offset -= 1
+                    } catch {
+                        Write-Host ('WARNING: Error deleting item [{0}]' -f $_.Exception.Message) -ForegroundColor Yellow
+                    }
+                }
+            }
+        } while ($ItemResults.MoreAvailable -eq $true)
+    }
+}
+

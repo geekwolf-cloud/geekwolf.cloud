@@ -28,8 +28,6 @@ body {
     box-sizing: border-box;
 }
 
-header { background: #2e7bcf }
-
 .header-content {
     display: flex;
     align-items: center;
@@ -57,6 +55,9 @@ header { background: #2e7bcf }
 .site-nav {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Ensure the navbar takes the full height of the viewport */
+    min-height: 100vh;
 }
 
 .main-navigation {
@@ -81,7 +82,7 @@ header { background: #2e7bcf }
 }
 
 .tag-cloud-wrapper {
-    margin-top: auto; /* Pushes the tag cloud to the bottom of the nav */
+    padding: 10px; /* Optional: add some padding if needed */
 }
 
 .tag-cloud {
@@ -179,6 +180,14 @@ main {
     .desktop-only {
         display: none;
     }
+
+    .mobile-only-inline {
+        display: inline;
+    }
+
+    .desktop-only-inline {
+        display: none;
+    }
 }
 
 @media (min-width: 769px) {
@@ -190,7 +199,157 @@ main {
         display: block;
     }
 
+    .mobile-only-inline {
+        display: none;
+    }
+
+    .desktop-only-inline {
+        display: inline;
+    }
+
     body {
         flex-direction: row;
     }
+}
+
+/* overrides */
+header { background: #2e7bcf }
+pre code { background-color: #f8f8f8 }
+
+/* custom pagination */
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pagination a {
+  text-decoration: none;
+  padding: 5px 10px;
+  background: #007bff;
+  color: white;
+  border-radius: 4px;
+  margin: 0 2px;
+}
+
+.pagination span {
+  padding: 5px 10px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  margin: 0 2px;
+  color: #007bff;
+}
+
+/* post lists */
+// Adjust post list item styling for Architect theme
+.post-list-item {
+    display: flex;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eaeaea;
+}
+
+.post-content {
+    flex-grow: 1;
+}
+
+.post-title {
+    font-size: 1.25rem;
+    margin: 0;
+}
+
+.post-meta {
+    color: #777;
+    font-size: 0.875rem;
+    margin-bottom: 0.5rem;
+}
+
+.post-excerpt {
+    font-size: 1rem;
+    margin-bottom: 0.75rem;
+    color: #555;
+}
+
+.read-more {
+    display: inline-block;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.875rem;
+}
+
+.read-more:hover {
+    text-decoration: underline;
+}
+
+
+/* Brevo form */
+
+@font-face {
+  font-display: block;
+  font-family: 'Roboto';
+  src: url('https://assets.brevo.com/font/Roboto/Latin/normal/normal/7529907e9eaf8ebb5220c5f9850e3811.woff2') format('woff2'), 
+       url('https://assets.brevo.com/font/Roboto/Latin/normal/normal/25c678feafdc175a70922a116c9be3e7.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Roboto';
+  font-weight: 600;
+  src: url('https://assets.brevo.com/font/Roboto/Latin/medium/normal/6e9caeeafb1f3491be3e32744bc30440.woff2') format('woff2'), 
+       url('https://assets.brevo.com/font/Roboto/Latin/medium/normal/71501f0d8d5aa95960f6475d5487d4c2.woff') format('woff');
+}
+
+@font-face {
+  font-display: fallback;
+  font-family: 'Roboto';
+  font-weight: 700;
+  src: url('https://assets.brevo.com/font/Roboto/Latin/bold/normal/3ef7cf158f310cf752d5ad08cd0e7e60.woff2') format('woff2'), 
+       url('https://assets.brevo.com/font/Roboto/Latin/bold/normal/ece3a1d82f18b60bcce0211725c476aa.woff') format('woff');
+}
+
+#sib-container input:-ms-input-placeholder {
+  text-align: left;
+  font-family: 'Helvetica', sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container input::placeholder {
+  text-align: left;
+  font-family: 'Helvetica', sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container textarea::placeholder {
+  text-align: left;
+  font-family: 'Helvetica', sans-serif;
+  color: #c0ccda;
+}
+
+#sib-container a {
+  text-decoration: underline;
+  color: #2BB2FC;
+}
+
+#sib-form, #sib-form-div, #sib-container {
+  padding: 0px !important;
+  background-color: #2e7bcf
+}
+
+#sib-form button {
+  color: #2e7bcf;
+  background-color: #ddd;
+}
+
+#sib-form button:hover {
+  background-color: #aaa;
+}
+
+.sib-form-block {
+  padding: 0 5px !important;
+}
+
+.sib-form .input {
+  color: #000 !important;
 }

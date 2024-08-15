@@ -1,13 +1,9 @@
 ---
 layout: default
 ---
-
-
-{{ content }}
-
-
 <div class="post-list">
-    {% for post in paginator.posts %}
+<h1>Tag: {{ site.data.tags[page.tag].name }}</h1>
+{% for post in site.tags[page.tag] %}
 <article class="post-list-item">
     <div class="post-content">
         <h2 class="post-title">
@@ -18,8 +14,6 @@ layout: default
         <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
     </div>
 </article>
-    {% endfor %}
-</div>
+{% endfor %}
 
-<!-- Pagination Links -->
-{% include pagination.html %}
+</div>

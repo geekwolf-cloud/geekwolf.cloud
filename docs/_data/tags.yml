@@ -1,0 +1,28 @@
+identity:
+  name: Identity
+entra-id:
+  name: Entra ID
+microsoft-365:
+  name: Microsoft 365
+powershell:
+  name: PowerShell
+migration:
+  name: Migration
+graph-api:
+  name: Graph API
+workstation:
+  name: Workstation
+technical-overview:
+  name: Technical Overview
+technical-deepdive:
+  name: Technical Deep Dive
+best-practice:
+  name: Best Practice
+modernisation:
+  name: Modernisation
+google:
+  name: Google
+azure:
+  name: Azure
+on-premises:
+  name: On-Premises
