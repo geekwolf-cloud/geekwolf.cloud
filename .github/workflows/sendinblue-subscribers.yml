@@ -1,5 +1,8 @@
 name: Get Sendinblue Subscribers
 
+permissions:
+  contents: write
+
 on:
   schedule:
     - cron: '0 0 * * *' # Runs daily at midnight
@@ -19,19 +22,32 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install @sendinblue/client
+        run: npm install @sendinblue/client js-yaml
 
-      - name: Get number of subscribers
+      - name: Get number of subscribers and save to YAML file
         env:
           SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
         run: |
           node -e "
+          const fs = require('fs');
+          const yaml = require('js-yaml');
           const SibApiV3Sdk = require('@sendinblue/client');
           const apiInstance = new SibApiV3Sdk.ContactsApi();
           apiInstance.setApiKey(SibApiV3Sdk.ContactsApiApiKeys.apiKey, process.env.SENDINBLUE_API_KEY);
           apiInstance.getLists(10, 0).then(data => {
-            console.log('Number of subscribers:', data.body.lists[0].totalSubscribers);
+            const numberOfSubscribers = data.body.lists[0].totalSubscribers;
+            const yamlData = yaml.dump({ subscribers: numberOfSubscribers });
+            fs.writeFileSync('docs/_data/subscribers.yml', yamlData);
+            console.log('Number of subscribers:', numberOfSubscribers);
           }).catch(error => {
             console.error(error);
           });
           "
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git add docs/_data/subscribers.yml
+          git commit -m 'Update number of subscribers'
+          git push
