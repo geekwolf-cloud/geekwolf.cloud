@@ -1,0 +1,37 @@
+name: Get Sendinblue Subscribers
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # Runs daily at midnight
+  workflow_dispatch:
+
+jobs:
+  get-subscribers:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+
+      - name: Install dependencies
+        run: npm install @sendinblue/client
+
+      - name: Get number of subscribers
+        env:
+          SENDINBLUE_API_KEY: ${{ secrets.SENDINBLUE_API_KEY }}
+        run: |
+          node -e "
+          const SibApiV3Sdk = require('@sendinblue/client');
+          const apiInstance = new SibApiV3Sdk.ContactsApi();
+          apiInstance.setApiKey(SibApiV3Sdk.ContactsApiApiKeys.apiKey, process.env.SENDINBLUE_API_KEY);
+          apiInstance.getLists(10, 0).then(data => {
+            console.log('Number of subscribers:', data.body.lists[0].totalSubscribers);
+          }).catch(error => {
+            console.error(error);
+          });
+          "
