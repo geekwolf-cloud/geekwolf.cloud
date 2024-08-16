@@ -4,6 +4,7 @@ title:  "Entra ID User versus Guest in Microsoft 365"
 date:   2024-01-05 11:55:20 +0100
 category: entra-id
 tags: entra-id identity
+comments_id: 3
 ---
 
 In the world of Microsoft 365 (M365) and Azure Entra ID (formerly Azure Active Directory), managing user access and roles is crucial for both security and collaboration. Two important terms you'll often come across are "Guest" and "User." These terms have specific meanings both as a user type value in Entra ID and as concepts related to internal and external authentication. In this blog, we'll explore the differences between these two roles, focusing on their significance and impact within M365.
