@@ -1,5 +1,5 @@
 ---
-layout: default
+layout: post
 title:  "Convert between SID and ObjectId"
 date:   2024-01-12 09:31:12 +0100
 category: entra-id

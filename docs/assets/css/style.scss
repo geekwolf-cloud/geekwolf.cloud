@@ -362,3 +362,65 @@ pre code { background-color: #f8f8f8 }
 .sib-form .input {
   color: #000 !important;
 }
+
+a.button {
+  color: #2e7bcf;
+  background-color: #ddd;
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+a.button:hover {
+  background-color: #aaa;
+}
+
+.comment-button {
+  margin-left: 20px;
+  width: inherit !important;
+  height: 32px !important;
+}
+
+.comment-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.commenter div {
+  display: inline-block;
+}
+
+.commenter img {
+  vertical-align: middle;
+}
+
+
+.commenter .avatar {
+  width: 32px;
+}
+
+.commenter .username {
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offest: .15em;
+}
+
+.author-badge {
+  padding: 4px;
+  border-radius: 10px;
+  background-color: #ddd;
+  color: #2e7bcf;
+}
+
+.comment-body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.comment-edited {
+  padding: 4px;
+  border-radius: 10px;
+  background-color: #aaa;
+  color: #fff;
+}

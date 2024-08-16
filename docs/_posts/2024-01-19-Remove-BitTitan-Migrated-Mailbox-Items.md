@@ -1,9 +1,10 @@
 ---
-layout: default
+layout: post
 title:  "Remove BitTitan Migrated Mailbox Items"
 date:   2024-01-19 11:45:59 +0100
 category: microsoft-365
 tags: powershell microsoft-365 migration
+comments_id: 1
 ---
 
 Migrating mailbox data with BitTitan's MigrationWiz is something that I have done many times, and I'm sure many others have as well.   It works well, is reliable (as of date of writing this anyway :)), and it pretty fast.  However if the mapping is wrong, it seems to migrate data even faster into the wrong account...   This happens occasionally in a migration project, where the client accidentally maps a source mailbox to an already existing (and different) target mailbox.   MigrationWiz does exactly what it is told, but how can we now get the data out of that target mailbox...

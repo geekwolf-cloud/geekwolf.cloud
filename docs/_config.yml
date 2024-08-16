@@ -29,6 +29,8 @@ github_username:  geekwolf-cloud
 paginate: 9
 paginate_path: "/page:num"
 
+issues_repo: geekwolf-cloud/geekwolf.comments
+
 # Build settings
 remote_theme: pages-themes/architect@v0.2.0
 plugins: 
