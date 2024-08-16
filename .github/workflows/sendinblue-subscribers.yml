@@ -34,12 +34,16 @@ jobs:
           const SibApiV3Sdk = require('@sendinblue/client');
           const apiInstance = new SibApiV3Sdk.ContactsApi();
           apiInstance.setApiKey(SibApiV3Sdk.ContactsApiApiKeys.apiKey, process.env.SENDINBLUE_API_KEY);
-          apiInstance.getLists(10, 0).then(data => {
-            const numberOfSubscribers = data.body.lists[0].totalSubscribers;
-            const yamlData = yaml.dump({ subscribers: numberOfSubscribers });
-            fs.writeFileSync('docs/_data/subscribers.yml', yamlData);
-            console.log(data.body.lists);
-            console.log('Number of subscribers:', numberOfSubscribers);
+         apiInstance.getLists().then(data => {
+            const list = data.lists.find(list => list.name === 'GeekWolf');
+            if (list) {
+              const subscriberCount = list.totalSubscribers;
+              console.log('Number of subscribers:', subscriberCount);
+              const yamlData = yaml.dump({ subscribers: subscriberCount });
+              fs.writeFileSync('/docs/_data/subscribers.yml', yamlData);
+            } else {
+              console.error('List named GeekWolf not found');
+            }
           }).catch(error => {
             console.error(error);
           });
