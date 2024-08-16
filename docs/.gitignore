@@ -6,7 +6,3 @@ vendor
 Gemfile
 Gemfile.lock
 CNAME
-_config.yml
-node_modules/
-package-lock.json
-
