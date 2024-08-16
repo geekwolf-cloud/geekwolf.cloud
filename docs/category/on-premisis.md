@@ -1,5 +1,5 @@
 ---
 layout: category
 title: "Category: On-Premises"
-tag: on-premises
+category: on-premises
 ---

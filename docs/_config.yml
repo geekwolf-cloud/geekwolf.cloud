@@ -36,6 +36,7 @@ plugins:
   - jekyll-seo-tag
   - jekyll-feed
   - jekyll-paginate
+  - jekyll-sitemap
 
 permalink: /:year/:month/:day/:title:output_ext
 

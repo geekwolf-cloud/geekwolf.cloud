@@ -7,10 +7,15 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
+     <!-- Start cookieyes banner -->
+     <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/0528fc88c34b17a08ed8e385/script.js"></script>
+     <!-- End cookieyes banner -->
+
 {% if site.tags != "" %}
   {% include collecttags.html %}
 {% endif %}
 
+{% seo %}
 </head>
 <body>
 
