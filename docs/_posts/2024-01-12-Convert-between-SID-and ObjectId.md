@@ -44,3 +44,6 @@ function Convert-SidToObjectId
     }
 }
 ```
+
+
+Please note that all code on the basis of this [MIT Licence](/licence)

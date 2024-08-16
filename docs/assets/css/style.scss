@@ -148,7 +148,6 @@ main {
         box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
         border-radius: 8px;
         z-index: 2;
-        min-height: 100vh;
     }
 
     .site-nav.active {
@@ -203,6 +202,10 @@ main {
 
     .desktop-only-inline {
         display: inline;
+    }
+
+    .site-nav {
+        min-height: 100vh;
     }
 
     body {
