@@ -37,7 +37,9 @@ jobs:
           apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
           const apiInstance = new SibApiV3Sdk.ContactsApi();
           apiInstance.getLists().then(data => {
+            console.log( data.lists );
             const list = data.lists.find(list => list.name === 'GeekWolf');
+            console.log( list );
             if (list) {
               const subscriberCount = list.totalSubscribers;
               console.log('Number of subscribers:', subscriberCount);
