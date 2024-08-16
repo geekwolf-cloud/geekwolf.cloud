@@ -41,7 +41,7 @@ jobs:
             const list = data.lists.find(list => list.name === 'GeekWolf');
             console.log( list );
             if (list) {
-              const subscriberCount = list.totalSubscribers;
+              const subscriberCount = list.uniqueSubscribers;
               console.log('Number of subscribers:', subscriberCount);
               const yamlData = yaml.dump({ subscribers: subscriberCount });
               fs.writeFileSync('docs/_data/subscribers.yml', yamlData);
