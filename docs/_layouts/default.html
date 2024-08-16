@@ -27,7 +27,7 @@
                 <ul class="main-navigation">
                     {% for category in site.categories %}
                       {% assign category_item = category | first %}
-                      <li><a href="{{ site.url }}/category/{{ category | first | slugify }}/index.html">{{ site.data.categories[category_item].name }}</a></li>
+                      <li><a href="{{ site.url }}/category/{{ category | first | slugify }}.html">{{ site.data.categories[category_item].name }}</a></li>
                     {% endfor %}
 
                     <li><a href="{{ '/about' | relative_url }}">About</a></li>

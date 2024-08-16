@@ -35,7 +35,6 @@ plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-feed
-  - jekyll-category-pages
   - jekyll-paginate
 
 permalink: /:year/:month/:day/:title:output_ext
