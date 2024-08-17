@@ -80,7 +80,7 @@ body {
 }
 
 .tag-cloud-wrapper {
-    padding: 10px; /* Optional: add some padding if needed */
+    padding: 10px 10px 40px 10px;
 }
 
 .tag-cloud {
@@ -338,9 +338,16 @@ pre code { background-color: #f8f8f8 }
   background-color: #2e7bcf;
 }
 
+
 #sib-form button {
   color: #2e7bcf;
   background-color: #ddd;
+}
+
+#sib-form button:disabled {
+  color: #2e7bcf;
+  background-color: #aaa;
+  cursor: not-allowed;
 }
 
 #sib-form button:hover {
@@ -423,4 +430,12 @@ a.button:hover {
   border-radius: 10px;
   background-color: #aaa;
   color: #fff;
+}
+
+#search-form {
+  background-color: #2e7bcf;
+}
+
+#search-input {
+ color: #000;
 }

@@ -1,0 +1,58 @@
+---
+layout: default
+title: Search Results
+---
+
+<h1>Search Results</h1>
+<div id="search-results"></div>
+
+<script src="https://unpkg.com/lunr/lunr.js"></script>
+<script>
+  // Load the search index
+  fetch('/assets/search.json')
+    .then(response => response.json())
+    .then(data => {
+      const index = lunr(function() {
+        this.ref('id');
+        this.field('title');
+        this.field('content');
+
+        data.forEach(doc => {
+          this.add(doc);
+        });
+      });
+
+      const params = new URLSearchParams(window.location.search);
+      const query = params.get('query');
+      console.log(query);
+      if (query) {
+        const results = index.search(query);
+        const resultsContainer = document.getElementById('search-results');
+        resultsContainer.innerHTML = '';
+
+        console.log(results);
+
+        if (results.length > 0) {
+          resultsContainer.innerHTML = '<div class="post-list">';
+          results.forEach(result => {
+            const item = data.find(doc => doc.id === result.ref);
+            resultsContainer.innerHTML += '<article class="post-list-item">';
+            resultsContainer.innerHTML += '<div class="post-content">';
+            resultsContainer.innerHTML += '<h2 class="post-title">';
+            resultsContainer.innerHTML += '<a href="' + item.url + '">' + item.title + '</a>';
+            resultsContainer.innerHTML += '</h2>';
+            resultsContainer.innerHTML += '<p class="post-meta">Written on ' + item.date + ' by <a href="/about">GeekWolf</a></p>';
+            resultsContainer.innerHTML += '<p class="post-excerpt">' + item.excerpt + '</p>';
+            resultsContainer.innerHTML += '<a href="' + item.url + '" class="read-more">Read More</a>';
+            resultsContainer.innerHTML += '</div>';
+            resultsContainer.innerHTML += '</article>';
+          });
+          resultsContainer.innerHTML += '</div>';
+        } else {
+          resultsContainer.innerHTML = '<p>No results found</p>';
+        }
+      }
+    });
+</script>
+
+

@@ -7,9 +7,13 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
+     <!-- Include Font Awesome in your <head> if not already included -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
      <!-- Start cookieyes banner -->
      <script id="cookieyes" type="text/javascript" src="https://cdn-cookieyes.com/client_data/0528fc88c34b17a08ed8e385/script.js"></script>
      <!-- End cookieyes banner -->
+     <script src="https://unpkg.com/lunr/lunr.js"></script>
 
 {% if site.tags != "" %}
   {% include collecttags.html %}
@@ -28,6 +32,14 @@
                     &#9776; <!-- Hamburger icon -->
                 </div>
             </div>
+
+            <form id="search-form" action="/search.html" method="get" style="display: flex; align-items: center;">
+              <input type="text" id="search-input" name="query" placeholder="Search..." style="padding: 5px; font-size: 14px;">
+              <button type="submit" style="background: none; border: none; cursor: pointer; padding-left: 5px;">
+                <i class="fas fa-search"></i> <!-- Requires Font Awesome -->
+              </button>
+            </form>
+
             <nav class="site-nav" id="nav-links">
                 <ul class="main-navigation">
                     {% for category in site.categories %}
@@ -37,7 +49,7 @@
 
                     <li><a href="{{ '/licence' | relative_url }}">Licence</a></li>
                     <li><a href="{{ '/about' | relative_url }}">About</a></li>
-                </ul>
+             </ul>
 
 <!-- Begin Brevo Form -->
 <div class="sib-form" id="sib-form-div" style="text-align: center;">
@@ -83,7 +95,7 @@
                 </div>
               </div>
 
-              <label class="entry__error entry__error--primary">
+              <label class="entry__error entry__error--primary" style="display: none;">
               </label>
             </div>
           </div>
@@ -98,7 +110,7 @@
                     <span class="checkbox checkbox_tick_positive"></span><span><p>I agree to receive your newsletters and accept <a href="https://www.brevo.com/en/legal/privacypolicy/" target="_blank">Brevo's Privacy Policy.</a>.</p></span> </label>
                 </div>
               </div>
-              <label class="entry__error entry__error--primary">
+              <label class="entry__error entry__error--primary" style="display: none;">
               </label>
             </div>
           </div>
@@ -108,7 +120,7 @@
         </div>
         <div>
           <div class="sib-form-block" style="text-align: center">
-            <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" type="submit">
+            <button class="sib-form-block__button sib-form-block__button-with-loader" form="sib-form" id="Subscribe" type="submit" disabled>
               <svg class="icon clickable__icon progress-indicator__icon sib-hide-loader-icon" viewBox="0 0 512 512">
                 <path d="M460.116 373.846l-20.823-12.022c-5.541-3.199-7.54-10.159-4.663-15.874 30.137-59.886 28.343-131.652-5.386-189.946-33.641-58.394-94.896-95.833-161.827-99.676C261.028 55.961 256 50.751 256 44.352V20.309c0-6.904 5.808-12.337 12.703-11.982 83.556 4.306 160.163 50.864 202.11 123.677 42.063 72.696 44.079 162.316 6.031 236.832-3.14 6.148-10.75 8.461-16.728 5.01z" />
               </svg>
@@ -137,7 +149,8 @@
                           </li>
                         {% endfor %}
                     </ul>
-                    <p>&nbsp;</>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
                 </div>
             </nav>
         </div>
@@ -172,6 +185,16 @@
             } else {
                 navLinks.classList.add("active");
             }
+        };
+    </script>
+
+    <!-- JavaScript for opt in checkbox -->
+    <script>
+        document.getElementById("OPT_IN").onclick = function() {
+            btnSubscribe = document.getElementById("Subscribe");
+            btnOptIn = document.getElementById("OPT_IN");
+
+            btnSubscribe.disabled = !btnOptIn.checked;
         };
     </script>
 
