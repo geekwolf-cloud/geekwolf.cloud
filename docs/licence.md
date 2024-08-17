@@ -4,7 +4,7 @@ title: Licence
 permalink: /licence/
 ---
 
-<h2>MIT Licence</h2>
+<h1>MIT Licence</h1>
 
 **Copyright &copy; 2024 Twan van Beers, GeekWolf**
 

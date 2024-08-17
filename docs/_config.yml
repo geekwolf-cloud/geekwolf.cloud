@@ -32,6 +32,13 @@ paginate_path: "/page:num"
 
 issues_repo: geekwolf-cloud/geekwolf.comments
 
+#facebook_url: 
+#twitter_url: 
+rss_url: "https://geekwolf.cloud/feed.xml"
+linkedin_url: "https://www.linkedin.com/in/twanvanbeers/"
+#pinterest_url:
+#instagram_url:
+
 # Build settings
 remote_theme: pages-themes/architect@v0.2.0
 plugins: 

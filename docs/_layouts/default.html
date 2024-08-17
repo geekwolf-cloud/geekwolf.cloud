@@ -15,6 +15,8 @@
      <!-- End cookieyes banner -->
      <script src="https://unpkg.com/lunr/lunr.js"></script>
 
+     <link rel="alternate" type="application/rss+xml" href="{{ site.url }}/feed.xml">
+
 {% if site.tags != "" %}
   {% include collecttags.html %}
 {% endif %}
@@ -224,5 +226,6 @@
 
 <script src="https://www.google.com/recaptcha/api.js?render=6LfyxyYqAAAAADnVWHUjR6Ywm7BANte5o1B1epf1&hl=en" async defer></script>
 
+{% include follow-buttons.html %}
 </body>
 </html>
