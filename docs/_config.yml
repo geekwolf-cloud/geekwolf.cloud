@@ -26,6 +26,7 @@ description: >- # this means to ignore newlines until "baseurl:"
 url: "https://geekwolf.cloud" # the base hostname & protocol for your site, e.g. http://example.com
 
 github_username:  geekwolf-cloud
+excerpt_separator: <!--more-->
 paginate: 9
 paginate_path: "/page:num"
 

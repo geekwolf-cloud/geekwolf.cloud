@@ -6,11 +6,12 @@ category: entra-id
 tags: entra-id identity
 comments_id: 2
 ---
+<h1>{{ page.title }}</h1>
 
 In Active Directory we are used to seeing Security Identifiers (SIDs) in Access Control Lists (ACLs) and they are made up of S-1-5-12-<domain SID>-<RID> where the RID for non system objects is a number above 1000.  Now in Azure AD that wouldn't work as the RID part would quickly exhaust and there is no concept of a domain SID.   So what Microsoft do instead is that they convert the ObjectId of the user, group, role to a SID.  
 
 You can convert between the two using some small PowerShell functions
-
+<!--more-->
 **Convert ObjectId to SID**
 ```powershell
 function Convert-ObjectIdToSid

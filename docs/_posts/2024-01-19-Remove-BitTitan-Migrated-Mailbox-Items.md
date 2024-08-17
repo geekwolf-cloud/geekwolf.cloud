@@ -7,8 +7,10 @@ tags: powershell microsoft-365 migration
 comments_id: 1
 ---
 
-Migrating mailbox data with BitTitan's MigrationWiz is something that I have done many times, and I'm sure many others have as well.   It works well, is reliable (as of date of writing this anyway :)), and it pretty fast.  However if the mapping is wrong, it seems to migrate data even faster into the wrong account...   This happens occasionally in a migration project, where the client accidentally maps a source mailbox to an already existing (and different) target mailbox.   MigrationWiz does exactly what it is told, but how can we now get the data out of that target mailbox...
+<h1>{{ page.title }}</h1>
 
+Migrating mailbox data with BitTitan's MigrationWiz is something that I have done many times, and I'm sure many others have as well.   It works well, is reliable (as of date of writing this anyway :)), and it pretty fast.  However if the mapping is wrong, it seems to migrate data even faster into the wrong account...   This happens occasionally in a migration project, where the client accidentally maps a source mailbox to an already existing (and different) target mailbox.   MigrationWiz does exactly what it is told, but how can we now get the data out of that target mailbox...
+<!--more-->
 I wrote some PowerShell years ago to use EWS and pull that data out of the mailbox, but with the demise of legacy authentication that all stopped working.  So I spent some time today to convert the script's authentication into the modern era.  In the old version I used to use
 
 ```powershell

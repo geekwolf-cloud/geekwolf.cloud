@@ -4,6 +4,8 @@ title: About
 permalink: /about/
 ---
 
+<h1>About GeekWolf and Twan van Beers</h1>
+
 <div align="left">
   <img src="/assets/images/about-twan.jpg" alt="Twan van Beers" style="float: left; margin-right: 10px; width:200px" />
  

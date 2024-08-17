@@ -3,12 +3,15 @@ layout: none
 ---
 [
 {% for post in site.posts %}
+  {% assign content_parts = post.content | split: "<h1>" %}
+  {% assign after_h1 = content_parts[1] | split: "</h1>" %}
+  {% assign paragraph_after_h1 = after_h1[1] | strip_html | truncatewords: 50 %}
   {
     "id": {{ post.id | jsonify }},
     "url": {{ post.url | absolute_url | jsonify }},
     "title": {{ post.title | jsonify }},
     "date": {{ post.date | date: "%B %d, %Y" | jsonify }},
-    "excerpt": {{ post.excerpt | strip_html | strip_newlines | jsonify }},
+    "excerpt": {{ paragraph_after_h1 | strip_html | strip_newlines | jsonify }},
     "content": {{ post.content | strip_html | strip_newlines | jsonify }}
   }{% if forloop.last %}{% else %},{% endif %}
 {% endfor %}

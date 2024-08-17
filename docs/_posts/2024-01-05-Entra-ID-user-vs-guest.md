@@ -6,9 +6,10 @@ category: entra-id
 tags: entra-id identity
 comments_id: 3
 ---
+<h1>{{ page.title }}</h1>
 
 In the world of Microsoft 365 (M365) and Azure Entra ID (formerly Azure Active Directory), managing user access and roles is crucial for both security and collaboration. Two important terms you'll often come across are "Guest" and "User." These terms have specific meanings both as a user type value in Entra ID and as concepts related to internal and external authentication. In this blog, we'll explore the differences between these two roles, focusing on their significance and impact within M365.
-
+<!--more-->
 ## userType in Entra ID: Guest vs. User
 
 **userType** is a property in Azure Entra ID that defines the relationship between an individual and your organization. It determines the level of access the individual has within your M365 environment.

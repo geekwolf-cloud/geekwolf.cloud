@@ -8,16 +8,20 @@ layout: default
 
 <div class="post-list">
     {% for post in paginator.posts %}
-<article class="post-list-item">
-    <div class="post-content">
-        <h2 class="post-title">
+
+      {% assign content_parts = post.content | split: "<h1>" %}
+      {% assign after_h1 = content_parts[1] | split: "</h1>" %}
+      {% assign paragraph_after_h1 = after_h1[1] | strip_html | truncatewords: 50 %}
+      <article class="post-list-item">
+        <div class="post-content">
+          <h2 class="post-title">
             <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </h2>
-        <p class="post-meta">Written on {{ post.date | date: "%B %d, %Y" }} by <a href="/about">GeekWolf</a></p>
-        <p class="post-excerpt">{{ post.excerpt }}</p>
-        <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
-    </div>
-</article>
+          </h2>
+          <p class="post-meta">Written on {{ post.date | date: "%B %d, %Y" }} by <a href="/about">GeekWolf</a></p>
+          <p class="post-excerpt">{{ paragraph_after_h1 }}</p>
+          <a href="{{ post.url | relative_url }}" class="read-more">Read More</a>
+        </div>
+      </article>
     {% endfor %}
 </div>
 

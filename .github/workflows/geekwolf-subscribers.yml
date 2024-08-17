@@ -53,12 +53,19 @@ jobs:
           });
           "
 
-      - name: Commit changes
+      - name: Check for changes
+        id: changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git diff-index --quiet HEAD || echo "changes"
+
+      - name: Commit changes
+        if: steps.changes.outputs.diff != ''
+        run: |
           git add docs/_data/subscribers.yml
           git commit -m 'Update subscriber count'
-          git push
+          git push origin main
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
