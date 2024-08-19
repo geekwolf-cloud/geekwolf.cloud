@@ -66,6 +66,7 @@ jobs:
           fi
 
       - name: Commit changes
+        if: env.changed == 'true'
         run: |
           git commit -m 'Update subscriber count'
           git push origin main
