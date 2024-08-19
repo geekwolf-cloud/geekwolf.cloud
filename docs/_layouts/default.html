@@ -171,11 +171,12 @@
                 <!-- Tag Cloud (Desktop View) -->
                 <div class="tag-cloud-wrapper desktop-only">
                     <ul class="tag-cloud">
+                        {% assign postcount = site.posts.size %}
                         {% assign tags = site.tags | sort %}
                         {% for tag_item in tags %}
                           {% assign tag = tag_item | first %}
                           <li>
-                            <a href="{{ '/tag/' | append: tag_item[0] | relative_url }}" class="tag">{{ site.data.tags[tag].name }} ({{ tag_item[1].size }})</a>
+                            <a href="{{ '/tag/' | append: tag_item[0] | relative_url }}" class="tag" data-weight="{{tag_item[1].size | times: 10.0 | divided_by: postcount | ceil }}">{{ site.data.tags[tag].name }}</a>
                           </li>
                         {% endfor %}
                     </ul>
@@ -193,13 +194,14 @@
 
     <!-- Footer with Tag Cloud (Mobile View) -->
     <footer class="site-footer mobile-only">
-        <div class="wrapper">
+        <div class="tag-cloud-wrapper">
           <ul class="tag-cloud">
+            {% assign postcount = site.posts.size %}
             {% assign tags = site.tags | sort %}
             {% for tag_item in tags %}
               {% assign tag = tag_item | first %}
               <li>
-                <a href="{{ '/tag/' | append: tag_item[0] | relative_url }}" class="tag">{{ site.data.tags[tag].name }} ({{ tag_item[1].size }})</a>
+                 <a href="{{ '/tag/' | append: tag_item[0] | relative_url }}" class="tag" data-weight="{{tag_item[1].size | times: 10.0 | divided_by: postcount | ceil }}">{{ site.data.tags[tag].name }}</a>
               </li>
             {% endfor %}
           </ul>
