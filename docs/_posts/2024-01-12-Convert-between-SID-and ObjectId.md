@@ -3,7 +3,7 @@ layout: post
 title:  "Convert between SID and ObjectId"
 date:   2024-01-12 09:31:12 +0100
 category: entra-id
-tags: entra-id identity
+tags: entra-id identity powershell
 comments_id: 2
 ---
 <h1>{{ page.title }}</h1>
