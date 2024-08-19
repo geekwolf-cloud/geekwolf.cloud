@@ -8,8 +8,6 @@ comments_id: 5
 ---
 <h1>{{ page.title }}</h1>
 
-# Windows Server 2025: New Features, Changes, and Removals
-
 Windows Server 2025 is shaping up to be a significant update with various new features, improvements, and removals. Microsoft has focused on enhancing security, modernizing protocols, and streamlining management tools. Here's an overview of what to expect:
 
 ## New Features
