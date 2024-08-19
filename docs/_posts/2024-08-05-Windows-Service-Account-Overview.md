@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "Windows Service Accounts Deep Dive"
+title:  "Windows Service Accounts Overview"
 date:   2024-08-05 14:22:34 +0100
 category: on-premises
-tags: on-premises technical-deepdive
+tags: on-premises technical-overview
 comments_id: 6
 ---
 <h1>{{ page.title }}</h1>
@@ -20,7 +20,7 @@ Applications need to be configured to run under these accounts, typically by spe
 
 **Where Passwords Are Stored:**  
 - **On Disk:** The password is typically stored in the Windows Services Manager when the service is configured. The service manager securely stores the password, but if an attacker gains administrative access, they can retrieve this password from the system's memory or configuration files.
-- **In Active Directory:** If the service account is an AD account, the password is stored in the AD database and can potentially be harvested if AD is compromised.
+- **In Active Directory:** If the service account is an AD account, the password hash is stored in the AD database and can potentially be harvested if AD is compromised.
 
 **Security Implications:**
 - **Password Management:** One of the major downsides is that passwords for these accounts need to be managed manually. This includes regular updates and securely storing these passwords, which can be a security risk if mishandled.
@@ -39,7 +39,7 @@ Applications need minimal changes to use MSAs. During configuration, administrat
 
 **Where Passwords Are Stored:**  
 - **Securely Managed by Windows:** The password for an MSA is automatically generated and managed by Windows, and it's stored in Active Directory. The password is rotated automatically, and no human interaction is required.
-- **Stored Temporarily in Memory:** The service uses the MSA password stored temporarily in system memory. While Windows minimizes exposure, the password could potentially be harvested if the system is compromised and attackers gain privileged access.
+- **Stored Temporarily in Memory:** The service uses the MSA password hash stored temporarily in system memory. While Windows minimizes exposure, the password hash could potentially be harvested if the system is compromised and attackers gain privileged access.
 
 **Security Implications:**
 - **Automatic Password Management:** MSAs automatically manage passwords, changing them regularly without requiring administrative intervention, reducing the risk of weak or stale passwords.
@@ -58,7 +58,7 @@ Similar to MSAs, applications are configured to use gMSAs without specifying a p
 
 **Where Passwords Are Stored:**  
 - **Securely Managed Across Servers:** The password for a gMSA is generated and managed by Windows and is securely stored in Active Directory. The gMSA password is rotated automatically, similar to MSAs.
-- **Fetched by Servers:** When a server needs to use a gMSA, it securely retrieves the password from Active Directory. The password is temporarily stored in memory during service execution and is less exposed to potential harvesting.
+- **Fetched by Servers:** When a server needs to use a gMSA, it securely retrieves the password hash from Active Directory. The password hash is temporarily stored in memory during service execution and is less exposed to potential harvesting.
 
 **Security Implications:**
 - **Automatic Password Management Across Servers:** Like MSAs, gMSAs automatically manage passwords, but they extend this functionality across multiple servers, reducing the complexity of managing service accounts in large environments.
