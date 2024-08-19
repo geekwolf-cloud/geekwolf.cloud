@@ -432,10 +432,24 @@ a.button:hover {
   color: #fff;
 }
 
-#search-form {
+#search-form-desktop, #search-form-mobile {
   background-color: #2e7bcf;
+  padding: 0;
+}
+
+#search-form-mobile {
+  margin-left: auto;
 }
 
 #search-input {
  color: #000;
 }
+
+.post-image {
+  text-align: center;
+  max-width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+

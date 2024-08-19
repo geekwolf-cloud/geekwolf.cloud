@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Remove BitTitan Migrated Mailbox Items"
+title:  "Remove BitTitan migrated mailbox items"
 date:   2024-01-19 11:45:59 +0100
 category: microsoft-365
 tags: powershell microsoft-365 migration
@@ -26,7 +26,7 @@ $Service.Credentials = $Credentials
 
 Now with the modern way, since we want to use oAuth we have to have an application in Entra ID.  I used the simplest case which is an app registration with delegated permissions, however application permissions and multi tenant applications should work in a very similar way.   Creating the app registration is well documented in [https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth](https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth ) although I found I had to add more permissions than the article told me as shown below
 
-![App Registration Delegated Permissions](/assets/images/2024-01-19-Remove-BitTitan-Migrated-Mailbox-Items-1.png)
+<img class="post-image" src="/assets/images/2024-01-19-Remove-BitTitan-Migrated-Mailbox-Items-1.png" title="App Registration delegated permissions" alt="App Registration showing the required delegated permissions" />
 
 I then used the application id and tenant id to authenticate to the Microsoft 365 tenant with a user account that had the rights to the mailboxes.
 

@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),
+    dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})
+    (window,document,'script','dataLayer','GTM-NVWS5QHQ');</script>
+    <!-- End Google Tag Manager -->
+
      <!-- Include Font Awesome in your <head> if not already included -->
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -24,6 +30,10 @@
 {% seo %}
 </head>
 <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NVWS5QHQ"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
 
     <!-- Sidebar Navigation -->
     <header>
@@ -33,13 +43,21 @@
                 <div class="menu-icon" id="menu-icon">
                     &#9776; <!-- Hamburger icon -->
                 </div>
+                <form class="mobile-only" id="search-form-mobile" action="/search.html" method="get" >
+                  <input type="text" id="search-input" name="query" placeholder="Search..." style="padding: 5px; font-size: 14px;">
+                  <button type="submit" style="background: none; border: none; cursor: pointer; padding-left: 5px;">
+                     <i class="fas fa-search"></i> <!-- Requires Font Awesome -->
+                  </button>
+                </form>
             </div>
 
-            <form id="search-form" action="/search.html" method="get" style="display: flex; align-items: center;">
+
+            <form class="desktop-only" id="search-form-desktop" action="/search.html" method="get" >
               <input type="text" id="search-input" name="query" placeholder="Search..." style="padding: 5px; font-size: 14px;">
               <button type="submit" style="background: none; border: none; cursor: pointer; padding-left: 5px;">
-                <i class="fas fa-search"></i> <!-- Requires Font Awesome -->
+                 <i class="fas fa-search"></i> <!-- Requires Font Awesome -->
               </button>
+              <p>&nbsp;</p>
             </form>
 
             <nav class="site-nav" id="nav-links">

@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Entra ID User versus Guest in Microsoft 365"
+title:  "Entra ID user versus guest in Microsoft 365"
 date:   2024-01-05 11:55:20 +0100
 category: entra-id
 tags: entra-id identity
