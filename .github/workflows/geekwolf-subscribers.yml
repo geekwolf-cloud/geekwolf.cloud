@@ -37,9 +37,9 @@ jobs:
           apiKey.apiKey = process.env.SENDINBLUE_API_KEY;
           const apiInstance = new SibApiV3Sdk.ContactsApi();
           apiInstance.getLists().then(data => {
-            console.log( data.lists );
+            console.log(data.lists);
             const list = data.lists.find(list => list.name === 'GeekWolf');
-            console.log( list );
+            console.log(list);
             if (list) {
               const subscriberCount = list.uniqueSubscribers;
               console.log('Number of subscribers:', subscriberCount);
@@ -54,17 +54,20 @@ jobs:
           "
 
       - name: Check for changes
-        id: changes
+        id: check_changes
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add docs/_data/subscribers.yml
-          git diff-index --quiet HEAD || echo "changes"
+          if git diff --quiet; then
+            echo "no changes" && echo "changed=false" >> $GITHUB_ENV
+          else
+            echo "changes detected" && echo "changed=true" >> $GITHUB_ENV
+          fi
 
       - name: Commit changes
-        if: steps.changes.outputs.diff != ''
+        if: env.changed == 'true'
         run: |
-          git add docs/_data/subscribers.yml
           git commit -m 'Update subscriber count'
           git push origin main
 
