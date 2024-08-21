@@ -1,3 +1,6 @@
+# This code is subject to the MIT Licence shown at https://geekwolf.cloud/licence
+
+
 # You need an app registration per "https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/how-to-authenticate-an-ews-application-by-using-oauth"
 # I had to grant the following 4 delegated MS Graph permissions: EWS.AccessAsUser.All, offline_access, openid, profile
 # I have assumed we're using a delegated app, where the user logging in has the correct rights (I used Exchange Administrator)

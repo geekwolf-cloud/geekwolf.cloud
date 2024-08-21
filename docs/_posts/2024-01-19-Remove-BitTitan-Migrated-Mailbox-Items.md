@@ -45,4 +45,4 @@ $Service.Credentials = New-Object Microsoft.Exchange.WebServices.Data.OAuthCrede
 
 You can find the entire script here [Remove-BitTitanMigratedMailboxItems.ps1.txt](/assets/downloads/Remove-BitTitanMigratedMailboxItems.ps1.txt)
 
-Please note that all code on the basis of this [MIT Licence](/licence)
+Please note that all code is provided on the basis of this [MIT Licence](/licence)

@@ -1,0 +1,106 @@
+# This code is subject to the MIT Licence shown at https://geekwolf.cloud/licence
+
+
+param(
+	[string]$TargetFolderPath = '~\Downloads\BTStatistics',
+	[datetime]$StartDateTime = (Get-Date).AddDays(-1),
+	[datetime]$EndDateTime = (Get-Date),
+	[string]$MailboxFolder = 'Inbox'
+)
+
+if( $Null -eq (Get-MGContext) ) {
+	Connect-MGGraph
+}
+ 
+function Get-MGGraphAllResults {
+param( $Uri )
+	$Values = @()
+	do{
+		$Results = Invoke-MgGraphRequest -Uri $Uri
+		$Values += $Results.Value
+		$Uri = $Results."@odata.nextLink"
+	} while( $Uri )
+	write-output $Values
+}
+
+$MailFolders = Get-MGGraphAllResults -Uri https://graph.microsoft.com/v1.0/me/mailFolders/delta
+$MailboxFolderParts = $MailboxFolder.Split('\')
+$FoundFolder = $MailFolders | ? { $_.DisplayName -eq $MailboxFolderParts[0] }
+for( $i = 1; $i -lt $MailboxFolderParts.Count; $i++ ) {
+	$FoundFolder = $MailFolders | ? { $_.DisplayName -eq $MailboxFolderParts[$i] -and $_.ParentFolderId -eq $FoundFolder.Id }
+}
+
+
+if( $FoundFolder ) {
+	$Messages = Get-MGGraphAllResults -Uri "https://graph.microsoft.com/v1.0/me/mailFolders/$($FoundFolder.Id)/messages?`$filter=(contains(subject, 'Migration Statistics for Project ')) and (createdDateTime ge $($StartDateTime.ToString("yyyy-MM-ddTHH:mm:ssZ"))) and (createdDateTime le $($EndDateTime.ToString("yyyy-MM-ddTHH:mm:ssZ")))"
+ 
+	if( -not (Test-Path $TargetFolderPath -Type Container) ) { New-Item $TargetFolderPath -Type Container | Out-Null}
+	$TargetFolder = Get-Item $TargetFolderPath
+
+	if( $TargetFolder.Attributes -contains 'Directory' ) {
+		Foreach( $Message in $Messages ) {
+			$ProjectName = $Message.Subject -replace 'Migration Statistics for Project ', ''
+			$FileDate = $Message.createdDateTime.ToString( 'yyyyMMdd-HHmmss' )
+
+			$Attachments =  Get-MGGraphAllResults -Uri "https://graph.microsoft.com/v1.0/me/messages/$($Message.Id)/attachments"
+			Foreach( $Attachment in $Attachments ){
+				if( $Attachment.Name -eq 'ProjectStats.zip' ) {
+					$FilePath = $TargetFolder.FullName + '\' + $ProjectName + '-' + $FileDate
+
+					# Ensure the folder exists
+					if( -not (Test-Path $FilePath -Type Container) ) { New-Item $FilePath -Type Container }
+
+					# create and expand the zip file
+					[IO.File]::WriteAllBytes( ($FilePath + '.zip'), ([Convert]::FromBase64String($Attachment.contentBytes))) | Out-Null
+					Expand-Archive ($FilePath + '.zip') -DestinationPath $FilePath -Force | Out-Null
+
+					# Rename the extracted CSV file
+					$ExtractedCsvFile = Join-Path -Path $TargetFolder.FullName -ChildPath 'ProjectStats.csv'
+					if (Test-Path $ExtractedCsvFile) {
+						Rename-Item -Path $ExtractedCsvFile -NewName ($FilePath + '.csv')
+					}
+ 
+					Remove-item $FilePath -Force -Recurse
+					Remove-item ($FilePath + '.zip') -Force
+				}
+			}
+		}
+	} else {
+		Write-Host "Folder $TargetFolderPath is not a valid folder" -fore red
+	}
+
+	# Merge the csv files and then export to Excel
+	$Files = Get-ChildItem $TargetFolder -Recurse | Where-Object { $_.Name -like "*.csv"}
+	$ItemResultHeaders = @()
+	$ItemResultExports = @()
+ 
+	foreach ( $File in $Files  ) {
+		if( $File.VersionInfo.FileName -like "*.csv" ) {
+			$ItemResults = @(Import-CSV $File.VersionInfo.FileName | select @{name="SourceFile";Expression={$File.Name}},*)
+			$CsvHeader = Get-Content -Path $File.VersionInfo.FileName -TotalCount 1
+			# try to find the previous set of header columns
+			$ItemResultExportIndex = -1
+			for( $i = 0; $i -lt $ItemResultHeaders.count; $i++ ) {
+				if( $ItemResultHeaders[$i] -eq $CsvHeader ) {
+					$ItemResultExportIndex = $i
+				}
+			}
+
+			# if the header is new then add a new exports array element
+			if( $ItemResultExportIndex -eq -1 ) {
+				$ItemResultsExportIndex = $ItemResultHeaders.Count
+				$ItemResultHeaders += @($CsvHeader)
+				$ItemResultExports += ''
+				$ItemResultExports[$ItemResultsExportIndex] = $ItemResults
+			} else {
+				$ItemResultExports[$ItemResultsExportIndex] += $ItemResults
+			}
+		}
+	}
+
+	for( $i = 0; $i -lt $ItemResultHeaders.count; $i++ ) {
+		$ItemResultExports[$i] | Export-Excel "$($TargetFolder.FullName)-MigWizStats.xlsx" -WorksheetName "MigWizStats-$($i)" -Append -AutoSize -FreezeTopRow -BoldTopRow
+	}
+} else {
+	write-Host "Folder $MailboxFolder cannot be found" -fore Red
+}

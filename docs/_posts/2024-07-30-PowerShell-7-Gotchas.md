@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "PowerShell 7 gotchas"
-date:   2024-08-05 14:22:34 +0100
+date:   2024-07-30 06:15:53 +0100
 category: on-premises
 tags: powershell on-premises
 comments_id: 6

@@ -48,4 +48,4 @@ function Convert-SidToObjectId
 ```
 
 
-Please note that all code on the basis of this [MIT Licence](/licence)
+Please note that all code is provided on the basis of this [MIT Licence](/licence)
