@@ -28,26 +28,25 @@ title: Search Results
       if (query) {
         const results = index.search(query);
         const resultsContainer = document.getElementById('search-results');
-        resultsContainer.innerHTML = '';
-
-        console.log(results);
+        resultsContainerInnerHTML = '';
 
         if (results.length > 0) {
-          resultsContainer.innerHTML = '<div class="post-list">';
+          resultsContainerInnerHTML = '<div class="post-list">';
           results.forEach(result => {
             const item = data.find(doc => doc.id === result.ref);
-            resultsContainer.innerHTML += '<article class="post-list-item">';
-            resultsContainer.innerHTML += '<div class="post-content">';
-            resultsContainer.innerHTML += '<h2 class="post-title">';
-            resultsContainer.innerHTML += '<a href="' + item.url + '">' + item.title + '</a>';
-            resultsContainer.innerHTML += '</h2>';
-            resultsContainer.innerHTML += '<p class="post-meta">Written on ' + item.date + ' by <a href="/about">GeekWolf</a></p>';
-            resultsContainer.innerHTML += '<p class="post-excerpt">' + item.excerpt + '</p>';
-            resultsContainer.innerHTML += '<a href="' + item.url + '" class="read-more">Read More</a>';
-            resultsContainer.innerHTML += '</div>';
-            resultsContainer.innerHTML += '</article>';
+            resultsContainerInnerHTML += '<article class="post-list-item">';
+            resultsContainerInnerHTML += '<div class="post-content">';
+            resultsContainerInnerHTML += '<h2 class="post-title">';
+            resultsContainerInnerHTML += '<a href="' + item.url + '">' + item.title + '</a>';
+            resultsContainerInnerHTML += '</h2>';
+            resultsContainerInnerHTML += '<p class="post-meta">Written on ' + item.date + ' by <a href="/about">GeekWolf</a></p>';
+            resultsContainerInnerHTML += '<p class="post-excerpt">' + item.excerpt + '</p>';
+            resultsContainerInnerHTML += '<a href="' + item.url + '" class="read-more">Read More</a>';
+            resultsContainerInnerHTML += '</div>';
+            resultsContainerInnerHTML += '</article>';
           });
-          resultsContainer.innerHTML += '</div>';
+          resultsContainerInnerHTML += '</div>';
+          resultsContainer.innerHTML = resultsContainerInnerHTML
         } else {
           resultsContainer.innerHTML = '<p>No results found</p>';
         }

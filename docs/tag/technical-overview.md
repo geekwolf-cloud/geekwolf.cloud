@@ -1,5 +1,5 @@
 ---
 layout: tag
-title: "Tag: Technical Overview"
+title: "Tag: Tech Overview"
 tag: technical-overview
 ---

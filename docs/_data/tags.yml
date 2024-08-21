@@ -13,9 +13,9 @@ graph-api:
 workstation:
   name: Workstation
 technical-overview:
-  name: Technical Overview
+  name: Tech Overview
 technical-deepdive:
-  name: Technical Deep Dive
+  name: Tech Deep Dive
 best-practice:
   name: Best Practice
 modernisation:

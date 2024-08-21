@@ -1,5 +1,5 @@
 ---
 layout: tag
-title: "Tag: Technical Deep Dive"
+title: "Tag: Tech Deep Dive"
 tag: technical-deepdive
 ---
