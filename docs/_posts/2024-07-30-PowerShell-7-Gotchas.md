@@ -8,7 +8,7 @@ comments_id: 6
 ---
 <h1>{{ page.title }}</h1>
 
-With the release of PowerShell 7, several improvements and changes were introduced to enhance performance, compatibility, and functionality. However, some of these changes may impact existing scripts if you're upgrading from PowerShell Core 6.x or earlier versions. In this post, we'll explore the most significant breaking changes and provide examples to help you understand how they might affect your scripts.
+With the release of PowerShell 7, several improvements and changes were introduced to enhance performance, compatibility, and functionality. However, some of these changes may impact existing scripts if you're upgrading from PowerShell Core 6.x or earlier versions. In this post, we'll explore some more significant breaking changes and provide examples to help you understand how they might affect your scripts.  Microsoft have a document that lists more changes here [https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell](https://learn.microsoft.com/en-us/powershell/scripting/whats-new/differences-from-windows-powershell)
 
 ## 1. Changes in `.Split()` method behaviour with multiple characters
 

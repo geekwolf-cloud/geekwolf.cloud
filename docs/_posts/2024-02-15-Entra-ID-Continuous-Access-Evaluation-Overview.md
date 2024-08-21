@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Entra ID Continuous Access Evaluation Overview"
+title:  "Entra ID Continuous Access Evaluation overview"
 date:   2024-02-15 12:59:39 +0100
 category: entra-id
 tags: entra-id technical-overview
