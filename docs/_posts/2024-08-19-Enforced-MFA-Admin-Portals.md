@@ -3,7 +3,7 @@ layout: post
 title:  "WARNING: Enforced MFA in admin portals"
 date:   2024-08-19 08:10:05 +0100
 category: azure
-tags: entra-id microsoft-365 azure
+tags: entra-id microsoft-365 azure identity
 comments_id: 4
 ---
 <h1>{{ page.title }}</h1>

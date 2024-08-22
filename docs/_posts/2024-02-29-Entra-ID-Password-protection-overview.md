@@ -3,7 +3,7 @@ layout: post
 title:  "Entra ID Password protection overview"
 date:   2024-02-29 16:59:39 +0100
 category: entra-id
-tags: entra-id technical-overview
+tags: entra-id technical-overview identity
 comments_id: 12
 ---
 <h1>{{ page.title }}</h1>

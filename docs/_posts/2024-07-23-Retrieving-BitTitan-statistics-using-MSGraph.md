@@ -3,7 +3,7 @@ layout: post
 title:  "Retrieving BitTitan statistics using Microsoft Graph"
 date:   2024-07-23 14:22:34 +0100
 category: microsoft-365
-tags: powershell microsoft-365
+tags: powershell microsoft-365 migration
 comments_id: 15
 ---
 <h1>{{ page.title }}</h1>

@@ -472,3 +472,10 @@ a.button:hover {
   margin-left: auto;
   margin-right: auto;
 }
+
+h4:before {
+  padding-right: inherit !important;
+  margin-left: inherit !important;
+  content: inherit !important;
+  color: inherit !important;
+}

@@ -3,7 +3,7 @@ layout: post
 title:  "MFA for all users and the user experience impact"
 date:   2024-02-22 11:10:01 +0100
 category: entra-id
-tags: entra-id technical-overview
+tags: entra-id technical-overview identity
 comments_id: 11
 ---
 <h1>{{ page.title }}</h1>

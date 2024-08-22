@@ -3,7 +3,7 @@ layout: post
 title:  "Entra Connect Sync versus Cloud Sync"
 date:   2024-02-08 7:22:21 +0100
 category: on-premises
-tags: on-premises technical-overview entra-id
+tags: on-premises technical-overview entra-id identity
 comments_id: 8
 ---
 <h1>{{ page.title }}</h1>

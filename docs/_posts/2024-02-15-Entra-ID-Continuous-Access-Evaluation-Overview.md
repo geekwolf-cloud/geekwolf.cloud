@@ -3,7 +3,7 @@ layout: post
 title:  "Entra ID Continuous Access Evaluation overview"
 date:   2024-02-15 12:59:39 +0100
 category: entra-id
-tags: entra-id technical-overview
+tags: entra-id technical-overview identity
 comments_id: 9
 ---
 <h1>{{ page.title }}</h1>
@@ -40,7 +40,7 @@ CAE is typically enabled by default for supported applications like Microsoft 36
    - Navigate to the Azure portal and go to **Azure Active Directory**.
    - Select **Security** > **Conditional Access**.
    - Choose the policy where you want to enforce CAE.
-   - Under the **Session** section, enable **Continuous Access Evaluation**.
+   - Under the **Session** section, **Customize continuous access evaluation**.
 
 ### 3. Configure Conditional Access policies
 
