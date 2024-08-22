@@ -6,7 +6,7 @@
 
 /* General Body Styles */
 body {
-/*    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif; */
+    font-family: "Helvetica Neue", Helvetica, Arial, serif;
     margin: 0;
     display: flex;
     min-height: 100vh;
@@ -39,6 +39,7 @@ body {
     color: #ffffff;
     text-decoration: none;
     font-size: 1.5em;
+    font-family: "Architects Daughter", "Helvetica Neue", Helvetica, Arial, serif;
     margin-right: auto;
 }
 
@@ -96,7 +97,7 @@ ul.tag-cloud a[data-weight="9"] { --size: 9; }
 
 ul.tag-cloud a {
   --size: 4;
-  font-size: calc(var(--size) * 0.25rem + 0.25rem);
+  font-size: calc(var(--size) * 0.15rem + 0.5rem);
   color: #FFF;
   display: block;
   padding: 0.125rem 0.25rem;
@@ -230,8 +231,13 @@ main {
 }
 
 /* overrides */
-header { background: #2e7bcf }
-pre code { background-color: #f8f8f8 }
+header { 
+  background: #2e7bcf; 
+  font-family: inherit !important; 
+}
+pre code { 
+  background-color: #f8f8f8 
+}
 
 /* custom pagination */
 .pagination {
@@ -463,6 +469,7 @@ a.button:hover {
 
 #search-input {
  color: #000;
+ width: 150px;
 }
 
 .post-image {
