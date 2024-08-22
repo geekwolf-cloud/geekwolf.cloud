@@ -18,5 +18,16 @@ permalink: /about/
 
 
 <p>I hope you enjoy exploring this site. Feel free to comment on the posts, and if you love what you see, please subscribe to stay updated with new content.</p>
+
+<div><ul class="twan-badge-wrapper">
+<li><img class="twan-badge" src="/assets/images/microsoft-365-certified-enterprise-administrator-expert.png" alt="M365 certified enterprise administrator" /></li>
+<li><img class="twan-badge" src="/assets/images/microsoft-365-certified-messaging-administrator-associate.png" alt="M365 certified messaging administrator" /></li>
+<li><img class="twan-badge" src="/assets/images/microsoft-365-certified-modern-desktop-administrator-associate.png" alt="M365 certified modern desktop administrator" /></li>
+<li><img class="twan-badge" src="/assets/images/microsoft-365-certified-security-administrator-asso.png" alt="M365 certified security administrator" /></li>
+<li><img class="twan-badge" src="/assets/images/microsoft-365-certified-teams-administrator-associate.png" alt="M365 certified Teams administrator" /></li>
+<li><img class="twan-badge" src="/assets/images/microsoft-certified-azure-administrator-associate.2.png" alt="Microsoft certified Azure administrator" /></li>
+<li><img class="twan-badge" src="/assets/images/microsoft-certified-azure-solutions-architect-expert.1.png" alt="Microsoft certified Azure solutions architect" /></li>
+</ul></div>
+
 </div>
 

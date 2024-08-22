@@ -479,3 +479,12 @@ h4:before {
   content: inherit !important;
   color: inherit !important;
 }
+
+img.twan-badge {
+  width: 150px;
+}
+
+.twan-badge-wrapper {
+  list-style: none;
+  display: flex;
+}
