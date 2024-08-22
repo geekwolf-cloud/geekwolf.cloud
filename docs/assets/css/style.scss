@@ -487,4 +487,6 @@ img.twan-badge {
 .twan-badge-wrapper {
   list-style: none;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
