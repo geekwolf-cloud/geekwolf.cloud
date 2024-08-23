@@ -10,7 +10,7 @@ comments_id: 15
 
 When you are using BitTitan MigrationWiz you can ask it to email you project statistics.  Now this is great when you only have a handful of projects, but when you migrate tens of thousands of mailboxes, archives, OneDrive sites at the same time (and with BitTitan's guidance to not have more than about 700 entries per project) you end up with a lot of projects.   You do get the statistics in your mailbox but creating a single file with all the stats is non trivial.   So to combat that I wrote some PowerShell...  The first approach was to look at using VBA in Outlook, however the new Outlook client no longer supports VBA.  So I turned to Microsoft Graph to read my mailbox, and it was surprisingly effective.  
 
-Let's walk through the code, it is available as a download [Extract-BTMigWizStats.ps1.txt](/downloads/Extract-BTMigWizStats.ps1.txt):
+Let's walk through the code, it is available as a download [Extract-BTMigWizStats.ps1.txt](/assets/downloads/Extract-BTMigWizStats.ps1.txt):
 
 ```powershell
 param(

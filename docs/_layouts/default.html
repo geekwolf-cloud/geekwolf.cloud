@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }} | {{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
     <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
     <link rel="SHORTCUT ICON" href="/favicon.ico" type="image/x-icon"/>
@@ -56,7 +55,7 @@
                 <div class="menu-icon" id="menu-icon">
                     &#9776; <!-- Hamburger icon -->
                 </div>
-                <form class="mobile-only" id="search-form-mobile" action="/search.html" method="get" >
+                <form class="mobile-only" id="search-form-mobile" action="/search/" method="get" >
                   <input type="text" id="search-input" name="query" placeholder="Search..." style="padding: 5px; font-size: 14px;">
                   <button type="submit" style="background: none; border: none; cursor: pointer; padding-left: 5px;">
                      <i class="fas fa-search"></i> <!-- Requires Font Awesome -->
@@ -65,7 +64,7 @@
             </div>
 
 
-            <form class="desktop-only" id="search-form-desktop" action="/search.html" method="get" >
+            <form class="desktop-only" id="search-form-desktop" action="/search/" method="get" >
               <input type="text" id="search-input" name="query" placeholder="Search..." style="padding: 5px; font-size: 14px;">
               <button type="submit" style="background: none; border: none; cursor: pointer; padding-left: 5px;">
                  <i class="fas fa-search"></i> <!-- Requires Font Awesome -->
@@ -77,11 +76,11 @@
                 <ul class="main-navigation">
                     {% for category in site.categories %}
                       {% assign category_item = category | first %}
-                      <li><a href="{{ site.url }}/category/{{ category | first | slugify }}.html">{{ site.data.categories[category_item].name }}</a></li>
+                      <li><a href="{{ site.url }}/category/{{ category | first | slugify }}/">{{ site.data.categories[category_item].name }}</a></li>
                     {% endfor %}
 
-                    <li><a href="{{ '/licence' | relative_url }}">Licence</a></li>
-                    <li><a href="{{ '/about' | relative_url }}">About</a></li>
+                    <li><a href="{{ '/licence/' | relative_url }}">Licence</a></li>
+                    <li><a href="{{ '/about/' | relative_url }}">About</a></li>
              </ul>
 
 <!-- Begin Brevo Form -->
