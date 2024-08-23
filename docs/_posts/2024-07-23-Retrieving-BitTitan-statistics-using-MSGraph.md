@@ -4,7 +4,7 @@ title:  "Retrieving BitTitan statistics using Microsoft Graph"
 description: Simplifying the aggregation of MigrationWiz project statistics into a single Excel workbook
 date:   2024-07-23 14:22:34 +0100
 category: microsoft-365
-tags: powershell microsoft-365 migration
+tags: powershell microsoft-365 migration graph=api
 comments_id: 15
 ---
 <h1>{{ page.title }}</h1>

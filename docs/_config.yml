@@ -21,15 +21,15 @@
 title: GeekWolf
 email: twan@geekwolf.cloud
 description: >- # this means to ignore newlines until "baseurl:"
-  This site is for anyone using the Microsoft cloud and interested in some cool hidden gems,
-  deep dives into features and architectures, as well as cool scripts and utilities
+  This site is for anyone using Microsoft cloud and wants some cool hidden gems,
+  deep dives into features, architectures, cool scripts and utilities
 url: "https://geekwolf.cloud" # the base hostname & protocol for your site, e.g. http://example.com
 
 github_username:  geekwolf-cloud
 excerpt_separator: <!--more-->
-paginate: 9
-paginate_path: "/page:num"
-
+pagination:
+  enabled: true
+  per_page: 10
 issues_repo: geekwolf-cloud/geekwolf.comments
 
 #facebook_url: 
@@ -45,7 +45,7 @@ plugins:
   - jekyll-remote-theme
   - jekyll-seo-tag
   - jekyll-feed
-  - jekyll-paginate
+  - jekyll-paginate-v2
   - jekyll-sitemap
 
 permalink: /:year/:month/:day/:title:output_ext
