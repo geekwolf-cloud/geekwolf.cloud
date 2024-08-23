@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Windows service accounts overview"
+description: An overview of the different service accounts from legacy to managed service accounts, group managed service accounts and now delegated managed service accounts
 date:   2024-08-05 14:22:34 +0100
 category: on-premises
-tags: on-premises technical-overview identity
+tags: on-premises technical-overview identity modernisation
 comments_id: 6
 ---
 <h1>{{ page.title }}</h1>

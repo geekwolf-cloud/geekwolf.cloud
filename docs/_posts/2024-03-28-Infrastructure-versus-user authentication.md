@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Infrastructure versus user authentication"
+description: Let's break authentication into user authentication and infrastructure authentication and use this to significantly decrease your attack surface
 date:   2024-03-28 11:45:51 +0100
 category: on-premises
 tags: on-premises entra-id migration identity

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Entra ID user versus guest in Microsoft 365"
+description: Why did Microsoft choose to use guest to have two very distinct meanings.  How can a guest be a member, and a user be a guest?
 date:   2024-01-05 11:55:20 +0100
 category: entra-id
 tags: entra-id identity

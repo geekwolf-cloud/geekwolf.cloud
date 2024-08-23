@@ -1,6 +1,7 @@
 ---
 layout: default
 title: About
+description: About GeekWolf and Twan van Beers the author of this site
 permalink: /about/
 ---
 

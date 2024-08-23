@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Comparing Active Directory and AD LDS"
+description: Comparing Active Directory and AD LDS.  Did you know that Entra ID (aka Azure AD) has a lot in common with AD LDS?
 date:   2024-02-02 18:12:37 +0100
 category: on-premises
 tags: on-premises technical-overview entra-id

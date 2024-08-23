@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Remove BitTitan migrated mailbox items"
+description: How do you remove BitTitan migrated mailbox data in the event that something went wrong?
 date:   2024-01-19 11:45:59 +0100
 category: microsoft-365
 tags: powershell microsoft-365 migration

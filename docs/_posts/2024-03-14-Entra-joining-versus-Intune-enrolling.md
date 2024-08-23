@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Entra joining versus Intune enrolling"
+description: In Microsoft Entra, the word enrolling is often used to mean Entra joining, but let's look at why that isn't quite right
 date:   2024-03-14 11:03:01 +0100
 category: entra-id
-tags: entra-id
+tags: entra-id workstation
 comments_id: 13
 ---
 <h1>{{ page.title }}</h1>

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Entra Connect Sync versus Cloud Sync"
+description: Comparing Entra Connect Sync (previously called Azure AD Connect) and Entra Cloud Sync. Which one should you use?
 date:   2024-02-08 7:22:21 +0100
 category: on-premises
 tags: on-premises technical-overview entra-id identity

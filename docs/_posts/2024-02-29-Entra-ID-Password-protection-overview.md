@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Entra ID Password protection overview"
+description: An overview of the Microsoft Entra Password Protection offering.  Looking at the components of this service, how they interrelate and how they work with the password reset/change process in Active Directory
 date:   2024-02-29 16:59:39 +0100
 category: entra-id
 tags: entra-id technical-overview identity

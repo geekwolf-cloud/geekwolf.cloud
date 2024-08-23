@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Choosing an Active Directory name"
+description: How do you choose a name for Active Directory.  Some of the older methods of choosing a name have some downsides now.  What are they?
 date:   2024-03-06 07:15:21 +0100
 category: on-premises
 tags: on-premises

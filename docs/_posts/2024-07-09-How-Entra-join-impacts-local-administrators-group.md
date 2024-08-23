@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "How Entra join impacts the local Administrators group"
+description: How does joining Entra ID impact the local administrators group.  What is added and what is removed when you join Entra ID
 date:   2024-07-09 11:08:52 +0100
 category: entra-id
-tags: entra-id on-premises identity migration
+tags: entra-id on-premises identity migration workstation
 comments_id: 22
 ---
 <h1>{{ page.title }}</h1>

@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Get rid of Active Directory in three 'easy' steps"
+description: An overview of how you can get rid of Active Directory in three 'easy' steps
 date:   2024-07-16 08:53:24 +0100
 category: entra-id
 tags: entra-id on-premises identity migration

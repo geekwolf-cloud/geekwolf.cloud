@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Convert between SID and ObjectId"
+description: How to convert between an Entra ObjectID and its corresponding Security Identifier (SID)
 date:   2024-01-12 09:31:12 +0100
 category: entra-id
-tags: entra-id identity powershell
+tags: entra-id identity powershell migration
 comments_id: 2
 ---
 <h1>{{ page.title }}</h1>

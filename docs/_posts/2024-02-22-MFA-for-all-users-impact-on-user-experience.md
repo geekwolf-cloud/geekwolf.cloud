@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "MFA for all users and the user experience impact"
+description: An overview into Multi Factor Authentication, in particular the impact on the user experience.  Why would you not enable MFA for all users?
 date:   2024-02-22 11:10:01 +0100
 category: entra-id
-tags: entra-id technical-overview identity
+tags: entra-id technical-overview identity best-practice modernisation
 comments_id: 11
 ---
 <h1>{{ page.title }}</h1>

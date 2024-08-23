@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Strong authentication overview"
+description: An overview into the different multi factor authentication methods in particular their relative strengths
 date:   2024-04-04 21:31:42 +0100
 category: entra-id
 tags: entra-id identity technical-overview

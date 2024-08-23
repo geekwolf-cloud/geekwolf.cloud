@@ -1,6 +1,7 @@
 ---
 layout: post
 title:  "Domain Controller placement: A modern perspective"
+description: How do you choose how many Domain Controllers to build and where to place them.  Modern AD environments have fewer than you think.
 date:   2024-03-21 19:02:43 +0100
 category: on-premises
 tags: on-premises
@@ -43,4 +44,4 @@ Kerberos authentication, a cornerstone of Active Directory, issues tickets that 
 
 ## Conclusion
 
-In large organisations, the placement of domain controllers should balance practical scalability with the need for efficient user access and redundancy. Kerberos ticket caching and modern improvements in Windows reduce the need for a high number of domain controllers, allowing for effective management with fewer servers. By strategically placing domain controllers, optimising site link configurations, and leveraging centralised management tools, you can ensure a robust and responsive Active Directory environment that meets organisational needs.
+In large organisations, the placement of domain controllers should balance practical scalability with the need for efficient user access and redundancy. Kerberos ticket caching and modern improvements in Windows reduce the need for a high number of domain controllers, allowing for effective management with fewer servers. By strategically placing domain controllers, optimising site link configurations, and leveraging centralised management tools, you can ensure a robust and responsive Active Directory environment that meets organisational needs.  I have built out Active Directory for multiple multinational clients with tens of thousands of users and less than a dozen domain controllers worldwide

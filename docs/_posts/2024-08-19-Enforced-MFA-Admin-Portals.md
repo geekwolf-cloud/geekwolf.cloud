@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "WARNING: Enforced MFA in admin portals"
+description: Microsoft if enforcing MFA for everyone accessing some admin portals and REST endpoints.  What is the impact?
 date:   2024-08-19 08:10:05 +0100
 category: azure
-tags: entra-id microsoft-365 azure identity
+tags: entra-id microsoft-365 azure identity modernisation
 comments_id: 4
 ---
 <h1>{{ page.title }}</h1>

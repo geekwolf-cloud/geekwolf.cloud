@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Windows Server 2025 review"
+description: A review of Windows Server 2025.  What is new and what is going to be removed.
 date:   2024-08-12 09:11:15 +0100
 category: on-premises
-tags: on-premises
+tags: on-premises modernisation
 comments_id: 5
 ---
 <h1>{{ page.title }}</h1>

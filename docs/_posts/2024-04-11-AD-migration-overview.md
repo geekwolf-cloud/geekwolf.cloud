@@ -1,9 +1,10 @@
 ---
 layout: post
 title:  "Active Directory migration overview"
+description: An overview of what to look out for in an Active Directory migration and how to sequence it
 date:   2024-04-11 09:29:32 +0100
 category: on-premises
-tags: on-premises migration technical-overview
+tags: on-premises migration technical-overview workstation
 comments_id: 17
 ---
 <h1>{{ page.title }}</h1>
@@ -72,7 +73,7 @@ One of the critical challenges in AD-to-AD migrations is ensuring that user pass
 ### b. Phase 2: migration execution
 
 1. **User and group migration:**
-   - Migrate user accounts and groups to the target domain using tools like ADMT (Active Directory Migration Tool).
+   - Migrate user accounts and groups to the target domain using tools like [PowerSyncPro](https://powersyncpro.com).
    - If using SIDHistory, ensure that it is correctly populated.
 
 2. **Password synchronisation:**
@@ -83,7 +84,7 @@ One of the critical challenges in AD-to-AD migrations is ensuring that user pass
 3. **Workstation migration:**
    - Migrate user workstations to the target domain.
    - Ensure that user profiles are preserved and that logins function seamlessly.
-   - Use tools like USMT (User State Migration Tool) to migrate user profiles.
+   - Use a tool like [PowerSyncPro](https://powersyncpro.com) to migrate user profiles.
 
 4. **Server and application migration:**
    - Migrate servers, including file servers, application servers, and database servers, to the target domain.
