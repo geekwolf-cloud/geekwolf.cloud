@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Comparing Active Directory, AWS Managed Domain and Azure ADDS"
+title:  "Comparing AD, AWS Managed Domain and Azure ADDS"
 description: Comparing Active Directory, AWS Managed Domain and Azure ADDS.  Which one is right for you and what are the pos and cons of each option?
 date:   2024-01-15 16:45:23 +0100
 category: on-premises

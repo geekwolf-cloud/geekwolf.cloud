@@ -1,0 +1,7 @@
+# free to crawl
+
+User-Agent: *
+Disallow: /assets/download/*
+Allow: /
+
+sitemap: https://geekwolf.cloud/sitemap.xml
