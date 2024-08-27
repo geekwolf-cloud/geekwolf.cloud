@@ -178,7 +178,7 @@
                         {% for tag_item in tags %}
                           {% assign tag = tag_item | first %}
                           <li>
-                            <a href="{{ '/tag/' | append: tag_item[0] | relative_url }}" class="tag" data-weight="{{tag_item[1].size | times: 10.0 | divided_by: postcount | ceil }}">{{ site.data.tags[tag].name }}</a>
+                            <a href="{{ site.url }}/tag/{{ tag_item[0] | slugify }}/" class="tag" data-weight="{{tag_item[1].size | times: 10.0 | divided_by: postcount | ceil }}">{{ site.data.tags[tag].name }}</a>
                           </li>
                         {% endfor %}
                     </ul>
@@ -203,7 +203,7 @@
             {% for tag_item in tags %}
               {% assign tag = tag_item | first %}
               <li>
-                 <a href="{{ '/tag/' | append: tag_item[0] | relative_url }}" class="tag" data-weight="{{tag_item[1].size | times: 10.0 | divided_by: postcount | ceil }}">{{ site.data.tags[tag].name }}</a>
+                 <a href="{{ site.url }}/tag/{{ tag_item[0] | slugify }}/" class="tag" data-weight="{{tag_item[1].size | times: 10.0 | divided_by: postcount | ceil }}">{{ site.data.tags[tag].name }}</a>
               </li>
             {% endfor %}
           </ul>
