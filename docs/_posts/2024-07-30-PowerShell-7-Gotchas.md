@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "PowerShell 7 gotchas"
-description: A look at PowerShell 7 in particular into some gotchas that may trip up existing scripts
+description: A look at PowerShell 7 in particular into some gotchas that may trip up existing scripts, and linking to the official Microsoft release notes
 date:   2024-07-30 06:15:53 +0100
 category: on-premises
 tags: powershell on-premises

@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Entra ID Continuous Access Evaluation overview"
-description: An overview of Continuous Access Evaluation, how it works and how it impacts the end users
+description: An overview of Continuous Access Evaluation,  How does it work and impact the end users?  How can you configure CAE via the Azure portal
 date:   2024-02-15 12:59:39 +0100
 category: entra-id
 tags: entra-id technical-overview identity modernisation

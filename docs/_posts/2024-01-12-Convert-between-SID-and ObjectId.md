@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Convert between SID and ObjectId"
-description: How to convert between an Entra ObjectID and its corresponding Security Identifier (SID)
+description: How to convert between an Entra ObjectID and its corresponding Security Identifier (SID) using simple PowerShell.
 date:   2024-01-12 09:31:12 +0100
 category: entra-id
 tags: entra-id identity powershell migration
@@ -49,4 +49,4 @@ function Convert-SidToObjectId
 ```
 
 
-Please note that all code is provided on the basis of this [MIT Licence](/licence)
+Please note that all code is provided on the basis of this [MIT Licence](/licence/)

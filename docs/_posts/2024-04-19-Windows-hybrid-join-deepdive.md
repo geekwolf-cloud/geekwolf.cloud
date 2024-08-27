@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Deep dive into Windows hybrid join"
-description: A deep dive into the Windows hybrid join process and how to do basic troubleshooting
+description: A deep dive into the Windows hybrid join process, what the steps within the hybrid join process are, and how to do basic troubleshooting.
 date:   2024-04-19 06:56:25 +0100
 category: on-premises
 tags: on-premises migration technical-deepdive identity workstation

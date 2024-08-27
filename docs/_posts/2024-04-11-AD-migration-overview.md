@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Active Directory migration overview"
-description: An overview of what to look out for in an Active Directory migration and how to sequence it
+description: An overview of what to look out for in an Active Directory migration, which decisions you need to make, and how to sequence it.
 date:   2024-04-11 09:29:32 +0100
 category: on-premises
 tags: on-premises migration technical-overview workstation

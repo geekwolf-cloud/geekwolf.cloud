@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Retrieving BitTitan statistics using Microsoft Graph"
-description: Simplifying the aggregation of MigrationWiz project statistics into a single Excel workbook
+description: Simplifying the aggregation of MigrationWiz project statistics into a single Excel workbook via the Microsoft Graph API
 date:   2024-07-23 14:22:34 +0100
 category: microsoft-365
 tags: powershell microsoft-365 migration graph-api
@@ -179,4 +179,4 @@ Finally, we export each consolidated csv as a sheet in a single Excel workbook.
 
 So there you have it, this has been a great time saver.  This example also shows how you can use MS Graph to go through your mailbox to retrieve mail.
 
-Please note that all code is provided on the basis of this [MIT Licence](/licence)
+Please note that all code is provided on the basis of this [MIT Licence](/licence/)

@@ -1,7 +1,7 @@
 ---
 layout: default
 title: About
-description: About GeekWolf and Twan van Beers the author of this site
+description: About GeekWolf and Twan van Beers the author of GeekWolf, your site that focuses on the Microsoft stack, in particular identity
 permalink: /about/
 ---
 
