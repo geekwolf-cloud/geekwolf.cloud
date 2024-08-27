@@ -2,6 +2,7 @@
 
 User-Agent: *
 Disallow: /assets/download/*
+Disallow: /search/
 Allow: /
 
 sitemap: https://geekwolf.cloud/sitemap.xml
