@@ -11,6 +11,8 @@ comments_id: 23
 
 We are proud to release our first version of the GeekWolf.Migration PowerShell module!   It is very early days for us on this, and we have lots of ideas to expand on this module with other useful cmdlets to help those of you doing mergers, acquisitions and divestiture related migrations.   If you have an idea for something that we could or should add then please use the comment section below and we will add it to the backlog for incorporation.
 
+NOTE that at this stage it is NOT signed yet, so you will need to be in the RemoteSigned execution policy or Unrestricted.   You can use `Install-Module GeekWolf.Migration' to install the module.
+
 The very first cmdlet is Update-GWADObject.  This will update the User Principal Name and Organizational Unit of an object.  You can do them one object at a time, or pass in a csv file with many objects.  The output is an array of the objects it was given along with a Succeeded column and a ResultMessage column.
 
 e.g. I created a csv file called RenameAndMove.csv with the following content
