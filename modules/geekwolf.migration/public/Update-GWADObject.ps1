@@ -1,3 +1,51 @@
+<#
+.SYNOPSIS
+    Updates the user principal name and organizational unit of an AD object or collection of AD objects
+
+.DESCRIPTION
+    This function updates the UserPrincipalName and OrganizationalUnit of user accounts, groups and devices. It supports two modes of operation:
+    - You can provide individual parameters for a single object
+    - You can provide a collection of objects, each containing the properties to be updated.
+
+.PARAMETER Identity
+    The identity of the object.  This can be a UserPrincipalName, a SamAccountName or a Name.  The function will try to find a unique match for that in the current domain,  This parameter is used in the 'ByParameters' parameter set.
+
+.PARAMETER UserPrincipalName
+    The new UserPrincipalName for the object. This parameter is used in the 'ByParameters' parameter set.
+
+.PARAMETER OrganizationalUnit
+    The new Organizational Unit to which the object should be moved. This parameter is used in the 'ByParameters' parameter set.
+
+.PARAMETER InputObject
+    A collection of objects where each object has properties 'Identity', 'UserPrincipalName', and 'OrganizationalUnit'. 
+    This parameter is used in the 'ByObject' parameter set and supports pipeline input.
+
+.PARAMETER Force
+    Force updating the object so that it doesn't ask you to confirm each one (alternative to -Confirm:$False)
+
+.EXAMPLE
+    Update-GWADObject -Identity "user1@domain.com" -UserPrincipalName "user1.new@domain.com" -OrganizationalUnit "OU=NewOU,DC=domain,DC=com"
+        
+    Description:
+    This example updates a single object's User Principal Name and moves the object to a new Organizational Unit.
+
+.EXAMPLE
+    $objects = @(
+        [PSCustomObject]@{Identity = "user2@domain.com"; UserPrincipalName = "user2.new@domain.com"; OrganizationalUnit = "OU=NewOU,DC=domain,DC=com"},
+        [PSCustomObject]@{Identity = "Group Name"; UserPrincipalName = $null; OrganizationalUnit = "OU=NewOU,DC=domain,DC=com"}
+    )
+    $objects | Update-GWADObject
+
+Description:
+    This example takes a collection of objects from a pipeline and updates their User Principal Name and/or Organizational Unit
+
+.NOTES
+    You can use this function in two ways: by specifying individual parameters for one object or by passing a collection of objects representing multiple objects.
+
+.LINK
+    https://geekwolf.cloud/something
+#>
+
 Function Update-GWADObject {
     [CmdletBinding(
         DefaultParameterSetName = 'ByParameters',
@@ -23,55 +71,6 @@ Function Update-GWADObject {
         [Parameter(ParameterSetName = 'ByParameters', Mandatory = $false)]
         [switch]$Force
     )
-
-    <#
-    .SYNOPSIS
-        Updates the user principal name and organizational unit of an AD object or collection of AD objects
-
-    .DESCRIPTION
-        This function updates the UserPrincipalName and OrganizationalUnit of user accounts, groups and devices. It supports two modes of operation:
-        - You can provide individual parameters for a single object
-        - You can provide a collection of objects, each containing the properties to be updated.
-
-    .PARAMETER Identity
-        The identity of the object.  This can be a UserPrincipalName, a SamAccountName or a Name.  The function will try to find a unique match for that in the current domain,  This parameter is used in the 'ByParameters' parameter set.
-
-    .PARAMETER UserPrincipalName
-        The new UserPrincipalName for the object. This parameter is used in the 'ByParameters' parameter set.
-
-    .PARAMETER OrganizationalUnit
-        The new Organizational Unit to which the object should be moved. This parameter is used in the 'ByParameters' parameter set.
-
-    .PARAMETER InputObject
-        A collection of objects where each object has properties 'Identity', 'UserPrincipalName', and 'OrganizationalUnit'. 
-        This parameter is used in the 'ByObject' parameter set and supports pipeline input.
-
-    .PARAMETER Force
-        Force updating the object so that it doesn't ask you to confirm each one (alternative to -Confirm:$False)
-
-    .EXAMPLE
-        Update-GWADObject -Identity "user1@domain.com" -UserPrincipalName "user1.new@domain.com" -OrganizationalUnit "OU=NewOU,DC=domain,DC=com"
-        
-        Description:
-        This example updates a single object's User Principal Name and moves the object to a new Organizational Unit.
-
-    .EXAMPLE
-        $objects = @(
-            [PSCustomObject]@{Identity = "user2@domain.com"; UserPrincipalName = "user2.new@domain.com"; OrganizationalUnit = "OU=NewOU,DC=domain,DC=com"},
-            [PSCustomObject]@{Identity = "Group Name"; UserPrincipalName = $null; OrganizationalUnit = "OU=NewOU,DC=domain,DC=com"}
-        )
-        $objects | Update-GWADObject
-
-    Description:
-        This example takes a collection of objects from a pipeline and updates their User Principal Name and/or Organizational Unit
-
-    .NOTES
-        You can use this function in two ways: by specifying individual parameters for one object or by passing a collection of objects representing multiple objects.
-
-    .LINK
-        https://geekwolf.cloud/something
-    #>
-
 
     process {
         if ($Force -and -not $Confirm){
