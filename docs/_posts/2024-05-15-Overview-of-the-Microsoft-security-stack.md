@@ -5,7 +5,7 @@ description: An overview of the different parts of the Microsoft security stack.
 date:   2024-05-15 21:06:38 +0100
 category: entra-id
 tags: on-premises entra-id technical-overview identity workstation
-comments_id: 25
+comments_id: 26
 ---
 <h1>{{ page.title }}</h1>
 
