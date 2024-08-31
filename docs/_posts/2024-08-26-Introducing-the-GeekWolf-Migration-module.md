@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Introducing the GeekWolf Migration module"
-description: The first early release of the GeekWolf migration module.  Intended to plug gaps where tooling doesn't provide a specific feature or where there are gaps between tools
+description: Sneak preview of the GeekWolf migration module.  Intended to plug gaps where tooling doesn't provide a specific feature or where there are gaps between tools
 date:   2024-08-26 18:45:25 +0100
 category: on-premises
 tags: entra-id identity on-premises
