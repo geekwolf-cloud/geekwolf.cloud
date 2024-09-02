@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "How do you choose your Cloud Provider"
-description: There are three main players in the Cloud Provider space, AWS, Microsoft and Google.  What differentiates them? How do you choose?
+title:  "Windows 365 versus Azure Virtual Desktop"
+description: Comparing Windows 365 and Azure Virtual Desktop, when should you use which flavour of Virtual Desktop Infrastructure
 date:   2024-07-08 12:15:18 +0100
-category: entra-id
+category: azure
 tags: technical-overview azure google
 comments_id: 34
 ---
