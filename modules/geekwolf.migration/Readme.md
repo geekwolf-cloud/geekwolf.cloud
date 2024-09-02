@@ -27,15 +27,27 @@ This function is to update an Active Directory object's userPrincipalName (UPN) 
 ### Examples
 
 **Example 1:**
-    Update-GWADObject -Identity "user1@domain.com" -UserPrincipalName "user1.new@domain.com" -OrganizationalUnit "OU=NewOU,DC=domain,DC=com"
+```powershell
+Update-GWADObject -Identity "user1@domain.com" -UserPrincipalName "user1.new@domain.com" -OrganizationalUnit "OU=NewOU,DC=domain,DC=com"
+```
         
-    Description:
-    This example updates a single object's User Principal Name and moves the object to a new Organizational Unit.
+Description: This example updates a single object's User Principal Name and moves the object to a new Organizational Unit.
 
 **Example 2:**
+```powershell
     $objects = @(
         [PSCustomObject]@{Identity = "user2@domain.com"; UserPrincipalName = "user2.new@domain.com"; OrganizationalUnit = "OU=NewOU,DC=domain,DC=com"},
         [PSCustomObject]@{Identity = "Group Name"; UserPrincipalName = $null; OrganizationalUnit = "OU=NewOU,DC=domain,DC=com"}
     )
     $objects | Update-GWADObject
+```
 
+Description: This example takes a collection of objects from a pipeline and updates their User Principal Name and/or Organizational Unit
+
+**Example 3:**
+```powershell
+Import-Csv -Path c:\renames.csv | Update-GWADObject | Export-Csv c:\rename-results.csv -NoTypeInformation -Encoding UTF8
+
+```
+
+Description: This example takes a collection of objects from a CSV, updates their User Principal Name and/or Organizational Unit, and outputs a CSV with the results
