@@ -43,7 +43,7 @@ Description:
     You can use this function in two ways: by specifying individual parameters for one object or by passing a collection of objects representing multiple objects.
 
 .LINK
-    https://geekwolf.cloud/something
+    https://github.com/geekwolf-cloud/geekwolf.cloud/tree/main/modules/geekwolf.migration
 #>
 
 Function Update-GWADObject {
