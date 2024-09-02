@@ -39,6 +39,12 @@
 Description:
     This example takes a collection of objects from a pipeline and updates their User Principal Name and/or Organizational Unit
 
+.EXAMPLE
+    Import-Csv -Path c:\renames.csv | Update-GWADObject | Export-Csv c:\rename-results.csv -NoTypeInformation -Encoding UTF8
+
+Description:
+    This example takes a collection of objects from a CSV, updates their User Principal Name and/or Organizational Unit, and outputs a CSV with the results
+
 .NOTES
     You can use this function in two ways: by specifying individual parameters for one object or by passing a collection of objects representing multiple objects.
 
