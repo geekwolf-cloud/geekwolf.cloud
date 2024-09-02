@@ -4,7 +4,7 @@ title:  "Lining up Teams, Slack and Google Chat"
 description: How do you choose between Teams, Slack and Google Chat?  What are the main differentiating factors that allow you to make a decision.
 date:   2024-05-29 16:38:29 +0100
 category: entra-id
-tags: entra-id technical-overview identity google
+tags: entra-id technical-overview identity google microsoft-365
 comments_id: 28
 ---
 <h1>{{ page.title }}</h1>

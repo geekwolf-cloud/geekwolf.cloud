@@ -3,8 +3,8 @@ layout: post
 title:  "Legacy Outlook versus new Outlook"
 description: Microsoft Outlook has been the default mail client for M365 for years.  What is this 'new Outlook', and how does it compare?
 date:   2024-06-19 06:58:04 +0100
-category: entra-id
-tags: entra-id technical-overview microsoft-365
+category: microsoft-365
+tags: workstation technical-overview microsoft-365
 comments_id: 31
 ---
 <h1>{{ page.title }}</h1>

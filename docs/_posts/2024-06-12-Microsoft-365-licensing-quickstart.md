@@ -3,8 +3,8 @@ layout: post
 title:  "Microsoft 365 licensing quick start"
 description: Microsoft 365 has many licence SKUs and components.  How do you pick the appropriate SKU or combination of SKUs?
 date:   2024-06-12 13:05:39 +0100
-category: entra-id
-tags: entra-id technical-overview microsoft-365
+category: microsoft-365
+tags: technical-overview microsoft-365
 comments_id: 30
 ---
 <h1>{{ page.title }}</h1>
