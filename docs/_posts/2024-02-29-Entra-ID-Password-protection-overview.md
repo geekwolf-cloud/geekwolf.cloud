@@ -5,6 +5,7 @@ description: "An overview of Microsoft Entra Password Protection: its components
 date:   2024-02-29 16:59:39 +0100
 category: entra-id
 tags: entra-id technical-overview identity
+image: \android-chrome-192x192.png
 comments_id: 12
 ---
 <h1>{{ page.title }}</h1>

@@ -5,6 +5,7 @@ description: Sneak preview of the GeekWolf migration module.  Intended to plug g
 date:   2024-08-26 18:45:25 +0100
 category: on-premises
 tags: entra-id identity on-premises
+image: \android-chrome-192x192.png
 comments_id: 23
 ---
 <h1>{{ page.title }}</h1>

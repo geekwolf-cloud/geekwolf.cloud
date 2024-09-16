@@ -5,6 +5,7 @@ description: In Microsoft Entra, the word enrolling is often used to mean Entra 
 date:   2024-03-14 11:03:01 +0100
 category: entra-id
 tags: entra-id workstation
+image: \android-chrome-192x192.png
 comments_id: 13
 ---
 <h1>{{ page.title }}</h1>

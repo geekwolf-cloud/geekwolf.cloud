@@ -5,6 +5,7 @@ description: How does joining Entra ID impact the local administrators group.  W
 date:   2024-07-09 11:08:52 +0100
 category: entra-id
 tags: entra-id on-premises identity migration workstation
+image: \android-chrome-192x192.png
 comments_id: 22
 ---
 <h1>{{ page.title }}</h1>

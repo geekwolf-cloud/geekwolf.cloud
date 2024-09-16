@@ -5,6 +5,7 @@ description: Microsoft 365 has many licence SKUs and components.  How do you pic
 date:   2024-06-12 13:05:39 +0100
 category: microsoft-365
 tags: technical-overview microsoft-365
+image: \android-chrome-192x192.png
 comments_id: 30
 ---
 <h1>{{ page.title }}</h1>

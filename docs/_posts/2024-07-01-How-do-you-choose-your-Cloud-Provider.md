@@ -5,6 +5,7 @@ description: There are three main players in the Cloud Provider space, AWS, Micr
 date:   2024-07-01 12:15:18 +0100
 category: azure
 tags: technical-overview azure google
+image: \android-chrome-192x192.png
 comments_id: 33
 ---
 <h1>{{ page.title }}</h1>

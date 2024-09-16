@@ -5,6 +5,7 @@ description: A deep dive into Azure AD (now Entra ID) Single Sign On. what is th
 date:   2024-04-25 18:01:59 +0100
 category: entra-id
 tags: on-premises entra-id migration technical-deepdive identity workstation
+image: \android-chrome-192x192.png
 comments_id: 20
 ---
 <h1>{{ page.title }}</h1>

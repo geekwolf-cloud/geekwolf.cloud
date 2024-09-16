@@ -5,6 +5,7 @@ description: A review of Windows Server 2025, Microsoft's latest server operatin
 date:   2024-08-12 09:11:15 +0100
 category: on-premises
 tags: on-premises modernisation
+image: \android-chrome-192x192.png
 comments_id: 5
 ---
 <h1>{{ page.title }}</h1>

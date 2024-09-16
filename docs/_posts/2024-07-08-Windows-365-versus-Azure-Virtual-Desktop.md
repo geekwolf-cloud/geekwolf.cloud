@@ -5,6 +5,7 @@ description: Comparing Windows 365 and Azure Virtual Desktop, when should you us
 date:   2024-07-08 12:15:18 +0100
 category: azure
 tags: technical-overview azure google
+image: \android-chrome-192x192.png
 comments_id: 34
 ---
 <h1>{{ page.title }}</h1>

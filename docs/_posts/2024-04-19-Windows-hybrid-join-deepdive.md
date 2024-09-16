@@ -5,6 +5,7 @@ description: A deep dive into the Windows hybrid join process, what the steps wi
 date:   2024-04-19 06:56:25 +0100
 category: on-premises
 tags: on-premises migration technical-deepdive identity workstation
+image: \android-chrome-192x192.png
 comments_id: 19
 ---
 <h1>{{ page.title }}</h1>

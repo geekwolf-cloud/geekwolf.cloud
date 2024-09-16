@@ -5,6 +5,7 @@ description: How do you choose how many Domain Controllers to build and where to
 date:   2024-03-21 19:02:43 +0100
 category: on-premises
 tags: on-premises
+image: \android-chrome-192x192.png
 comments_id: 14
 ---
 <h1>{{ page.title }}</h1>

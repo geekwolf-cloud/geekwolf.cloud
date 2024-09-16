@@ -5,6 +5,7 @@ description: Let's break authentication into user authentication and infrastruct
 date:   2024-03-28 11:45:51 +0100
 category: on-premises
 tags: on-premises entra-id migration identity
+image: \android-chrome-192x192.png
 comments_id: 16
 ---
 <h1>{{ page.title }}</h1>

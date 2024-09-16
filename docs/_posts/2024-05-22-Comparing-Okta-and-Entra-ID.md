@@ -5,6 +5,7 @@ description: How do you compare Okta and Entra ID?  The two leaders in the ident
 date:   2024-05-22 10:52:17 +0100
 category: entra-id
 tags: entra-id technical-overview identity
+image: \android-chrome-192x192.png
 comments_id: 27
 ---
 <h1>{{ page.title }}</h1>

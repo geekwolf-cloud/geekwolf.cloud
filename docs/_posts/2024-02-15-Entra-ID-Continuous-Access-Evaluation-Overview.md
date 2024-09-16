@@ -5,6 +5,7 @@ description: An overview of Continuous Access Evaluation,  How does it work and 
 date:   2024-02-15 12:59:39 +0100
 category: entra-id
 tags: entra-id technical-overview identity modernisation
+image: \android-chrome-192x192.png
 comments_id: 9
 ---
 <h1>{{ page.title }}</h1>

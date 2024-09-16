@@ -5,6 +5,7 @@ description: How to convert between an Entra ObjectID and its corresponding Secu
 date:   2024-01-12 09:31:12 +0100
 category: entra-id
 tags: entra-id identity powershell migration
+image: \android-chrome-192x192.png
 comments_id: 2
 ---
 <h1>{{ page.title }}</h1>
