@@ -10,7 +10,7 @@ comments_id: 39
 ---
 <h1>{{ page.title }}</h1>
 
-I first wrote PowerSyncPro Directory Sync in PowerShell over Christmas in 2018.  Since then the tool has been rewritten in C# using .Net Core.   I wanted to talk about things I am particularly proud of and also mention areas where I think there is room for improvement.   I'd love to hear your feedback on the product, as I do listen to everything that is said about PowerSyncPro and will often look to incorporate ideas and features into the backlog.
+I first wrote [PowerSyncPro](https://powersyncpro.com) Directory Sync in PowerShell over Christmas in 2018.  Since then the tool has been rewritten in C# using .Net Core.   I wanted to talk about things I am particularly proud of and also mention areas where I think there is room for improvement.   I'd love to hear your feedback on the product, as I do listen to everything that is said about PowerSyncPro and will often look to incorporate ideas and features into the backlog.
 
 So let's get started with the things that I think need work
 
