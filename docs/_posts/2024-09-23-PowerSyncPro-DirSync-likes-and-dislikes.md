@@ -2,7 +2,7 @@
 layout: post
 title:  "What do I like and dislike about PowerSyncPro DirSync"
 description: Let's take look at PowerSyncPro Directory Sync to see what I like about the product, and which features need more work
-date:   2024-09-16 07:35:51 +0100
+date:   2024-09-24 08:20:13 +0100
 category: microsoft-365
 tags: microsoft-365 migration
 image: \android-chrome-192x192.png
