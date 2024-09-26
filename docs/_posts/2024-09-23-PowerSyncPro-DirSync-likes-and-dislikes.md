@@ -1,7 +1,7 @@
 ---
 layout: post
-title:  "What do I like and dislike about PowerSyncPro DirSync"
-description: Let's take look at PowerSyncPro Directory Sync to see what I like about the product, and which features need more work
+title:  "What do I like about PowerSyncPro DirSync nd dislike about the competition"
+description: Let's take look at PowerSyncPro Directory Sync to see what I love about the product and loathe about other products
 date:   2024-09-24 08:20:13 +0100
 category: microsoft-365
 tags: microsoft-365 migration
@@ -10,37 +10,9 @@ comments_id: 39
 ---
 <h1>{{ page.title }}</h1>
 
-I first wrote [PowerSyncPro](https://powersyncpro.com) Directory Sync in PowerShell over Christmas in 2018.  Since then the tool has been rewritten in C# using .Net Core.   I wanted to talk about things I am particularly proud of and also mention areas where I think there is room for improvement.   I'd love to hear your feedback on the product, as I do listen to everything that is said about PowerSyncPro and will often look to incorporate ideas and features into the backlog.
+I first wrote [PowerSyncPro](https://powersyncpro.com) Directory Sync in PowerShell over Christmas in 2018.  Since then the tool has been rewritten in C# using .Net Core.   I wanted to talk about things I am particularly proud of and also mention areas where I think other tools fall down.   I'd love to hear your feedback on the product, as I do listen to everything that is said about PowerSyncPro and will often look to incorporate ideas and features into the backlog.
 
-So let's get started with the things that I think need work
-
-## Things I think need work in PowerSyncPro DirSync
-
-1. **Software as a Service (SaaS)**
-
-    PowerSyncPro is currently designed to run on a Windows server.  This was an intentional choice as most larger organisations still prefer their Active Directory/Entra ID information to be more protected, and while they trust Microsoft to some extent, that is often out of necessity then by choice.  While we have made the PowerSyncPro install process as simple as possible, we do see clients get caught up on SSL certificate configuration.   To take that pain away we will create a SaaS version of PowerSyncPro, but without ditching the existing architecture, so that you as a customer or partner have a choice.
-
-    Initially the SaaS architecture will still be on request, as in you contact the PowerSyncPro team and an instance will be spun up for you, but if demand is strong then we will follow that up with more automation so that you can spin up/tear down instances yourself and perhaps even changing the licencing model into a metered model, again aiming to make your life easier.
-
-2. **PowerSyncPro installer**
-
-    The installer for the PowerSyncPro service does a decent job, but it needs more streamlining around the SSL certificates area.  Currently I think the two screens are a bit confusing for partners, so adjusting that to make things simpler is worthwhile.  I would also like you to be able to re-run the installer to modify the configuration, for example if you first ran the installer without wanting to have remote agents, but later decide that you do, then I think you should be able to re-run the installer, tick the option to have remote agents and let the installer update the configuration for you.  That way you don't have to manually edit things like appsettings.json
-
-3. **Exchange Online support**
-
-    While PowerSyncPro has support for distribution groups via the Exchange Online PowerShell module.  This all feels a bit clunky and needs to be extended to users as well.  We are of course limited as the Exchange Online team are thusfar resisting opening up a REST based interface more akin to graph.  They do now use REST under the covers but it is a private API so there is significant risk in using that directly.  
-
-    Also we need to extend the Exchange Online reach to users, so that we can set move of the attributes that are either not exposed in Entra ID, or are exposed but are made read-only from the Graph API under different conditions.  I am not sure why MS made this all so complicated, instead of just allowing it via Graph and they sort out the complication of data stores, but it is what it is and we should leverage what we can
-
-4. **Use of custom attributes in Entra ID**
-
-    PowerSyncPro does not currently read the custom attributes from Entra ID.  The reason is that these attributes are sometimes edited only from Graph and other times they must be edited from Exchange Online.  This makes them pretty complicated attributes to support, but they are very useful for matching between two Entra ID tenants, so we should add support for them
-
-5. **Wider use of templates**
-
-    We have a set of templates for helping you create Directory Sync profiles, but we need to extend that set to more scenarios, in particular Google Workspace to Entra ID and Active Directory would be a welcomed addition.   These templates make creating a sync profile so much simpler that it is worth investing time into creating basic templates.   Of course not every migration/configuration is the same so you will still be able to customise the profile so that it meets all your requirements.
-
-## Things I like in PowerSyncPro DirSync
+So let's get started with the things that I particularly love
 
 1. **Architecture**
 
@@ -49,6 +21,8 @@ So let's get started with the things that I think need work
 2. **Performance**
 
     I am always mindful about performance.  PowerSyncPro Directory Sync was definitely built with performance in mind.   We run as many jobs in parallel as possible, unlike tools like Entra Connect Sync which does on job at a time, we will run all the imports at once, and then as soon as the imports are finished to allow a sync job to run then the sync job will kick off. The same with the export job, as soon as the syncs for that target directory are done then we will run the export.   This is what allows PowerSyncPro at a customer to delta sync 14 directories, with 500k users and around 20 million attributes in approximately 1 minute.  Even doing full imports and syncs run incredibly fast, making PowerSyncPro a very valuable Agile-like tool where you can make configuration changes and check the impact of those changes much more quickly than even the goliaths in this space.
+
+I would go as far to say that I have never seen any directory synchronisation tool that is as efficient and performant as PowerSyncPro.
 
 3. **Security**
 
@@ -79,5 +53,30 @@ So let's get started with the things that I think need work
 
     Finally the message log...  we touched on this in Schedule as the message log is the raw log of all Directory Sync messages, which are filtered when you click on the hyperlinked number of errors or warnings in the schedule.  The aim here is to give you good actionable messages including the context so you can find and resolve issues as quickly as possible
 
+## Things I think need work in other tools
 
-So there you have it, my picks for things to improve and for things that I like/love about PowerSyncPro.   I'm sure if you ask someone else on the team or any of our partners, then they will have their own list.  I'd love to hear what is on your list of likes and dislikes!
+1. **Software as a Service (SaaS)**
+
+    The fact that other tools run on SaaS is often touted as an advantage, but do you actually trust the vendor or would you prefer to keep that data under your own control and protection?   I don't get what some other vendors limit your choice around how to deploy the software.  Running on servers is very comfortable for people, especially if Active Directory is in the mix.  Yes people trust Microsoft but is that because they actually trust Microsoft or is it because there is not a lot of choice if you want to benefit from their latest innovations?
+
+2. **Intuitive installer**
+
+    Some ISVs don't have an intuitive installer and require you to edit config files or database settings natively.  I am not a fan of that as it is too easy to make a mistake and totally mess up an installation.   Having a robust installer is critical
+
+3. **Avoid hard limitations**
+
+    Some tools place limits on the number of objects, or the number of complex mappings/overrides/transformations, or the total size.  You definitely want to avoid those tools and go for one that can easily handle whatever you throw at it.
+
+4. **Extensibility and adaptability**
+
+    You don't want to pick a tool that is rigid in what you can do with it.  You need support for say Active Directory schema extensions.  You need a tool that can support locked down environments, e.g. where RC4 is totally disabled in Active Directory.  Some tools work well with plain vanilla environments, but outside of a lab, who has one of those lying around?
+
+5. **Configuration templates**
+
+    You need to be up and running quickly, which is where configuration templates are essential, yet some ISVs don't provide templates and you have to configure everything yourself.  
+
+
+
+
+
+So there you have it, my picks for things to improve in other tools and for things that I like/love about PowerSyncPro.   I'm sure if you ask someone else on the team or any of our partners, then they will have their own list.  I'd love to hear what is on your list of likes and dislikes!
