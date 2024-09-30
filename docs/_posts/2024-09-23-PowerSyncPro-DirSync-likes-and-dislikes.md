@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "What do I like about PowerSyncPro DirSync and dislike about the competition"
+title:  "PowerSyncPro DirSync likes and competition dislikes"
 description: Let's take look at PowerSyncPro Directory Sync to see what I love about the product and loathe about other products
 date:   2024-09-24 08:20:13 +0100
 category: microsoft-365
