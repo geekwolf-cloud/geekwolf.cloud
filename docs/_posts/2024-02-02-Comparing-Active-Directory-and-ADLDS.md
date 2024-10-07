@@ -5,7 +5,7 @@ description: Comparing Active Directory and AD LDS.  Did you know that Entra ID 
 date:   2024-02-02 18:12:37 +0100
 category: on-premises
 tags: on-premises technical-overview entra-id
-image: \android-chrome-192x192.png
+image: android-chrome-192x192.png
 comments_id: 8
 ---
 <h1>{{ page.title }}</h1>

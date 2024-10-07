@@ -5,7 +5,7 @@ description: Comparing Active Directory, AWS Managed Domain and Azure ADDS.  Whi
 date:   2024-01-15 16:45:23 +0100
 category: on-premises
 tags: on-premises technical-overview azure
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 6
 ---
 

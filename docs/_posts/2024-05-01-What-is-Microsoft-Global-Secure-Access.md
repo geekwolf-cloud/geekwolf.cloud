@@ -5,7 +5,7 @@ description: An overview of Microsoft Global Secure Access (GSA).  What is GAS, 
 date:   2024-05-01 07:13:10 +0100
 category: entra-id
 tags: on-premises entra-id technical-overview identity workstation
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 24
 ---
 <h1>{{ page.title }}</h1>

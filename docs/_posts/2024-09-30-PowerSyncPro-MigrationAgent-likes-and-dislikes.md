@@ -5,7 +5,7 @@ description: Let's take look at PowerSyncPro Migration Agent to see what I love 
 date:   2024-09-30 11:01:58 +0100
 category: microsoft-365
 tags: microsoft-365 migration
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 40
 ---
 <h1>{{ page.title }}</h1>

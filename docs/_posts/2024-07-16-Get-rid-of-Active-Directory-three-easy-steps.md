@@ -5,7 +5,7 @@ description: An overview of how you can get rid of Active Directory in three 'ea
 date:   2024-07-16 08:53:24 +0100
 category: entra-id
 tags: entra-id on-premises identity migration
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 21
 ---
 <h1>{{ page.title }}</h1>

@@ -5,7 +5,7 @@ description: Why did Microsoft choose to use guest to have two very distinct mea
 date:   2024-01-05 11:55:20 +0100
 category: entra-id
 tags: entra-id identity
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 3
 ---
 <h1>{{ page.title }}</h1>

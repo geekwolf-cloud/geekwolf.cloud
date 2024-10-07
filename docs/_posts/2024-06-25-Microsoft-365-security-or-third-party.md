@@ -5,7 +5,7 @@ description: Microsoft 365 has various security components, when do you need to 
 date:   2024-06-25 08:10:00 +0100
 category: microsoft-365
 tags: microsoft-365 technical-overview microsoft-365
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 31
 ---
 <h1>{{ page.title }}</h1>

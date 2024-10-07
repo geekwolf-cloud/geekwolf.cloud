@@ -5,7 +5,7 @@ description: Microsoft Outlook has been the default mail client for M365 for yea
 date:   2024-06-19 06:58:04 +0100
 category: microsoft-365
 tags: workstation technical-overview microsoft-365
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 31
 ---
 <h1>{{ page.title }}</h1>

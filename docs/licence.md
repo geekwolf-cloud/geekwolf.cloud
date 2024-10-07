@@ -3,7 +3,7 @@ layout: default
 title: Licence
 description: This is GeekWolf's MIT Licence.  This forms part of using any of the code, snippets or scripts from the GeekWolf website
 permalink: /licence/
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 ---
 
 <h1>MIT Licence</h1>

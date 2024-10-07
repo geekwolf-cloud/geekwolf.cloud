@@ -5,7 +5,7 @@ description: An overview into the different multi factor authentication methods 
 date:   2024-04-04 21:31:42 +0100
 category: entra-id
 tags: entra-id identity technical-overview
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 18
 ---
 <h1>{{ page.title }}</h1>

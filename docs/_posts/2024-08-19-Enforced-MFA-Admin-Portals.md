@@ -5,7 +5,7 @@ description: Microsoft if enforcing MFA for everyone accessing some admin portal
 date:   2024-08-19 08:10:05 +0100
 category: azure
 tags: entra-id microsoft-365 azure identity modernisation
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 4
 ---
 <h1>{{ page.title }}</h1>

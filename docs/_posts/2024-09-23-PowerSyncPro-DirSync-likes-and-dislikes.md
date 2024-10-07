@@ -5,7 +5,7 @@ description: Let's take look at PowerSyncPro Directory Sync to see what I love a
 date:   2024-09-24 08:20:13 +0100
 category: microsoft-365
 tags: microsoft-365 migration
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 39
 ---
 <h1>{{ page.title }}</h1>

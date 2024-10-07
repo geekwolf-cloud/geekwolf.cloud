@@ -5,7 +5,7 @@ description: An overview into Multi Factor Authentication, in particular the imp
 date:   2024-02-22 11:10:01 +0100
 category: entra-id
 tags: entra-id technical-overview identity best-practice modernisation
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 11
 ---
 <h1>{{ page.title }}</h1>

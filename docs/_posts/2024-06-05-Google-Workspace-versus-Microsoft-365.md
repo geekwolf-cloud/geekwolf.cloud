@@ -5,7 +5,7 @@ description: Choosing between Google Workspace and Microsoft 365 is sometimes a 
 date:   2024-06-05 18:19:52 +0100
 category: microsoft-365
 tags: microsoft-365 technical-overview google
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 29
 ---
 <h1>{{ page.title }}</h1>

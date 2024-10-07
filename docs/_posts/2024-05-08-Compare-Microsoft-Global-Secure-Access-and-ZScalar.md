@@ -5,7 +5,7 @@ description: A high level comparison of Microsoft Global Secure Access and ZScal
 date:   2024-05-08 09:59:01 +0100
 category: entra-id
 tags: on-premises entra-id technical-overview identity workstation
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 25
 ---
 <h1>{{ page.title }}</h1>

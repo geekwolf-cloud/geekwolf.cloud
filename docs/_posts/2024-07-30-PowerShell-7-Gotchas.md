@@ -5,7 +5,7 @@ description: A look at PowerShell 7 in particular into some gotchas that may tri
 date:   2024-07-30 06:15:53 +0100
 category: on-premises
 tags: powershell on-premises
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 6
 ---
 <h1>{{ page.title }}</h1>

@@ -5,7 +5,7 @@ description: An overview of the different service accounts from legacy to manage
 date:   2024-08-05 14:22:34 +0100
 category: on-premises
 tags: on-premises technical-overview identity modernisation
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 6
 ---
 <h1>{{ page.title }}</h1>

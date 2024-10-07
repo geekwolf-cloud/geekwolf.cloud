@@ -5,7 +5,7 @@ description: How do you choose a name for Active Directory.  Some of the older m
 date:   2024-03-06 07:15:21 +0100
 category: on-premises
 tags: on-premises
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 12
 ---
 <h1>{{ page.title }}</h1>

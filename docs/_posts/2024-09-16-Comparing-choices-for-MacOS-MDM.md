@@ -5,7 +5,7 @@ description: Microsoft 365 has native support for MacOS MDM, but how does it com
 date:   2024-09-16 07:35:51 +0100
 category: microsoft-365
 tags: microsoft-365 best-practice
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 38
 ---
 <h1>{{ page.title }}</h1>

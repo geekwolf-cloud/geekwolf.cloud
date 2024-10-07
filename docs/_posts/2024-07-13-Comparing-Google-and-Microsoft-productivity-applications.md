@@ -5,7 +5,7 @@ description: Most of us have used a word processor for documents, spreadsheets, 
 date:   2024-07-13 12:15:18 +0100
 category: entra-id
 tags: technical-overview microsoft-365 google
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 35
 ---
 <h1>{{ page.title }}</h1>

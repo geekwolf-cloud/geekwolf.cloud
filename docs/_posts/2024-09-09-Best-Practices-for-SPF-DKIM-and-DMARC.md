@@ -5,7 +5,7 @@ description: A look at SPF, DKIM and DMARC.  What are the best practices around 
 date:   2024-09-09 08:05:37 +0100
 category: microsoft-365
 tags: microsoft-365 best-practice
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 37
 ---
 <h1>{{ page.title }}</h1>

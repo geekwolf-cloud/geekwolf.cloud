@@ -5,7 +5,7 @@ description: A follow on from a 7-part blog on Kerberos back in 2018, this time 
 date:   2024-09-03 07:41:17 +0100
 category: on-premises
 tags: entra-id identity on-premises
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 36
 ---
 <h1>{{ page.title }}</h1>

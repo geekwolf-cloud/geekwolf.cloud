@@ -5,7 +5,7 @@ description: Comparing Entra Connect Sync (previously called Azure AD Connect) a
 date:   2024-02-08 7:22:21 +0100
 category: on-premises
 tags: on-premises technical-overview entra-id identity
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 8
 ---
 <h1>{{ page.title }}</h1>

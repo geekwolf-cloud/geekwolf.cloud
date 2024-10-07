@@ -5,7 +5,7 @@ description: An overview of what to look out for in an Active Directory migratio
 date:   2024-04-11 09:29:32 +0100
 category: on-premises
 tags: on-premises migration technical-overview workstation
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 17
 ---
 <h1>{{ page.title }}</h1>

@@ -5,7 +5,7 @@ description: How do you remove BitTitan migrated mailbox data with Exchange Web 
 date:   2024-01-19 11:45:59 +0100
 category: microsoft-365
 tags: powershell microsoft-365 migration
-image: \android-chrome-192x192.png
+image: /android-chrome-192x192.png
 comments_id: 1
 ---
 
