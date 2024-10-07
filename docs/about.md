@@ -3,6 +3,7 @@ layout: default
 title: About
 description: About GeekWolf and Twan van Beers the author of GeekWolf, your site that focuses on the Microsoft stack, in particular identity
 permalink: /about/
+image: \android-chrome-192x192.png
 ---
 
 <h1>About GeekWolf and Twan van Beers</h1>

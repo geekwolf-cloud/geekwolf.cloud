@@ -158,8 +158,8 @@ The Ticket Granting Service flow is also part of the KDC and, as you might guess
 
 The application flow is embedded within whatever application the user is trying to access. In the screenshot below we’ve requested access to an SMB share:
 
-<p><img src="/assets/images/2024-09-03-Windows-Server-2025-Kerberos-application-smb2-kerberos.png" alt="Kerberos within SMB"></p>
-<p><img src="/assets/images/2024-09-03-Windows-Server-2025-Kerberos-application-smb2-kerberos-response.png" alt="Kerberos response within SMB"></p>
+<p><img src="/assets/images/2024-09-03-Windows-Server-2025-Kerberos-application-smb2-Kerberos.png" alt="Kerberos within SMB"></p>
+<p><img src="/assets/images/2024-09-03-Windows-Server-2025-Kerberos-application-smb2-Kerberos-response.png" alt="Kerberos response within SMB"></p>
 
 1. **Client to Server: SMB2 Session Request with an embedded KRB_AP_REQ**
 
