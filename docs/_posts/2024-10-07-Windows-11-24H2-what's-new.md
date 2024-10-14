@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "What is new in Windows 11 24H2"
-description: A look at what is new, what has changed and what has been removed in Windows 11 24H2
+description: Keeping you up to date with a look at what is new, what has changed and what has been removed in Windows 11 24H2
 date:   2024-10-07 14:21:09 +0100
 category: microsoft-365
 tags: microsoft-365 workstation
