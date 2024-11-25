@@ -4,7 +4,7 @@ title:  "A personal review of Ignite 2024"
 description: Exploring Microsoft Ignite 2024 from my personal perspective as a sponsor, presenter and attendee
 date:   2024-12-03 07:42:16 +0100
 category: microsoft-365
-tags: microsoft-365 azure
+tags: microsoft-365
 image: /android-chrome-192x192.png
 comments_id: 44
 ---
