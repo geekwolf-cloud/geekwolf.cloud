@@ -94,7 +94,7 @@ const renderComments = (comments) => {
   .map(comment => {
     const datePosted = dayjs(comment.created_at).fromNow();
     const user = comment.user;
-    const body = DOMPurify.sanitize(marked(comment.body));
+    const body = DOMPurify.sanitize(marked(comment.body, {gfm:true, breaks: true}));
     const postedByAuthor = comment.author_association === 'OWNER';
     const edited = comment.created_at !== comment.updated_at;
 
