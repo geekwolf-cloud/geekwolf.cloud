@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Understanding cross-tenant features in Microsoft 365 and their use cases"
+title:  "Understanding cross-tenant features in Microsoft 365"
 description: A look into the M365 cross tenant features and when they may be useful (as well as when they are not)
 date:   2024-10-21 07:54:43 +0100
 category: microsoft-365
