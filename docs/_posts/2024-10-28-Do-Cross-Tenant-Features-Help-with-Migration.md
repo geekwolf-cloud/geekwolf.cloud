@@ -10,8 +10,6 @@ comments_id: 45
 ---
 <h1>{{ page.title }}</h1>
 
-# Cross-tenant features and tenant-to-tenant migration
-
 While cross-tenant features in Azure AD (such as B2B collaboration, guest access, and shared channels in Teams) can offer some short-term benefits during a migration scenario, they do not provide a comprehensive solution for tenant-to-tenant migration. In fact, they can introduce additional complexity and confusion during the process.
 
 Below is an explanation of why cross-tenant features generally fail to address the core challenges of a tenant-to-tenant migration.
