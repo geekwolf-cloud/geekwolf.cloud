@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Exploring Autopilot v2, what has changed?"
-description: Let's see what has changed in Autopilot v2, and what definitely still needs work
+description: Let's see what has changed in Autopilot v2, what are some great changes and what definitely still needs work
 date:   2024-10-14 07:42:58 +0100
 category: microsoft-365
 tags: microsoft-365 workstation

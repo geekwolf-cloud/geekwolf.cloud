@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Ignite 2024 Announcements"
-description: A quick look at the various announcements from Microsoft Ignite 2024
+description: A quick look at the various announcements from Microsoft Ignite 2024 from hardware to, you guessed it AI
 date:   2024-11-25 07:37:03 +0100
 category: microsoft-365
 tags: microsoft-365 azure
@@ -9,8 +9,6 @@ image: /android-chrome-192x192.png
 comments_id: 43
 ---
 <h1>{{ page.title }}</h1>
-
-# Key Highlights from Microsoft Ignite 2024
 
 Microsoft Ignite 2024 brought a wealth of announcements that showcase innovation across AI, cloud infrastructure, and developer tools. Here's a comprehensive overview of the key updates and features unveiled during the event.
 
