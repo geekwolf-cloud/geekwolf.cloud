@@ -12,7 +12,7 @@ comments_id: 44
 
 As someone who has been going to Microsoft conferences for a very long time starting with TechEd in Auckland back in the 1990s, I had been looking forward to Microsoft Ignite 2024 for many months.   This blog talks about that journey to Ignite where we were attendees, presenters and sponsors.
 
-# The lead up to Microsoft Ignite 2024
+## The lead up to Microsoft Ignite 2024
 
 As part of my businesses, which I own together with Conrad and Neil, we were going to sponsor and attend the conference in 2023, but when it was announced that it would be limited to 4000 people and be hosted in Seattle and it looked like it was an AI fest, we opted to give it a miss.   Like others I told myself I'd watch the videos afterwards, but as always that didn't happen.   It is just too hard to carve out time to sit and watch videos when life is busy.
 
@@ -22,7 +22,7 @@ From a sponsors perspective the whole process, while it often seemed last minute
 
 We booked flights early on and opted to stay longer.  This was mainly to organize swag and to meet with some clients before the conference.  In hindsight we could have cut that time a little bit shorter but it was amazing to catch up with friends.   We opted to get accommodation via Airbnb instead of hotels and that was a great success.  We were only 5 mins walk from the conference, the downside being it was a $20 Uber ride into the city.  All of us being in one apartment did mean that we had to work as a team, and i loved that side of our journey.
 
-# The conference itself
+## The conference itself
 
 The conference itself kind of started on Monday.  We were able to pick up badges (for which the line was insanely long, but moved well), our backpack and water bottle swag (for which the line was also insanely long and did NOT move well, in fact by the time we got to the front the swag had run out and we had to line up on one of the other days), and there were add-on sessions.   Now to be honest the $350 for the additional session was totally not worth the money.   The session wasn't technical enough, and the presenters seemed ill prepared.   We intentionally chose a non AI session as we were sure that the conference itself would again be an AI fest.   We talked about cloud native devices, which is a topic dear to our heart, but all the info was really surface information, level 100 at best.
 
@@ -34,7 +34,7 @@ Thursday seemed more like the final push, and again at the Expo from 8am to 630p
 
 Friday was a half day of sessions, and I picked about the only non AI session on AKS Automatic.  This session was well run and the demo software was amazing.  Spoke to the presenters afterwards as PowerSyncPro is embarking on a SaaS version and AKS comes up in our discussions a lot.   It was good to get my own instincts confirmed that AKS isn't the right step for us to take at this time, given the nature of our software, the regularity of our application's usage and the size/experience of our team with AKS. 
 
-# Traveling home and the wrap up
+## Traveling home and the wrap up
 
 We traveled home on Saturday afternoon, and had a wrap up beforehand.   We collated our lists of things that went well, what we could improve and what to avoid.  The trip home became arduous for some as storms in UK meant cancellations.   Our flight from Chicago was ok other than a missed approach where the engines powered back up as soon as the wheels touched down the first time, and the second landing stuck, albeit being quite bumpy, and eventually we got back into the terminal.  Conrad was the last person to arrive home in New Zealand, but sadly not that long after Fabrice, Anna and Nik who all had long delays in London waiting for an onward flight.
 
