@@ -12,8 +12,6 @@ comments_id: 49
 
 Welcome to the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2024-11-11-A-look-into-authentication-Hashes %}), we covered hashes: what they are, how they are calculated and stored.  In this blogs we will step back and look at credentials as a whole and see how these are used, stored and protected
 
-# Understanding Windows cached credentials: Authentication when offline
-
 When you log into a Windows machine, authentication typically happens by verifying your credentials with a remote domain controller. But what happens when you're offline, disconnected from the network? Windows provides a feature known as **cached credentials**, which allows you to continue logging in even when you're not connected to the domain. In this blog, we’ll explore how Windows handles cached credentials, the protection mechanisms in place, and the security aspects involved—especially when it comes to different account types, like **local accounts**, **Active Directory (AD) domain accounts**, and **Entra ID accounts**.
 
 ## How cached credentials work in Windows
