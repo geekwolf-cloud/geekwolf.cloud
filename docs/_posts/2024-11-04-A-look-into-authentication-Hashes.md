@@ -10,8 +10,7 @@ comments_id: 48
 ---
 <h1>{{ page.title }}</h1>
 
-Welcome to the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2024-11-04-A-look-into-authentication-Passwords %})
-, we covered passwords: the foundation of most authentication systems. Now, we'll delve into a critical aspect of authentication security—**hashing**. This blog will explore how operating systems like Windows, Linux, and macOS use hashing to protect passwords, the weaknesses of earlier methods, and how modern systems have evolved to enhance security.  
+Welcome to the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2024-11-04-A-look-into-authentication-Passwords %}), we covered passwords: the foundation of most authentication systems. Now, we'll delve into a critical aspect of authentication security—**hashing**. This blog will explore how operating systems like Windows, Linux, and macOS use hashing to protect passwords, the weaknesses of earlier methods, and how modern systems have evolved to enhance security.  
 
 ---
 

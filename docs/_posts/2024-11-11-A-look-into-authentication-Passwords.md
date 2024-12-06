@@ -116,4 +116,4 @@ You may think oh yes but passwords are surely no longer transmitted, or they are
 
 Passwords are both a relic of the past and a vital component of today’s digital security landscape. Their simplicity belies their importance, and their weaknesses demand constant vigilance. As we’ve seen, the way passwords are created, stored, and cracked tells a story of innovation and exploitation—a story that sets the stage for the next evolution in authentication.
 
-In the next blog of this series, we’ll dive into how passwords are stored and protected, exploring hashing algorithms, salting techniques, and the critical role of secure credential management. Stay tuned!
+In the [next blog]({{ site.baseurl }}{% post_url 2024-11-04-A-look-into-authentication-Hashes %}) of this series, we’ll dive into how passwords are stored and protected, exploring hashing algorithms, salting techniques, and the critical role of secure credential management. Stay tuned!
