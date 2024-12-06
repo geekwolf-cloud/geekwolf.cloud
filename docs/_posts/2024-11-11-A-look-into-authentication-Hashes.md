@@ -118,5 +118,5 @@ Today’s security threats, including rainbow table and offline brute-force atta
 
 The journey from LAN Manager to modern password hashing highlights an evolution driven by the need to address growing security threats. While legacy systems like LM and RC4 lacked the sophistication to resist modern attacks, today’s protocols (e.g., Kerberos with AES, bcrypt, and PBKDF2) incorporate advanced cryptographic protections. 
 
-In the next blog post on authentication we will expand to talk about credentials and how they are stored in various systems 
+In the [next blog post]({{ site.baseurl }}{% post_url 2024-11-18-A-look-into-authentication-Credentials %}) on authentication we will expand to talk about credentials and how they are stored in various systems 
 
