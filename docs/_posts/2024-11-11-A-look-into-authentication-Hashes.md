@@ -20,6 +20,8 @@ A password hash is a fixed-length string derived from a password using a cryptog
 
 Hashing protects passwords from direct exposure. Even if a system’s password database is stolen, the attacker would only have the hashes, which are much harder (though not impossible) to crack.  
 
+To aid with security hashing sometimes uses salt (or pepper) to add a 'random' value to the password before hashing to make brute force attack more difficult and also to make the use of pre-computed hashes (known as rainbow tables) less effective.  The difference between salt and pepper (aside from the taste) is that a salt stores the random value with the hash, and a pepper does not.
+
 ---
 
 ## Windows hashing mechanisms: LAN Manager, NTLM, and NTLMv2  
