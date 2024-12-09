@@ -61,7 +61,7 @@ When users reuse passwords across multiple sites, breaches in one system can com
 
 ### Rainbow tables
 
-Hashes add a layer of security, but they’re not foolproof. Rainbow tables are precomputed datasets that map hashed values back to their original passwords. By using these tables, attackers can crack hashed passwords quickly—unless additional defences like *salting* are in place.  See the [blog post on hashing](% post_url 2024-11-11-A-look-into-authentication-Hashes %) for more details.
+Hashes add a layer of security, but they’re not foolproof. Rainbow tables are precomputed datasets that map hashed values back to their original passwords. By using these tables, attackers can crack hashed passwords quickly—unless additional defences like *salting* are in place.  See the [blog post on hashing]({{ site.baseurl }}{% post_url 2024-11-11-A-look-into-authentication-Hashes %}) for more details.
 
 ### Phishing and social engineering
 
