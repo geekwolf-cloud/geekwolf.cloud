@@ -84,5 +84,5 @@ While **PBKDF2** provides a strong defence against brute-force attacks, there ar
 
 By understanding how cached credentials work and the associated protection mechanisms, both administrators and users can take proactive steps to ensure their Windows systems remain secure—even when disconnected from the network.
 
-In the next blog post on authentication we will look at MFA and how that enhances security and the use of passwords
+In the [next blog post]({{ site.baseurl }}{% post_url 2024-12-10-A-look-into-authentication-MFA %}) on authentication we will look at MFA and how that enhances security and the use of passwords
 

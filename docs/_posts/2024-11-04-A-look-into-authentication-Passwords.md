@@ -61,7 +61,7 @@ When users reuse passwords across multiple sites, breaches in one system can com
 
 ### Rainbow tables
 
-Hashes add a layer of security, but they’re not foolproof. Rainbow tables are precomputed datasets that map hashed values back to their original passwords. By using these tables, attackers can crack hashed passwords quickly—unless additional defences like *salting* are in place.
+Hashes add a layer of security, but they’re not foolproof. Rainbow tables are precomputed datasets that map hashed values back to their original passwords. By using these tables, attackers can crack hashed passwords quickly—unless additional defences like *salting* are in place.  See the [blog post on hashing](% post_url 2024-11-11-A-look-into-authentication-Hashes %) for more details.
 
 ### Phishing and social engineering
 
@@ -89,7 +89,7 @@ While still theoretical, quantum computers have the potential to crack tradition
 
 ## Passwords transmitted over the network
 
-You may think oh yes but passwords are surely no longer transmitted, or they are transmitted in a very secure way, but unfortunately that is NOT the case.  Many software systems still transmit the password and are poorly protected.  Now systems use methods to mitigate that risk like SQL uses certificates, but most people click the trust certificate button, similarly RDP uses NLA but again some folks turn off NLA, so even where there are mitigations they are often disabled by the user
+You may think oh yes but passwords are surely no longer transmitted, or they are transmitted in a very secure way, but unfortunately that is NOT the case.  Many software systems still transmit the password and are poorly protected.  Now systems use methods to mitigate that risk like SQL uses certificates, but most people click the trust certificate button, similarly RDP uses Network Level Authentication (NLA) but again some folks turn off NLA, so even where there are mitigations they are often disabled by the user.  NLA requires authentication before access to the rdp port (3389) is granted.
 
 ### SQL Server
 
@@ -101,8 +101,14 @@ You may think oh yes but passwords are surely no longer transmitted, or they are
 ### Websites and web applications
 
 - **Basic login forms**: Many websites and web apps still use standard login forms where the password is transmitted to the server for processing. While HTTPS encrypts the transport layer, the password itself is sent as plaintext within the encrypted tunnel.
-- **Modern practices**: For critical applications, best practices like hashing the password on the client before transmission or using challenge-response protocols (e.g., SRP or PAKE) are often recommended. However, this approach is not universally implemented because it increases client-side complexity.
+- **Modern practices**: For critical applications, best practices like hashing the password on the client before transmission or using challenge-response protocols (e.g., Secure Remote Password (SRP) or Password-Authenticated Key Exchange (PAKE)) are often recommended. However, this approach is not universally implemented because it increases client-side complexity.
 
+<div class="callout">
+  <h3>Secure Remote Password (SRP)</h3>
+  <p><strong>Definition:</strong> SRP is a cryptographic protocol that enables secure password authentication by proving knowledge of a password without directly transmitting it. It's resistant to eavesdropping and replay attacks.</p>
+  <h3>Password-Authenticated Key Exchange (PAKE)</h3>
+  <p><strong>Definition:</strong> PAKE protocols allow two parties to securely establish a shared encryption key using a password, even if the communication channel is insecure.</p>
+</div>
 ---
 
 ### Entra ID
