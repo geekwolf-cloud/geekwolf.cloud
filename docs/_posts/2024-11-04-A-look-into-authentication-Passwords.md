@@ -35,7 +35,7 @@ A password is, at its core, a shared secret between a user and a system. Its pri
 When a user enters a password, it typically undergoes several steps:
 1. **Storage**: A password isn’t stored in plain text. Instead, systems hash the password—a process that converts it into a fixed-length string of characters.
 2. **Verification**: When a user logs in, the entered password is hashed and compared to the stored hash. If the hashes match, access is granted.
-3. **Transmission**: Passwords are usually transmitted securely using encryption protocols like HTTPS, ensuring they can’t be intercepted in transit.
+3. **Transmission**: Passwords are ideally transmitted securely using encryption protocols like HTTPS, ensuring they can’t be intercepted in transit.
 
 Despite this sophistication, passwords remain vulnerable due to weaknesses in their creation and the ingenuity of attackers.
 
