@@ -19,8 +19,8 @@ When you log into a Windows machine, authentication typically happens by verifyi
 **Cached credentials** are passwords or password hashes that are stored locally on a Windows machine, allowing users to authenticate without contacting a domain controller. This functionality is especially useful when a device is temporarily disconnected from the network, such as when you're travelling or working remotely.
 
 Here’s how the process works:
-- **Initial login**: When you log in to a Windows machine for the first time, the system communicates with the domain controller to verify your credentials. Once the authentication is successful, Windows stores a **hashed** version of your password locally.
-- **Subsequent logins**: The next time you attempt to log in while offline, Windows checks the locally stored hash of your password. If it matches the password you entered, you're granted access to the system.
+- **Initial login**: When you log in to a Windows machine for the first time, the system communicates with the domain controller, Entra ID, or the local Security Account Manager (SAM) to verify your credentials. Once the authentication is successful, and if the authentication was remote, then Windows stores a credential locally, either a hash or the password itself.
+- **Subsequent logins**: The next time you attempt to log in while offline, Windows checks the locally stored information. If it matches the password you entered, you're granted access to the system.
 
 The specific way **cached credentials** are handled varies depending on the type of account you're using.
 
@@ -41,28 +41,14 @@ HKEY_LOCAL_MACHINE\Security\Cache
 This registry location holds **PBKDF2-hashed** credentials for the last few successful logins (usually the last 10).
 - **Hashing**: The passwords for **domain accounts** are hashed using **PBKDF2** (Password-Based Key Derivation Function 2). This is a strong cryptographic method that makes brute-forcing much more difficult.
 - **Security**: The **PBKDF2** hashes are protected in the registry using **Access Control Lists (ACLs)**, limiting access to system processes. However, administrators or attackers with administrative access could potentially extract these hashes and attempt offline attacks.
-
-### Entra ID (Azure AD) accounts
-For **Entra ID** (Azure Active Directory) accounts, the process is somewhat different. These accounts do not use the traditional **cached credentials** stored in the registry. Instead, Entra ID accounts leverage modern authentication mechanisms, where credentials are stored on the device and are encrypted using **Next-Generation DPAPI (NG)**. This encryption relies on the **Entra ID** account and its associated device as the boundary for authentication.  **Windows Hello for Business** or **device-based authentication** is also employed for offline authentication, avoiding the need to store any credentials at all.
-
-## How are cached credentials protected?
-
-The protection of cached credentials depends on the type of account and the method used for authentication. Let’s break it down:
-
-### PBKDF2 hashing for AD accounts
 - **Iteration count**: The **PBKDF2** algorithm is designed to be **computationally expensive**, which makes brute-forcing attempts time-consuming and difficult. In **Windows**, the default iteration count for **PBKDF2** is **100,000 iterations**, which is sufficient to protect against most brute-force attacks.
 - **Salts**: Each password hash is **salted**, meaning a random value is added to the password before hashing, ensuring that even two identical passwords will have different hashed values.
 - **Storage and protection**: The **PBKDF2**-hashed credentials are stored in the registry under **HKLM\Security\Cache** and are protected by **Access Control Lists (ACLs)**. While this helps prevent unauthorized access, the credentials are still at risk if an attacker has **administrative privileges**.
 
-### Security considerations
-Despite the strength of **PBKDF2** and other protective measures, there are some inherent risks:
-- **Offline cracking**: Attackers with **administrator access** could dump cached credentials from the registry and attempt brute-force attacks. However, the **PBKDF2 hashing** with **100,000 iterations** makes this process slow and resource-intensive.
-- **Weak passwords**: The effectiveness of cached credentials is only as strong as the **password** chosen by the user. Enforcing **strong password policies** is essential.
-- **Physical access**: If an attacker gains physical access to the machine, even with **BitLocker** encryption, there is still a potential risk if other security policies (like **MFA**) are not enforced.
+Really these cached credentials are not credentials as such but they are offline verifiers that are used to confirm a credential that an end user submits.  These verifiers are a relatively low risk, although weak passwords, using the same password in multiple places and lack of MFA does mean that there is still a risk associated with these cached credentials.
 
-#### Additional protection mechanisms
-- **BitLocker encryption**: Using **BitLocker** to encrypt the disk adds an additional layer of protection. If the machine is physically compromised, the attacker cannot easily extract and attempt cracking the cached credentials without the BitLocker recovery key.
-- **Multi-factor authentication (MFA)**: Enabling **MFA** adds another layer of defence by requiring more than just the password to authenticate, making offline credential attacks much harder to succeed.
+### Entra ID (Azure AD) accounts
+For **Entra ID** (Azure Active Directory) accounts, the process is somewhat different. These accounts do not use the traditional **cached credentials** stored in the registry. Instead, Entra ID accounts leverage modern authentication mechanisms, where credentials are stored on the device and are encrypted using **Next-Generation DPAPI (NG)**. This encryption relies on the **Entra ID** account and its associated device as the boundary for authentication.  **Windows Hello for Business** or **device-based authentication** is also employed for offline authentication, avoiding the need to store any credentials at all.
 
 By understanding how cached credentials work and the associated protection mechanisms, both administrators and users can take proactive steps to ensure their Windows systems remain secure—even when disconnected from the network.
 
