@@ -1,0 +1,25 @@
+# Variables
+$domainController = "src25-dc1.pspsrc25.local"  # FQDN or IP of the domain controller
+$domainUser = "pspsrc25.local\twancache"
+$password = "N3r0Blanc0" | ConvertTo-SecureString -AsPlainText -Force
+
+# Construct the credentials object
+$credential = New-Object System.Management.Automation.PSCredential($domainUser, $password)
+
+# LDAP Path to target the domain controller
+$ldapPath = "LDAP://$domainController"
+
+# Step 1: Authenticate directly against the domain controller
+try {
+    Write-Host "Attempting to authenticate against $domainController..."
+    $directoryEntry = New-Object System.DirectoryServices.DirectoryEntry($ldapPath, $domainUser, $password)
+    $directoryEntry.RefreshCache()  # Trigger the authentication
+    Write-Host "Authentication successful against $domainController."
+    
+    # Step 2: Launch an interactive process (to cache credentials)
+    Write-Host "Launching interactive process to cache credentials..."
+    Start-Process -FilePath "cmd.exe" -Credential $credential -ArgumentList "/K echo Authentication complete"
+    Write-Host "Interactive process launched successfully."
+} catch {
+    Write-Error "Authentication failed: $_"
+}

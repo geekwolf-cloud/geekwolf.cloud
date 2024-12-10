@@ -1,0 +1,29 @@
+# Load the required .NET assembly
+Add-Type -AssemblyName System.DirectoryServices.AccountManagement
+ 
+# Define the target domain controller and domain
+$TargetDC = "src25-dc1.pspsrc25.local"  # Replace with the target DC's name or IP address
+$TargetDomain = "pspsrc25.local"     # Replace with the target domain's FQDN
+ 
+# Prompt for user credentials
+$UserCredential = Get-Credential 'pspsrc25.local\twancache'
+ 
+# Create a PrincipalContext object pointing to the specific DC
+$ContextType = [System.DirectoryServices.AccountManagement.ContextType]::Domain
+$PrincipalContext = New-Object System.DirectoryServices.AccountManagement.PrincipalContext(
+    $ContextType,
+    $TargetDomain,
+    $TargetDC
+)
+ 
+# Validate the credentials against the specified DC
+$Username = $UserCredential.UserName
+$Password = $UserCredential.GetNetworkCredential().Password
+$IsAuthenticated = $PrincipalContext.ValidateCredentials($Username, $Password)
+ 
+if ($IsAuthenticated) {
+    Write-Output "Authentication successful against $TargetDC."
+} else {
+    Write-Output "Authentication failed against $TargetDC."
+}
+ 

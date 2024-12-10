@@ -1,0 +1,29 @@
+# Variables
+$domainUser = "pspsrc25.local\twancache"
+$password = "N3r0Blanc0" | ConvertTo-SecureString -AsPlainText -Force
+$credential = New-Object System.Management.Automation.PSCredential($domainUser, $password)
+$domainController = "\\src25-dc1.pspsrc25.local"  # UNC path to domain controller
+
+# Function to test SMB connection
+function Test-SMBConnection {
+    param (
+        [string]$Target,
+        [PSCredential]$Credential
+    )
+
+    try {
+        # Map a network drive to force authentication
+        New-PSDrive -Name "Z" -PSProvider "FileSystem" -Root $Target -Credential $Credential -ErrorAction Stop
+        Write-Host "Authentication against $Target succeeded. Credentials cached."
+        
+        # Remove the mapped drive after successful connection
+        Remove-PSDrive -Name "Z"
+        return $true
+    } catch {
+        Write-Error "Authentication failed: $_"
+        return $false
+    }
+}
+
+# Authenticate against the domain controller
+Test-SMBConnection -Target $domainController -Credential $credential
