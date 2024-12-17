@@ -185,4 +185,4 @@ Phishing-resistant push notifications are an excellent example of how MFA contin
 
 Incorporating MFA into your security strategy is no longer optional but a necessity in today’s cyber environment. By understanding and utilising the right combination of factors, you can drastically reduce the risk of unauthorised access and enhance your overall security posture.
 
-In the next blog post on authentication we will look at passwordless and passkeys, comparing it to MFA and how these avoid the use of passwords
+In the [next blog post]({{ site.baseurl }}{% post_url 2024-12-17-A-look-into-authentication-Passwordless %}) on authentication we will look at passwordless and passkeys, comparing it to MFA and how these avoid the use of passwords

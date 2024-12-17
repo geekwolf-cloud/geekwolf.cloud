@@ -83,7 +83,7 @@ These security modules ensure that the private key is used only for cryptographi
 
 ## Syncing passkeys across devices
 
-One of the challenges with passkeys is how they are **synced across devices**. Since passkeys are device-centric, the private key must be securely transferred between devices without compromising security.
+One of the challenges with passkeys is how they are **synced across devices**. Since passkeys are device-centric, the private key must be securely transferred between devices without compromising security.  Note that at the time of writing this post, Microsoft Authenticator does not support syncing of passkeys, and keeps them bound to the device they were generated on.
 
 ### How is the private key transferred?
 
