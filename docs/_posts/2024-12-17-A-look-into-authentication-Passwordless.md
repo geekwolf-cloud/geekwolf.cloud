@@ -87,17 +87,42 @@ One of the challenges with passkeys is how they are **synced across devices**. S
 
 ### How is the private key transferred?
 
-To sync passkeys across devices (e.g., between a phone and laptop), the private key is **encrypted** on the source device before being uploaded to a cloud service (like **iCloud**, **Google Drive**, or **Microsoft OneDrive**). This encrypted passkey is **never directly transmitted** in its raw form.
+### Passkey syncing across devices
 
-When a new device needs to access the passkey:
+To sync **passkeys** across devices (e.g., between a phone and laptop), the **private key** is **encrypted locally** on the source device using a symmetric encryption algorithm (e.g., **AES**). The symmetric encryption key itself is protected through public-key cryptography before being uploaded to a cloud service (e.g., **iCloud**, **Google Drive**, or **Microsoft OneDrive**). At no point is the raw private key ever transmitted or accessible outside of secure, trusted hardware.
 
-1. **User authentication**: Before the receiving device can access the passkey, the user must authenticate on that device. This is typically done through **biometric authentication** (e.g., fingerprint or face recognition) or a **PIN**.
+When a new device needs to access the passkey
 
-2. **Secure decryption**: The **decryption key**, which is used to decrypt the private key, is also securely stored on the device, either in a **secure enclave** (on Apple) or **TPM** (on Windows). Only after user authentication is the private key decrypted and available for use.
+1. **User authentication**  
+   The user must authenticate on the receiving device.  
+   This is typically done via **biometric authentication** (e.g., fingerprint, Face ID) or a **PIN** to confirm the user's presence.
 
-3. **Public/private key encryption**: The decryption key itself is encrypted and transmitted between devices using **public-key cryptography**, ensuring that only the intended device can decrypt it.
+2. **Establishing trust and secure key exchange**  
+   The receiving device generates a **public/private key pair** for secure communication.  
+   The sending device (or cloud service) encrypts the **symmetric encryption key** (used to protect the private key) with the **public key** of the receiving device.  
+   Only the receiving device, holding the corresponding **private key**, can decrypt the symmetric encryption key.
 
-This approach ensures that the private key is never exposed to the cloud or other unauthorised devices, and that all syncing happens securely.
+3. **Secure decryption**  
+   The symmetric encryption key is used to decrypt the private key for the passkey.  
+   This process happens entirely on the receiving device, ensuring the private key is never exposed to the cloud or transmitted in plaintext.
+
+4. **Hardware-backed protection**  
+   The private key is securely stored on the receiving device using hardware-backed secure storage:  
+   - **Secure Enclave** on Apple devices.  
+   - **Trusted Execution Environment (TEE)** or **StrongBox** on Android.  
+   - **Trusted Platform Module (TPM)** on Windows.  
+   These hardware components ensure the private key cannot be extracted or tampered with.
+
+5. **Proximity and ownership verification**  
+   The devices must both belong to and be trusted by the same user.  
+   This is enforced through:  
+   - Account verification (e.g., signing into the same Apple ID, Google account, or Microsoft account).  
+   - Optional **proximity checks** (e.g., Bluetooth) or additional **biometric confirmation** to ensure physical control of both devices.
+
+6. **Passkey retrieval and final setup**  
+   The encrypted passkey (including the private key) is downloaded from the cloud service.  
+   The symmetric key, securely obtained in the previous steps, is used to decrypt the private key.  
+   The private key is then stored securely within the appropriate hardware-backed secure storage.
 
 ---
 
