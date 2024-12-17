@@ -87,8 +87,6 @@ One of the challenges with passkeys is how they are **synced across devices**. S
 
 ### How is the private key transferred?
 
-### Passkey syncing across devices
-
 To sync **passkeys** across devices (e.g., between a phone and laptop), the **private key** is **encrypted locally** on the source device using a symmetric encryption algorithm (e.g., **AES**). The symmetric encryption key itself is protected through public-key cryptography before being uploaded to a cloud service (e.g., **iCloud**, **Google Drive**, or **Microsoft OneDrive**). At no point is the raw private key ever transmitted or accessible outside of secure, trusted hardware.
 
 When a new device needs to access the passkey
