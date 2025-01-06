@@ -14,140 +14,220 @@ Here is the next part of our series on authentication. In our [previous post]({{
 
 ---
 
-## Legacy protocols: LAN Manager and NTLM  
+# Authentication protocols: an overview
 
-### LAN Manager (LANMAN)  
-**Era:** 1980s–1990s  
-**Platform:** Windows  
+Authentication protocols play a crucial role in verifying the identity of users and systems in modern networks. This blog explores the most commonly used authentication protocols, focusing on their usage, authentication flows, and encryption techniques.
 
-LANMAN was one of the earliest protocols used for user authentication in Windows environments. It is now deprecated due to its severe security limitations.  
+## Kerberos
 
-#### Authentication flow  
-1. **Password hashing:**  
-   - User passwords are converted to uppercase, truncated/padded to 14 characters, and split into two 7-character chunks.  
-   - Each chunk is hashed using the DES algorithm, and the two hashes are concatenated.  
-2. **Challenge-response:**  
-   - A server sends an 8-byte challenge to the client.  
-   - The client encrypts the challenge using the DES-hashed password and sends the response back to the server.  
+**Relevance:** High  
+Kerberos is a widely used protocol in **Active Directory (AD)** environments, enabling mutual authentication between clients and servers.  
 
----
+**Usage:**  
+- Primarily used in Windows-based networks.  
+- Can also be integrated with Linux/macOS systems for AD authentication.  
 
-### NTLM (NT LAN Manager)  
-**Era:** 1990s–present (legacy systems)  
-**Platform:** Windows  
+**Flow:**  
+1. The client sends a request for a **Ticket Granting Ticket (TGT)** to the **Key Distribution Centre (KDC)**.  
+2. After validating the request, the KDC issues the TGT.  
+3. The client uses the TGT to request service tickets for access to resources.  
 
-NTLM replaced LANMAN and is still found in legacy environments. It exists in two versions: NTLMv1 and NTLMv2.  
-
-#### Authentication flow  
-1. The client sends the username to the server.  
-2. The server generates an 8-byte challenge and sends it to the client.  
-3. The client hashes the challenge with the password hash and returns the response.  
-4. The server validates the response using its stored password hash.  
-
-#### Encryption techniques  
-- **NTLMv1:** Relies on MD4 hashing, which is no longer considered secure.  
-- **NTLMv2:** Uses HMAC-MD5 for stronger protection, but it is still vulnerable to brute-force attacks.  
+**Encryption:**  
+Kerberos employs strong encryption like **AES** for securing tickets. Older versions used **RC4**, which is vulnerable to certain attacks, such as using the NT hash to authenticate without the password.
 
 ---
 
-## Kerberos: A modern standard  
+## NTLM (NT LAN Manager)
 
-### Kerberos  
-**Era:** 1990s–present  
-**Platform:** Windows, Linux, macOS  
+**Relevance:** Moderate  
+NTLM is a legacy protocol used when Kerberos is unavailable, particularly in older Windows systems.
 
-Kerberos is the default authentication protocol for Active Directory and is widely adopted across platforms. It provides mutual authentication between clients and servers using symmetric cryptography.  
+**Usage:**  
+- Found in environments supporting older versions of Windows.  
+- Used for backward compatibility in some mixed environments.  
 
-#### Authentication flow  
-1. **Initial request (AS-REQ):**  
-   - The client requests a Ticket Granting Ticket (TGT) from the Key Distribution Centre (KDC) and proves possession of the password using **pre-authentication** (by encrypting a timestamp with the user’s secret key).  
-2. **TGT issuance (AS-REP):**  
-   - The KDC verifies the request and issues a TGT encrypted with the KDC’s secret key.  
-3. **Service ticket request (TGS-REQ):**  
-   - The client uses the TGT to request a service ticket for a specific resource.  
-4. **Service access:**  
-   - The client presents the service ticket to the target resource, which validates it using the KDC’s secret key.  
+**Flow:**  
+1. The client sends a hashed version of the password to the server.  
+2. The server validates the hash without transmitting the plaintext password.  
 
-#### Encryption techniques  
-- **RC4-HMAC:** Uses the NT hash as the encryption key (legacy; deprecated).  
-- **DES:** An outdated 56-bit encryption algorithm.  
-- **AES:** Modern Kerberos implementations use AES-128 or AES-256 for robust encryption.  
+**Encryption:**  
+Uses **MD4** or **RC4** for hashing. NTLM is vulnerable to **pass-the-hash** attacks, making it less secure than modern protocols.
 
 ---
 
-## RADIUS: Network-based authentication  
+## RADIUS (Remote Authentication Dial-In User Service)
 
-### RADIUS (Remote Authentication Dial-In User Service)  
-**Era:** 1990s–present  
-**Platform:** Windows, Linux, network devices  
+**Relevance:** High  
+RADIUS is a protocol designed for network access authentication, widely used for services such as Wi-Fi and VPNs.
 
-RADIUS is a client-server protocol widely used for VPNs, Wi-Fi access, and other network services.  
+**Usage:**  
+- Commonly deployed in enterprise environments.  
+- Integrates with directory services like Active Directory for credential validation.  
 
-#### Authentication flow  
-1. The client submits credentials to the RADIUS client (e.g., a VPN server).  
-2. The RADIUS client sends an Access-Request packet to the RADIUS server.  
-3. The RADIUS server validates the credentials and responds with Access-Accept or Access-Reject.  
+**Flow:**  
+1. The client sends credentials to a **RADIUS server**.  
+2. The server verifies credentials against a backend directory and responds with an accept or reject message.  
 
-#### Encryption techniques  
-- User passwords are obfuscated using **MD5 hashing** with a shared secret.  
-- Variants like **RadSec** use TLS for end-to-end encryption.  
-
----
-
-## OAuth 2.0 and OpenID Connect: Modern cloud authentication  
-
-### OAuth 2.0 and OpenID Connect  
-**Era:** 2010s–present  
-**Platform:** Cross-platform  
-
-OAuth 2.0 is a modern standard for authorising access to APIs, while OpenID Connect (OIDC) extends OAuth to include user identity information via ID tokens. Microsoft Entra ID leverages OAuth and OIDC for secure cloud authentication.  
-
-#### Authentication flow  
-1. **Authorisation request:** The client redirects the user to the authorisation server (Entra ID).  
-2. **User authentication:** The user authenticates, and the server sends an authorisation code back to the client.  
-3. **Token exchange:** The client exchanges the authorisation code for an access token and ID token.  
-4. **Resource access:** The client presents the access token to APIs.  
-
-#### Encryption techniques  
-- Tokens are signed using **RSA** or **ECDSA** for integrity.  
-- Communication is protected using TLS.  
+**Encryption:**  
+The password is encrypted using **MD5**, while other data is transmitted in plaintext.
 
 ---
 
-## WebAuthn and FIDO2: The future of passwordless authentication  
+## OAuth 2.0
 
-### WebAuthn and FIDO2  
-**Era:** 2018–present  
-**Platform:** Cross-platform  
+**Relevance:** High  
+OAuth 2.0 is primarily an **authorisation framework**, but it is widely used as part of authentication flows in combination with **OpenID Connect (OIDC)**.
 
-WebAuthn (Web Authentication API) and FIDO2 are standards designed to enable secure, passwordless authentication.  
+**Usage:**  
+- Popular for web and mobile applications.  
+- Supports modern Single Sign-On (SSO) scenarios.  
 
-#### Authentication flow  
-1. **Registration:**  
-   - A user registers a security key or biometric device with a server.  
-   - The device generates a key pair (public/private) and sends the public key to the server.  
-2. **Authentication:**  
-   - The server sends a challenge to the client.  
-   - The client signs the challenge with its private key and returns the signature to the server.  
-3. **Validation:**  
-   - The server verifies the signature using the stored public key.  
+**Flow:**  
+1. The user is redirected to an **authorisation server** for authentication.  
+2. After authentication, an **access token** or **authorisation code** is returned to the client application.  
+3. The client uses the token to access protected resources.  
 
-#### Encryption techniques  
-- Uses **asymmetric cryptography** (e.g., RSA, ECC) for key generation and signing.  
-- Communication is protected with TLS.  
+**Encryption:**  
+Tokens are typically **JWTs**, signed and optionally encrypted using **RSA** or **ECDSA** algorithms.
 
 ---
 
-## Continuous access evaluation (CAE): Enhancing modern authentication  
+## OpenID Connect (OIDC)
 
-Continuous Access Evaluation (CAE) is a security feature that enhances modern authentication protocols like Kerberos and OAuth. It ensures that access decisions remain valid based on real-time conditions.  
+**Relevance:** High  
+OIDC is an authentication protocol built on top of OAuth 2.0, designed explicitly for verifying user identity.
 
-- **Real-time risk evaluation:** Access tokens are dynamically checked against updated Conditional Access policies.  
-- **Session revocation:** Tokens are immediately invalidated if a user or device becomes non-compliant.  
+**Usage:**  
+- Used in web-based and mobile applications.  
+- Enables SSO by allowing users to authenticate once and access multiple applications.  
 
-CAE is integrated with protocols like OAuth in Microsoft Entra ID to improve security in hybrid and cloud environments.  
+**Flow:**  
+1. The user is redirected to an **identity provider** for authentication.  
+2. Upon successful login, an **ID token** is issued to the client application.  
+3. The ID token contains identity information (e.g., username, email).  
+
+**Encryption:**  
+ID tokens are signed (and optionally encrypted) using **RSA** or **ECDSA**.
 
 ---
+
+## FIDO2 / WebAuthn
+
+**Relevance:** High  
+FIDO2 and WebAuthn enable **passwordless authentication**, offering a highly secure alternative to traditional password-based methods.
+
+**Usage:**  
+- Supported by modern browsers and devices.  
+- Commonly used with **hardware security keys** (e.g., YubiKeys) or **biometric authentication**.  
+
+**Flow:**  
+1. The client device generates a **public-private key pair** for authentication.  
+2. The private key remains secure on the device, while the public key is shared with the server.  
+3. Authentication is validated by signing a challenge with the private key.  
+
+**Encryption:**  
+Uses **public key cryptography**, ensuring that private keys never leave the user’s device.
+
+---
+
+## TACACS+ (Terminal Access Controller Access Control System Plus)
+
+**Relevance:** Moderate  
+TACACS+ is a protocol used for authenticating access to network devices, particularly in environments with Cisco equipment.
+
+**Usage:**  
+- Provides centralised authentication for network devices.  
+- Often used in conjunction with RADIUS for enhanced security.  
+
+**Flow:**  
+1. The client sends a request to the TACACS+ server.  
+2. The server authenticates the user and sends back a success or failure response.  
+
+**Encryption:**  
+Encrypts the **entire payload**, unlike RADIUS, which only encrypts the password.
+
+---
+
+## LDAP (Lightweight Directory Access Protocol)
+
+**Relevance:** Moderate  
+LDAP is primarily a **directory access protocol**, but it is widely used for authentication when integrated with systems like Active Directory or OpenLDAP.
+
+**Usage:**  
+- Common in enterprise environments for user authentication and directory management.  
+
+**Flow:**  
+1. The client sends a **bind request** with credentials to the LDAP server.  
+2. The server validates the credentials and returns a success or failure response.  
+
+**Encryption:**  
+LDAP communication can be encrypted using **TLS** (referred to as LDAPS).
+
+---
+
+## Summary table of authentication protocols
+
+| **Protocol**           | **Relevance**      | **Usage**                                    |
+|------------------------|--------------------|----------------------------------------------|
+| **Kerberos**           | High               | Used for mutual authentication in AD environments. |
+| **NTLM**               | Moderate           | Legacy authentication, used when Kerberos is unavailable. |
+| **RADIUS**             | High               | Network access authentication (e.g., VPN, Wi-Fi). |
+| **OAuth 2.0**          | High               | Used for web authentication (combined with OpenID Connect). |
+| **OpenID Connect**     | High               | Authentication built on OAuth 2.0, used for web SSO. |
+| **FIDO2 / WebAuthn**   | High               | Passwordless authentication using public key cryptography. |
+| **TACACS+**            | Moderate           | Network device authentication, especially in Cisco environments. |
+| **LDAP**               | Moderate           | Directory-based authentication (e.g., Active Directory). |
+
+---
+
+> ### Continuous Access Evaluation (CAE)
+> 
+> **Continuous Access Evaluation (CAE)** is a modern enhancement to authentication workflows, primarily implemented in **Microsoft Entra ID (formerly Azure AD)**. While not an authentication protocol itself, CAE ensures that access decisions are dynamically updated based on real-time conditions, improving security and responsiveness to risk.
+> 
+> #### How CAE works:
+> - CAE uses **token revocation** and **event-driven policies** to reevaluate a user’s access after initial authentication.  
+> - Instead of relying solely on token lifetimes (e.g., 1 hour for an OAuth token), CAE triggers immediate access revocation in scenarios such as:  
+>   - A user’s session is terminated by an admin.  
+>   - Suspicious activity, such as signing in from an unfamiliar location.  
+>   - Device compliance changes or detection of risk conditions in Microsoft Entra ID.  
+> 
+> #### APIs required for CAE support
+> Applications must implement specific Microsoft Entra ID APIs to support CAE and dynamically handle token revocation and revalidation:
+> 
+> 1. **OAuth 2.0 Token Introspection Endpoint:**  
+>    - This endpoint allows an application to verify whether an issued token is still valid.  
+>    - Applications can use the introspection API to periodically check token validity instead of relying on static expiry times.
+>    - **Documentation Reference:**  
+>      [Microsoft OAuth 2.0 Token Introspection](https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-introspection)
+> 
+> 2. **Retry-after Headers for Token Refresh Attempts:**  
+>    - When a token is invalidated, applications should use the **retry-after** header to determine the appropriate backoff period before retrying access token acquisition.
+> 
+> 3. **Microsoft Authentication Library (MSAL):**  
+>    - Applications should use **MSAL** to handle token acquisition and refresh transparently.  
+>    - CAE-aware tokens obtained through MSAL include extra metadata for evaluating conditions dynamically.  
+>    - Example:  
+>      ```python
+>      result = msal_app.acquire_token_interactive(scopes=["User.Read"])
+>      ```
+>      This method ensures compatibility with CAE-enabled tokens.
+> 
+> #### Relevance to authentication protocols
+> - **OAuth 2.0 / OpenID Connect:** CAE integrates seamlessly with these protocols by dynamically managing access tokens through APIs.  
+> - **Kerberos:** While not natively tied to Kerberos, CAE’s principles can complement hybrid setups where OAuth or OpenID Connect interacts with Kerberos-based identity backends.  
+> 
+> #### Benefits of implementing CAE
+> - **Real-time security:** Access can be revoked immediately in response to policy violations, reducing exposure time to potential threats.  
+> - **Improved user experience:** By avoiding frequent logouts or rigid token expiry, CAE provides a more seamless experience without compromising security.  
+> - **Fine-grained access control:** Applications can dynamically adapt user access based on context, such as device health or geographic location.  
+> 
+> #### Key considerations for developers
+> - Ensure that your application periodically validates tokens using the **introspection endpoint** or other CAE-related APIs.  
+> - Use **MSAL** or similar libraries to acquire and manage tokens, ensuring compatibility with CAE.  
+> - Design retry logic to gracefully handle token revocation scenarios, leveraging retry-after headers to reduce unnecessary network traffic.  
+> 
+> By combining CAE with robust authentication protocols and enabling its APIs, organisations can strengthen their security posture while maintaining flexibility and a positive user experience.
+
 
 ## Conclusion  
 
