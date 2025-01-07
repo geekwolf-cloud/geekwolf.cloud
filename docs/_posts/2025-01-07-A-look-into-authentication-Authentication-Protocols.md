@@ -160,53 +160,85 @@ LDAP communication can be encrypted using **TLS** (referred to as LDAPS).
 
 ---
 
-> ### Continuous Access Evaluation (CAE)
-> 
-> **Continuous Access Evaluation (CAE)** is a modern enhancement to authentication workflows, primarily implemented in **Microsoft Entra ID (formerly Azure AD)**. While not an authentication protocol itself, CAE ensures that access decisions are dynamically updated based on real-time conditions, improving security and responsiveness to risk.
-> 
-> #### How CAE works:
-> - CAE uses **token revocation** and **event-driven policies** to reevaluate a user’s access after initial authentication.  
-> - Instead of relying solely on token lifetimes (e.g., 1 hour for an OAuth token), CAE triggers immediate access revocation in scenarios such as:  
->   - A user’s session is terminated by an admin.  
->   - Suspicious activity, such as signing in from an unfamiliar location.  
->   - Device compliance changes or detection of risk conditions in Microsoft Entra ID.  
-> 
-> #### APIs required for CAE support
-> Applications must implement specific Microsoft Entra ID APIs to support CAE and dynamically handle token revocation and revalidation:
-> 
-> 1. **OAuth 2.0 Token Introspection Endpoint:**  
->    - This endpoint allows an application to verify whether an issued token is still valid.  
->    - Applications can use the introspection API to periodically check token validity instead of relying on static expiry times.
->    - **Documentation Reference:**  
->      [Microsoft OAuth 2.0 Token Introspection](https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-introspection)
-> 
-> 2. **Retry-after Headers for Token Refresh Attempts:**  
->    - When a token is invalidated, applications should use the **retry-after** header to determine the appropriate backoff period before retrying access token acquisition.
-> 
-> 3. **Microsoft Authentication Library (MSAL):**  
->    - Applications should use **MSAL** to handle token acquisition and refresh transparently.  
->    - CAE-aware tokens obtained through MSAL include extra metadata for evaluating conditions dynamically.  
->    - Example:  
->      ```python
->      result = msal_app.acquire_token_interactive(scopes=["User.Read"])
->      ```
->      This method ensures compatibility with CAE-enabled tokens.
-> 
-> #### Relevance to authentication protocols
-> - **OAuth 2.0 / OpenID Connect:** CAE integrates seamlessly with these protocols by dynamically managing access tokens through APIs.  
-> - **Kerberos:** While not natively tied to Kerberos, CAE’s principles can complement hybrid setups where OAuth or OpenID Connect interacts with Kerberos-based identity backends.  
-> 
-> #### Benefits of implementing CAE
-> - **Real-time security:** Access can be revoked immediately in response to policy violations, reducing exposure time to potential threats.  
-> - **Improved user experience:** By avoiding frequent logouts or rigid token expiry, CAE provides a more seamless experience without compromising security.  
-> - **Fine-grained access control:** Applications can dynamically adapt user access based on context, such as device health or geographic location.  
-> 
-> #### Key considerations for developers
-> - Ensure that your application periodically validates tokens using the **introspection endpoint** or other CAE-related APIs.  
-> - Use **MSAL** or similar libraries to acquire and manage tokens, ensuring compatibility with CAE.  
-> - Design retry logic to gracefully handle token revocation scenarios, leveraging retry-after headers to reduce unnecessary network traffic.  
-> 
-> By combining CAE with robust authentication protocols and enabling its APIs, organisations can strengthen their security posture while maintaining flexibility and a positive user experience.
+<div class="callout">
+  <h3>Continuous Access Evaluation (CAE)</h3>
+  <p>
+    <strong>Continuous Access Evaluation (CAE)</strong> is a modern enhancement to authentication workflows, primarily implemented in 
+    <strong>Microsoft Entra ID (formerly Azure AD)</strong>. While not an authentication protocol itself, CAE ensures that access 
+    decisions are dynamically updated based on real-time conditions, improving security and responsiveness to risk.
+  </p>
+  
+  <h4>How CAE works</h4>
+  <ul>
+    <li>CAE uses <strong>token revocation</strong> and <strong>event-driven policies</strong> to reevaluate a user’s access after 
+        initial authentication.</li>
+    <li>Instead of relying solely on token lifetimes (e.g., 1 hour for an OAuth token), CAE triggers immediate access revocation 
+        in scenarios such as:
+      <ul>
+        <li>A user’s session is terminated by an admin.</li>
+        <li>Suspicious activity, such as signing in from an unfamiliar location.</li>
+        <li>Device compliance changes or detection of risk conditions in Microsoft Entra ID.</li>
+      </ul>
+    </li>
+  </ul>
+  
+  <h4>APIs required for CAE support</h4>
+  <p>Applications must implement specific Microsoft Entra ID APIs to support CAE and dynamically handle token revocation and revalidation:</p>
+  <ol>
+    <li>
+      <strong>OAuth 2.0 Token Introspection Endpoint:</strong>
+      <ul>
+        <li>This endpoint allows an application to verify whether an issued token is still valid.</li>
+        <li>Applications can use the introspection API to periodically check token validity instead of relying on static expiry times.</li>
+        <li><a href="https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-introspection" 
+               target="_blank">Microsoft OAuth 2.0 Token Introspection</a></li>
+      </ul>
+    </li>
+    <li>
+      <strong>Retry-after Headers for Token Refresh Attempts:</strong>
+      <ul>
+        <li>When a token is invalidated, applications should use the <code>retry-after</code> header to determine the appropriate 
+            backoff period before retrying access token acquisition.</li>
+      </ul>
+    </li>
+    <li>
+      <strong>Microsoft Authentication Library (MSAL):</strong>
+      <ul>
+        <li>Applications should use <strong>MSAL</strong> to handle token acquisition and refresh transparently.</li>
+        <li>CAE-aware tokens obtained through MSAL include extra metadata for evaluating conditions dynamically.</li>
+        <li>Example:
+          <pre>
+result = msal_app.acquire_token_interactive(scopes=["User.Read"])
+          </pre>
+        </li>
+      </ul>
+    </li>
+  </ol>
+  
+  <h4>Relevance to authentication protocols</h4>
+  <ul>
+    <li><strong>OAuth 2.0 / OpenID Connect:</strong> CAE integrates seamlessly with these protocols by dynamically managing access tokens through APIs.</li>
+    <li><strong>Kerberos:</strong> While not natively tied to Kerberos, CAE’s principles can complement hybrid setups where OAuth or 
+        OpenID Connect interacts with Kerberos-based identity backends.</li>
+  </ul>
+  
+  <h4>Benefits of implementing CAE</h4>
+  <ul>
+    <li><strong>Real-time security:</strong> Access can be revoked immediately in response to policy violations, reducing exposure time to potential threats.</li>
+    <li><strong>Improved user experience:</strong> By avoiding frequent logouts or rigid token expiry, CAE provides a more seamless experience without compromising security.</li>
+    <li><strong>Fine-grained access control:</strong> Applications can dynamically adapt user access based on context, such as device health or geographic location.</li>
+  </ul>
+  
+  <h4>Key considerations for developers</h4>
+  <ul>
+    <li>Ensure that your application periodically validates tokens using the <strong>introspection endpoint</strong> or other CAE-related APIs.</li>
+    <li>Use <strong>MSAL</strong> or similar libraries to acquire and manage tokens, ensuring compatibility with CAE.</li>
+    <li>Design retry logic to gracefully handle token revocation scenarios, leveraging <code>retry-after</code> headers to reduce unnecessary network traffic.</li>
+  </ul>
+  
+  <p>By combining CAE with robust authentication protocols and enabling its APIs, organisations can strengthen their security posture 
+     while maintaining flexibility and a positive user experience.</p>
+</div>
 
 
 ## Conclusion  
