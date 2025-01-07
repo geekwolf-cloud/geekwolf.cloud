@@ -190,7 +190,7 @@ LDAP communication can be encrypted using **TLS** (referred to as LDAPS).
       <ul>
         <li>This endpoint allows an application to verify whether an issued token is still valid.</li>
         <li>Applications can use the introspection API to periodically check token validity instead of relying on static expiry times.</li>
-        <li><a href="https://learn.microsoft.com/en-us/azure/active-directory/develop/active-directory-token-introspection" 
+        <li><a href="https://learn.microsoft.com/en-us/linkedin/shared/authentication/token-introspection?tabs=http" 
                target="_blank">Microsoft OAuth 2.0 Token Introspection</a></li>
       </ul>
     </li>

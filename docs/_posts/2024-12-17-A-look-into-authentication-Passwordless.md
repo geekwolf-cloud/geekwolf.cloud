@@ -159,4 +159,4 @@ Passkeys represent a leap forward in passwordless authentication, combining the 
 
 By leveraging technologies such as **Windows Hello**, **Microsoft Entra ID**, and **FIDO2**, passkeys ensure that users can authenticate securely across multiple devices, enhancing security while maintaining ease of use. As more platforms adopt this technology, the future of authentication is shaping up to be not only **passwordless**, but also **more secure** than ever before.
 
-In the next blog post on authentication we will Segway to authentication protocols, to explore how various authentication protocols actually authenticate you, using the components we've talked about so far: passwords, hashes, credentials, MFA and passwordless.
+In the [next blog post]({{ site.baseurl }}{% post_url 2025-01-07-A-look-into-authentication-Authentication-Protocols %}) on authentication we will segway to authentication protocols, to explore how various authentication protocols actually authenticate you, using the components we've talked about so far: passwords, hashes, credentials, MFA and passwordless.
