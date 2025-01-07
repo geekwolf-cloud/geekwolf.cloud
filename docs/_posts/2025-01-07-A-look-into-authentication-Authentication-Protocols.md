@@ -10,32 +10,13 @@ comments_id: 52
 ---
 <h1>{{ page.title }}</h1>
 
-Here is the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2024-12-17-A-look-into-authentication-Passwordless %}), we talked about passwordless: how this is the next step in the evolution of authentication and how they avoid a lot of the problems that plague passwords, hashes and credential storage.  This blog explores authentication protocols from legacy systems like LAN Manager and NTLM to modern approaches like Kerberos, OAuth, and WebAuthn/FIDO2. While focusing on Windows and Microsoft Entra ID (formerly Azure AD), we also include protocols relevant to Linux and macOS. Finally, we’ll discuss how modern security features like **continuous access evaluation (CAE)** enhance these protocols. 
+Here is the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2024-12-17-A-look-into-authentication-Passwordless %}), we talked about passwordless: how this is the next step in the evolution of authentication and how they avoid a lot of the problems that plague passwords, hashes and credential storage.  This blog explores authentication protocols from legacy systems like LAN Manager and NTLM to modern approaches like Kerberos, OAuth, and WebAuthn/FIDO2. While focusing on Windows and Microsoft Entra ID (formerly Azure AD), we also include other commonly used protocols. Finally, we’ll discuss how modern security features like **continuous access evaluation (CAE)** enhance these protocols. 
 
 ---
 
 # Authentication protocols: an overview
 
 Authentication protocols play a crucial role in verifying the identity of users and systems in modern networks. This blog explores the most commonly used authentication protocols, focusing on their usage, authentication flows, and encryption techniques.
-
-## Kerberos
-
-**Relevance:** High  
-Kerberos is a widely used protocol in **Active Directory (AD)** environments, enabling mutual authentication between clients and servers.  
-
-**Usage:**  
-- Primarily used in Windows-based networks.  
-- Can also be integrated with Linux/macOS systems for AD authentication.  
-
-**Flow:**  
-1. The client sends a request for a **Ticket Granting Ticket (TGT)** to the **Key Distribution Centre (KDC)**.  
-2. After validating the request, the KDC issues the TGT.  
-3. The client uses the TGT to request service tickets for access to resources.  
-
-**Encryption:**  
-Kerberos employs strong encryption like **AES** for securing tickets. Older versions used **RC4**, which is vulnerable to certain attacks, such as using the NT hash to authenticate without the password.
-
----
 
 ## NTLM (NT LAN Manager)
 
@@ -55,40 +36,22 @@ Uses **MD4** or **RC4** for hashing. NTLM is vulnerable to **pass-the-hash** att
 
 ---
 
-## RADIUS (Remote Authentication Dial-In User Service)
+## Kerberos
 
 **Relevance:** High  
-RADIUS is a protocol designed for network access authentication, widely used for services such as Wi-Fi and VPNs.
+Kerberos is a widely used protocol in **Active Directory (AD)** environments, enabling mutual authentication between clients and servers.  
 
 **Usage:**  
-- Commonly deployed in enterprise environments.  
-- Integrates with directory services like Active Directory for credential validation.  
+- Primarily used in Windows-based networks.  
+- Can also be integrated with Linux/macOS systems for AD authentication.  
 
 **Flow:**  
-1. The client sends credentials to a **RADIUS server**.  
-2. The server verifies credentials against a backend directory and responds with an accept or reject message.  
+1. The client sends a request for a **Ticket Granting Ticket (TGT)** to the **Key Distribution Centre (KDC)**.  
+2. After validating the request, the KDC issues the TGT.  
+3. The client uses the TGT to request service tickets for access to resources.  
 
 **Encryption:**  
-The password is encrypted using **MD5**, while other data is transmitted in plaintext.
-
----
-
-## OAuth 2.0
-
-**Relevance:** High  
-OAuth 2.0 is primarily an **authorisation framework**, but it is widely used as part of authentication flows in combination with **OpenID Connect (OIDC)**.
-
-**Usage:**  
-- Popular for web and mobile applications.  
-- Supports modern Single Sign-On (SSO) scenarios.  
-
-**Flow:**  
-1. The user is redirected to an **authorisation server** for authentication.  
-2. After authentication, an **access token** or **authorisation code** is returned to the client application.  
-3. The client uses the token to access protected resources.  
-
-**Encryption:**  
-Tokens are typically **JWTs**, signed and optionally encrypted using **RSA** or **ECDSA** algorithms.
+Kerberos employs strong encryption like **AES** for securing tickets. Older versions used **RC4**, which is vulnerable to certain attacks, such as using the NT hash to authenticate without the password.
 
 ---
 
@@ -127,6 +90,24 @@ FIDO2 and WebAuthn enable **passwordless authentication**, offering a highly sec
 
 **Encryption:**  
 Uses **public key cryptography**, ensuring that private keys never leave the user’s device.
+
+---
+
+## RADIUS (Remote Authentication Dial-In User Service)
+
+**Relevance:** High  
+RADIUS is a protocol designed for network access authentication, widely used for services such as Wi-Fi and VPNs.
+
+**Usage:**  
+- Commonly deployed in enterprise environments.  
+- Integrates with directory services like Active Directory for credential validation.  
+
+**Flow:**  
+1. The client sends credentials to a **RADIUS server**.  
+2. The server verifies credentials against a backend directory and responds with an accept or reject message.  
+
+**Encryption:**  
+The password is encrypted using **MD5**, while other data is transmitted in plaintext.
 
 ---
 
@@ -169,12 +150,11 @@ LDAP communication can be encrypted using **TLS** (referred to as LDAPS).
 
 | **Protocol**           | **Relevance**      | **Usage**                                    |
 |------------------------|--------------------|----------------------------------------------|
-| **Kerberos**           | High               | Used for mutual authentication in AD environments. |
 | **NTLM**               | Moderate           | Legacy authentication, used when Kerberos is unavailable. |
-| **RADIUS**             | High               | Network access authentication (e.g., VPN, Wi-Fi). |
-| **OAuth 2.0**          | High               | Used for web authentication (combined with OpenID Connect). |
+| **Kerberos**           | High               | Used for mutual authentication in AD environments. |
 | **OpenID Connect**     | High               | Authentication built on OAuth 2.0, used for web SSO. |
 | **FIDO2 / WebAuthn**   | High               | Passwordless authentication using public key cryptography. |
+| **RADIUS**             | High               | Network access authentication (e.g., VPN, Wi-Fi). |
 | **TACACS+**            | Moderate           | Network device authentication, especially in Cisco environments. |
 | **LDAP**               | Moderate           | Directory-based authentication (e.g., Active Directory). |
 
