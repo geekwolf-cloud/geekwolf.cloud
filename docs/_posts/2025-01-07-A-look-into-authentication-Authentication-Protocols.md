@@ -2,7 +2,7 @@
 layout: post
 title:  "A look into authentication: Authentication Protocols"
 description: A journey into the world of authentication, from passwords, hashes, credentials, protocols, MFA, through to passwordless
-date:   2025-01-07 08:01:37 +0000
+date:   2025-01-07 07:01:37 +0000
 category: entra-id
 tags: entra-id identity
 image: /android-chrome-192x192.png
