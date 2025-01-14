@@ -116,6 +116,31 @@ This blog explores these protocols, their role in SSO, and dives into Microsoft'
 
 ## Deep dive into SSO mechanisms
 
+
+### OpenID and ID/JWT tokens
+
+OpenID enables federated SSO across web applications, allowing users to authenticate once and access multiple services using ID tokens. OpenID Connect (OIDC) is built on OAuth 2.0 and provides a standard way for applications to verify user identity.
+
+**How it works**:
+1. A user initiates authentication with an OpenID provider (e.g., Google, Microsoft, or another identity provider).
+2. The provider authenticates the user and issues an **ID token** (often a JWT), which contains claims about the user's identity.
+3. The application validates the ID token and establishes a session, granting access to its resources without further user interaction.
+
+**Key features**:
+- Federated authentication for web applications.
+- Uses JSON Web Tokens (JWTs) for secure, compact representation of user claims.
+- Supports scenarios like social logins and enterprise SSO.
+
+**Limitations**:
+- Relies on the availability and security of the OpenID provider.
+- Only facilitates SSO for web applications and services integrated with OpenID Connect.
+
+**SSO examples**:
+- Users log into multiple enterprise applications using Azure AD as an OpenID provider.
+- A single authentication session with a social login provider grants access to third-party applications.
+
+---
+
 ### Seamless SSO
 
 Seamless SSO enables **domain-joined** or **hybrid-joined** devices to authenticate to Azure AD resources without user intervention. It leverages **Kerberos** for authentication.
@@ -220,7 +245,6 @@ This combination of things is what allows the Entra ID to on premises SSO magic 
 | **Federated SSO**      | OpenID, RADIUS, LDAP           | Allows SSO across web applications or networked environments using identity federation.          |  
 | **Passwordless SSO**   | FIDO2/WebAuthn, Kerberos       | Combines modern authentication with Azure AD for seamless access.                               |  
 
----
 
 ## Conclusion
 
