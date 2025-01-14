@@ -14,8 +14,6 @@ Here is the next part of our series on authentication. In our [previous post]({{
 
 ---
 
-# Authentication protocols: an overview
-
 Authentication protocols play a crucial role in verifying the identity of users and systems in modern networks. This blog explores the most commonly used authentication protocols, focusing on their usage, authentication flows, and encryption techniques.
 
 ## NTLM (NT LAN Manager)
@@ -247,4 +245,4 @@ From legacy protocols like LAN Manager and NTLM to modern standards like WebAuth
 
 By adopting modern protocols and eliminating reliance on legacy authentication, organisations can implement a zero-trust security model, ensuring secure access for users across platforms.  
 
-In the next blog post on authentication we will focus on Single Sign-On (SSO) and see how that is used to securely reduce the authentication burden on the end user.
+In the [next blog post]({{ site.baseurl }}{% post_url 2025-01-14-A-look-into-authentication-Single-Sign-On %}) on authentication we will focus on Single Sign-On (SSO) and see how that is used to securely reduce the authentication burden on the end user.
