@@ -20,7 +20,7 @@ This blog explores these protocols, their role in SSO, and dives into Microsoft'
 
 ---
 
-## authentication protocols and their role in SSO
+## Authentication protocols and their role in SSO
 
 ### NTLM (NT LAN Manager)
 
@@ -114,9 +114,9 @@ This blog explores these protocols, their role in SSO, and dives into Microsoft'
 
 ---
 
-## deep dive into SSO mechanisms
+## Deep dive into SSO mechanisms
 
-### seamless SSO
+### Seamless SSO
 
 Seamless SSO enables **domain-joined** or **hybrid-joined** devices to authenticate to Azure AD resources without user intervention. It leverages **Kerberos** for authentication.
 
@@ -155,7 +155,7 @@ AzureADSSOAcc is a service account created during the setup of seamless SSO by A
 
 ---
 
-### cloud Kerberos trust
+### Cloud Kerberos trust
 
 Cloud Kerberos trust enables **passwordless authentication** for Azure AD-joined devices accessing **on-premises resources**.
 
@@ -175,7 +175,7 @@ Cloud Kerberos trust enables **passwordless authentication** for Azure AD-joined
 
 ---
 
-### primary refresh token (PRT)
+### Primary refresh token (PRT)
 
 A **primary refresh token (PRT)** is a session token issued by Azure AD for Azure AD-joined or hybrid-joined devices. It enables seamless access to both cloud and on-premises resources.
 
@@ -196,7 +196,7 @@ A **primary refresh token (PRT)** is a session token issued by Azure AD for Azur
 <div class="callout">
   <h3>kerberos.microsoftonline.com</h3>
   <p>
-How Microsoft makes the SSO work from Entra ID to your on premises AD servers is via a meta realm called Kerberos.microsoftonline.com.   During the PRT retrieval it gets back
+How Microsoft makes the SSO work from Entra ID to your on premises AD servers is via a meta realm called kerberos.microsoftonline.com.   During the PRT retrieval it gets back
   </p>
   <ul>
     <li>The PRT itself</li>
@@ -210,7 +210,7 @@ This combination of things is what allows the Entra ID to on premises SSO magic 
   </p>
 </div>
 
-## mapping SSO mechanisms to authentication protocols
+## Mapping SSO mechanisms to authentication protocols
 
 | **SSO mechanism**      | **Supported protocols**         | **Description**                                                                                  |  
 |------------------------|---------------------------------|--------------------------------------------------------------------------------------------------|  
@@ -222,7 +222,7 @@ This combination of things is what allows the Entra ID to on premises SSO magic 
 
 ---
 
-## conclusion
+## Conclusion
 
 By understanding seamless SSO, AzureADSSOAcc, cloud Kerberos trust, and primary refresh tokens, organisations can optimise hybrid identity environments. Each mechanism caters to different scenarios, ensuring secure and seamless resource access.
 
