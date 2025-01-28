@@ -293,4 +293,4 @@ This combination of things is what allows the Entra ID to on premises SSO magic 
 
 By understanding seamless SSO, AzureADSSOAcc, cloud Kerberos trust, and primary refresh tokens, organisations can optimise hybrid identity environments. Each mechanism caters to different scenarios, ensuring secure and seamless resource access.
 
-In the [next blog post]({{ site.baseurl }}{% post_url 2025-01-11-A-look-into-authentication-Summary %}) on authentication we will summarise and provide recommendation around what to avoid, what to aim for and how to secure protcols.
+In the [next blog post]({{ site.baseurl }}{% post_url 2025-01-21-A-look-into-authentication-Summary %}) on authentication we will summarise and provide recommendation around what to avoid, what to aim for and how to secure protcols.
