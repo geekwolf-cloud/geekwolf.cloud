@@ -10,7 +10,7 @@ comments_id: 53
 ---
 <h1>{{ page.title }}</h1>
 
-Here is the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2025-01-07-A-look-into-authentication-Authentication-Protocols %}), we talked about authentication protocols passwordless: how this is the next step in the evolution of authentication and how they avoid a lot of the problems that plague passwords, hashes and credential storage.  This blog explores authentication protocols from legacy systems like LAN Manager and NTLM to modern approaches like Kerberos, OAuth, and WebAuthn/FIDO2. 
+Here is the next part of our series on authentication. In our [previous post]({{ site.baseurl }}{% post_url 2025-01-07-A-look-into-authentication-Authentication-Protocols %}), we talked about authentication protocols passwordless: how this is the next step in the evolution of authentication and how they avoid a lot of the problems that plague passwords, hashes and credential storage.  This blog explores Single Sign On deployed in various authentication protocols 
 
 ---
 
@@ -61,6 +61,22 @@ This blog explores these protocols, their role in SSO, and dives into Microsoft'
   - Federated SSO: Users authenticate via an OpenID provider (e.g., Google or Microsoft), which provides identity tokens to third-party applications.
 
 ---
+
+### SAML
+
+- **What it is**:  
+  SAML (Security Assertion Markup Language) is an XML-based standard for exchanging authentication and authorisation data between an identity provider (IdP) and a service provider (SP). While not an authentication protocol itself, SAML enables federated identity and SSO by securely transmitting user identity information in the form of assertions.
+
+- **SSO support**:  
+  Strong. SAML is widely used for SSO in web-based applications, particularly in enterprise environments. It enables users to authenticate once with an identity provider and access multiple service providers without re-entering credentials. SAML is highly compatible with legacy systems, making it a staple for many SaaS providers.  
+
+- **SSO examples**:  
+  - Enterprise users log into SaaS applications like Salesforce, Workday, or Dropbox using a SAML-based identity provider such as Azure AD or Okta.  
+  - Cross-organisational authentication scenarios, where employees from one company authenticate to another organisation’s resources using SAML federation.  
+  - Educational institutions enabling access to shared platforms via a single login through SAML-based federations like InCommon.  
+
+---
+
 
 ### FIDO2/WebAuthn
 
@@ -138,6 +154,33 @@ OpenID enables federated SSO across web applications, allowing users to authenti
 **SSO examples**:
 - Users log into multiple enterprise applications using Azure AD as an OpenID provider.
 - A single authentication session with a social login provider grants access to third-party applications.
+
+---
+
+**How it works**:
+1. **User request**: A user attempts to access a service provider (e.g., a web application).  
+2. **Redirect to IdP**: The service provider redirects the user to the identity provider for authentication.  
+3. **User authentication**: The identity provider authenticates the user using its internal mechanism (e.g., Kerberos, LDAP).  
+4. **Assertion generation**: After successful authentication, the identity provider generates a **SAML assertion**, which is an XML-based document containing the user's identity and authorisation details.  
+5. **Assertion transmission**: The SAML assertion is sent to the service provider via the user's browser (often using a POST or redirect binding).  
+6. **Validation and access**: The service provider validates the SAML assertion against a trusted certificate. If valid, it establishes a session and grants the user access to the requested resource.  
+
+**Key features**:
+- **Federated SSO**: SAML allows users to authenticate with one identity provider and gain access to multiple service providers without re-entering credentials.  
+- **Security**: Assertions are signed and can be encrypted, ensuring the integrity and confidentiality of user data.  
+- **Cross-domain compatibility**: SAML supports SSO across multiple organisations and domains, making it ideal for enterprise and SaaS applications.  
+- **Broad adoption**: Many legacy and modern systems support SAML, ensuring compatibility with a wide range of applications.  
+
+**Limitations**:
+- **Complex implementation**: Setting up SAML involves configuring certificates, metadata, and endpoints for both the identity provider and service provider.  
+- **XML overhead**: SAML relies on XML, which can result in larger payloads compared to modern standards like OpenID Connect (which uses JSON).  
+- **Browser-based restriction**: SAML is primarily designed for browser-based workflows and is less suitable for APIs or native mobile applications.  
+- **Dependence on IdP**: If the identity provider is unavailable, users cannot access any service providers relying on that IdP.  
+
+**SSO examples**:
+- **Enterprise SaaS integration**: Employees use SAML to log into services like Salesforce, Workday, or Google Workspace with their corporate credentials, managed by an identity provider like Azure AD or Okta.  
+- **Federated identity in education**: Universities enable cross-institutional access to platforms via SAML-based federations like InCommon or Shibboleth.  
+- **Cross-organisation resource sharing**: Two organisations establish a trust relationship via SAML, enabling employees to access shared resources with their existing credentials.  
 
 ---
 
@@ -250,4 +293,4 @@ This combination of things is what allows the Entra ID to on premises SSO magic 
 
 By understanding seamless SSO, AzureADSSOAcc, cloud Kerberos trust, and primary refresh tokens, organisations can optimise hybrid identity environments. Each mechanism caters to different scenarios, ensuring secure and seamless resource access.
 
-In the next blog post on authentication we will summarise and provide recommendation around what to avoid, what to aim for and how to secure protcols.
+In the [next blog post]({{ site.baseurl }}{% post_url 2025-01-11-A-look-into-authentication-Summary %}) on authentication we will summarise and provide recommendation around what to avoid, what to aim for and how to secure protcols.

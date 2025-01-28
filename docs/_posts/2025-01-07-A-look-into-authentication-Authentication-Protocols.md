@@ -72,6 +72,27 @@ ID tokens are signed (and optionally encrypted) using **RSA** or **ECDSA**.
 
 ---
 
+## SAML (Security Assertion Markup Language)
+
+**Relevance:** Moderate  
+SAML is an XML-based open standard used for **authentication** and **authorisation** in Single Sign-On (SSO) scenarios, particularly in enterprise environments.
+
+**Usage:**  
+- SAML enables federated identity management, allowing users to authenticate once and access multiple applications across different domains.  
+- Commonly used in cloud services and enterprise applications where SSO is a requirement.
+
+**Flow:**  
+1. A user tries to access a SAML-enabled application (Service Provider, or SP).
+2. The SP redirects the user to the **Identity Provider (IdP)** for authentication.
+3. The IdP authenticates the user (e.g., using credentials or multi-factor authentication) and generates a **SAML assertion**.
+4. The IdP sends the SAML assertion back to the SP, typically via the user's browser.
+5. The SP validates the assertion and grants the user access to the requested application.
+
+**Encryption:**  
+SAML assertions are digitally signed using standards like **SHA-256** with **RSA**, ensuring the integrity and authenticity of the assertion.  Encryption is often applied to protect sensitive data within the assertion, using algorithms like **AES**.
+
+---
+
 ## FIDO2 / WebAuthn
 
 **Relevance:** High  
@@ -151,6 +172,7 @@ LDAP communication can be encrypted using **TLS** (referred to as LDAPS).
 | **NTLM**               | Moderate           | Legacy authentication, used when Kerberos is unavailable. |
 | **Kerberos**           | High               | Used for mutual authentication in AD environments. |
 | **OpenID Connect**     | High               | Authentication built on OAuth 2.0, used for web SSO. |
+| **SAML**               | Moderate           | Authentication and Authorisation framework |
 | **FIDO2 / WebAuthn**   | High               | Passwordless authentication using public key cryptography. |
 | **RADIUS**             | High               | Network access authentication (e.g., VPN, Wi-Fi). |
 | **TACACS+**            | Moderate           | Network device authentication, especially in Cisco environments. |
