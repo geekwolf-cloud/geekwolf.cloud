@@ -176,6 +176,8 @@ If you have an established on-premises PKI running on older Windows Server versi
 - **Role-by-role**  
   If you run NDES, SCEP, or Intune Certificate Connector on older servers, plan carefully to keep services uninterrupted.
 
+Refer to [this blog]({{ site.baseurl }}{% post_url 2025-01-28-Upgrading-Microsoft-PKI %}) for more details on upgrading PKI
+
 ---
 
 ## Conclusion
