@@ -125,7 +125,8 @@ The TGT itself is not included in the PRT. Instead, the PRT allows Windows to re
 
 ### Kerberos service account in on-premises AD
 
-- A Kerberos service account (often named AZUREADSSOACC) is created in your on-premises AD.  
+- A Kerberos service account (often named AZUREADSSOACC) is created in your on-premises AD. 
+- A Read Only Domain Controller object is created in your on-premises AD. 
 - Microsoft Entra ID leverages the key material of this account to sign Kerberos tickets that on-premises DCs recognise.
 
 ### Device registration and PRT issuance
@@ -142,7 +143,7 @@ The TGT itself is not included in the PRT. Instead, the PRT allows Windows to re
    - In Event Viewer, open Applications and Services Logs → Microsoft → Windows → AAD to see CloudAP logs.  
    - Check on-premises domain controller logs for evidence of validating cloud-issued Kerberos tickets.
 
-3. **verify Azure AD Connect**  
+3. **Verify Azure AD Connect**  
    Confirm that password synchronisation or pass-through authentication is working. Ensure user UPNs, SIDs, and domain data are correctly synchronised.
 
 4. **SPNs and trust**  
