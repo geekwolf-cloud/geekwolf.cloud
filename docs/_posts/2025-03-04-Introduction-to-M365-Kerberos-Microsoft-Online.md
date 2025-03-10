@@ -39,7 +39,7 @@ To differentiate its cloud-issued tickets from on-premises AD realms (for exampl
 When a user signs in to a Windows device that is Entra-joined or hybrid-joined, Microsoft Entra ID issues a primary refresh token (PRT). It is cryptographically bound to both the **user** and the **device**. The PRT:
 
 - Grants continuous access to Microsoft 365 and other Entra ID–protected resources  
-- Is protected by the device’s hardware (via TPM if available)  
+- Is protected by the device's hardware (via TPM if available)  
 - Contains sufficient user and device identity data for silent token and ticket acquisition
 
 ### How the PRT enables cloud Kerberos
@@ -52,7 +52,7 @@ Windows locates the Entra ID endpoints for Kerberos by querying the well-known m
 
 https://login.microsoftonline.com/<tenant-id-or-common>/.well-known/openid-configuration
 
-This metadata indicates how the client should request Kerberos tickets from **kerberos.microsoftonline.com**. In the metadata there is the kerberos_endpoint property, which is sually something like https://login.microsoftonline.com/<tenant id>/Kerberos.  After validating the user’s PRT, the CloudAP plug-in calls the Entra ID Kerberos endpoint to obtain the TGT.
+This metadata indicates how the client should request Kerberos tickets from **kerberos.microsoftonline.com**. In the metadata there is the kerberos_endpoint property, which is usually something like https://login.microsoftonline.com/<tenant id>/Kerberos.  After validating the user's PRT, the CloudAP plug-in calls the Entra ID Kerberos endpoint to obtain the TGT.
 
 ## Cloud Kerberos trust
 
@@ -77,9 +77,9 @@ A purely cloud-joined device does not automatically hold an on-premises TGT. Tra
 
 ### The bridge: Entra ID Kerberos trust
 
-Microsoft Entra ID issues a **kerberos.microsoftonline.com** TGT after validating the user’s PRT. Entra ID then uses a Kerberos trust arrangement with on-premises AD so domain controllers accept tickets that Entra ID signs. This arrangement involves:
+Microsoft Entra ID issues a **kerberos.microsoftonline.com** TGT after validating the user's PRT. Entra ID then uses a Kerberos trust arrangement with on-premises AD so domain controllers accept tickets that Entra ID signs. This arrangement involves:
 
-- A Kerberos service account (often named AZUREADSSOACC) in on-premises AD
+- A Kerberos service account krbtgt_AzureAD (often named AzureADKerberos) in on-premises AD
 - A Read Only Domain Controller object in on-premises AD that controls what can use the trust (e.g. by default protected users cannot leverage this trust)
 - Shared cryptographic secrets that let on-premises AD verify tickets issued by Entra ID  
 
@@ -91,7 +91,7 @@ Windows uses its TGT from **kerberos.microsoftonline.com** to request service ti
    The user signs in on a Windows device that is Entra-joined or hybrid-joined. The device acquires a PRT that is cryptographically bound to the user and device.
 
 2. **Obtain a cloud TGT**  
-   The CloudAP plug-in consults the Entra ID metadata to locate the Kerberos endpoint for **kerberos.microsoftonline.com**. It presents the PRT to prove the user’s identity. Entra ID issues a TGT in that realm.
+   The CloudAP plug-in consults the Entra ID metadata to locate the Kerberos endpoint for **kerberos.microsoftonline.com**. It presents the PRT to prove the user's identity. Entra ID issues a TGT in that realm.
 
 3. **Use the TGT**  
    - For cloud resources, the client may use Kerberos tickets or OAuth tokens, depending on the service.  
@@ -115,7 +115,7 @@ Windows uses its TGT from **kerberos.microsoftonline.com** to request service ti
 ### Kerberos service account in on-premises AD
 
 - A Read Only Domain Controller object is created in your on-premises AD. 
-- A Kerberos service account (often named AZUREADSSOACC) is created in your on-premises AD. 
+- A Kerberos service account krbtgt_AzureAD (often named AzureADKerberos) in on-premises AD
 - Microsoft Entra ID leverages the key material of this account to sign Kerberos tickets that on-premises DCs recognise.
 
 ### Device registration and PRT issuance
@@ -150,3 +150,5 @@ Microsoft Entra ID (formerly Azure AD) acts as a **cloud KDC** by issuing Kerber
 - The device discovers the Kerberos endpoint from well-known OpenID Connect metadata.  
 - **Azure AD Connect** synchronises on-premises identity data, enabling Entra ID to create valid service tickets for those on-premises domains.  
 - **Cloud Kerberos trust** allows on-premises AD to validate and accept the Cloud TGT from Entra ID, providing true single sign-on without additional prompts.
+
+
