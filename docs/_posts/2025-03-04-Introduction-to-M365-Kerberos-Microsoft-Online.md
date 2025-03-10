@@ -135,10 +135,6 @@ Windows uses its TGT from **kerberos.microsoftonline.com** to request service ti
 3. **Verify Azure AD Connect**  
    Confirm that password synchronisation or pass-through authentication is working. Ensure user UPNs, SIDs, and domain data are correctly synchronised.
 
-4. **SPNs and trust**  
-   Validate the service principal names (SPNs) on the on-premises Kerberos service account.  
-   Confirm that your on-premises domain controllers recognise and trust tickets signed by Entra ID.
-
 ## Conclusion
 
 Microsoft Entra ID (formerly Azure AD) acts as a **cloud KDC** by issuing Kerberos tickets in the **kerberos.microsoftonline.com** realm. The **PRT Process** on a Windows device enables automatic TGT acquisition whenever Kerberos authentication is required. Cloud Kerberos trust ensures on-premises domain controllers accept these tickets, delivering seamless SSO to both cloud and on-premises resources.
