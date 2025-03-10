@@ -79,8 +79,8 @@ A purely cloud-joined device does not automatically hold an on-premises TGT. Tra
 
 Microsoft Entra ID issues a **kerberos.microsoftonline.com** TGT after validating the user's PRT. Entra ID then uses a Kerberos trust arrangement with on-premises AD so domain controllers accept tickets that Entra ID signs. This arrangement involves:
 
-- A Kerberos service account krbtgt_AzureAD (often named AzureADKerberos) in on-premises AD
-- A Read Only Domain Controller object in on-premises AD that controls what can use the trust (e.g. by default protected users cannot leverage this trust)
+- A Kerberos service account krbtgt_AzureAD in on-premises AD
+- A Read Only Domain Controller object (often named AzureADKerberos) in on-premises AD that controls what can use the trust (e.g. by default protected users cannot leverage this trust)
 - Shared cryptographic secrets that let on-premises AD verify tickets issued by Entra ID  
 
 Windows uses its TGT from **kerberos.microsoftonline.com** to request service tickets for on-premises services. On-premises domain controllers validate these tickets if the trust is configured properly.
@@ -114,8 +114,8 @@ Windows uses its TGT from **kerberos.microsoftonline.com** to request service ti
 
 ### Kerberos service account in on-premises AD
 
-- A Read Only Domain Controller object is created in your on-premises AD. 
-- A Kerberos service account krbtgt_AzureAD (often named AzureADKerberos) in on-premises AD
+- A Read Only Domain Controller object (often named AzureADKerberos) is created in your on-premises AD. 
+- A Kerberos service account krbtgt_AzureAD in on-premises AD
 - Microsoft Entra ID leverages the key material of this account to sign Kerberos tickets that on-premises DCs recognise.
 
 ### Device registration and PRT issuance
