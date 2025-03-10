@@ -44,7 +44,7 @@ When a user signs in to a Windows device that is Entra-joined or hybrid-joined, 
 
 ### How the PRT enables cloud Kerberos
 
-The Windows CloudAP plug-in uses the PRT to request a Kerberos TGT from Entra ID for the realm **kerberos.microsoftonline.com**. Entra ID validates the PRT’s claims and issues the TGT. This TGT is then used to request service tickets for cloud resources or, where configured, for on-premises resources.
+The PRT process is used to get various pieces of information, including the PRT itself, a Cloud TGT, a FIDO TGT (optional), a Realm mapping and the Entra ID tenant details.  
 
 ## How the device knows where to obtain the Kerberos ticket
 
@@ -52,16 +52,16 @@ Windows locates the Entra ID endpoints for Kerberos by querying the well-known m
 
 https://login.microsoftonline.com/<tenant-id-or-common>/.well-known/openid-configuration
 
-This metadata indicates how the client should request Kerberos tickets from **kerberos.microsoftonline.com**. After validating the user’s PRT, the CloudAP plug-in calls these Entra ID Kerberos endpoints to obtain the TGT.
+This metadata indicates how the client should request Kerberos tickets from **kerberos.microsoftonline.com**. In the metadata there is the kerberos_endpoint property, which is sually something like https://login.microsoftonline.com/<tenant id>/Kerberos.  After validating the user’s PRT, the CloudAP plug-in calls the Entra ID Kerberos endpoint to obtain the TGT.
 
 ## Cloud Kerberos trust
 
 ### Overview
 
-Cloud Kerberos trust is a Windows Hello for Business (WHfB) deployment option where Microsoft Entra ID issues Kerberos tickets in the **kerberos.microsoftonline.com** realm. Once the user has authenticated (for example, via PIN or biometric in WHfB), Entra ID provides a TGT for **kerberos.microsoftonline.com**. This enables the user to access:
+Cloud Kerberos trust is a Windows Hello for Business (WHfB) deployment option where Microsoft Entra ID issues Kerberos tickets in the **kerberos.microsoftonline.com** realm. Once the user has authenticated (for example, via PIN or biometric in WHfB), Entra ID provides a TGT for **kerberos.microsoftonline.com**. Windows Hello for Business then enables the user to access:
 
 - Cloud resources (SharePoint Online, Exchange Online, etc.)  
-- On-premises resources (file shares, printers, and line-of-business apps), provided there is a trust relationship with on-premises AD
+- On-premises resources (file shares, printers, and line-of-business apps), via Cloud Kerberos Trust
 
 ### Prerequisites for cloud Kerberos trust
 
@@ -85,17 +85,6 @@ Microsoft Entra ID issues a **kerberos.microsoftonline.com** TGT after validatin
 
 Windows uses its TGT from **kerberos.microsoftonline.com** to request service tickets for on-premises services. On-premises domain controllers validate these tickets if the trust is configured properly.
 
-## What is in the PRT for Kerberos?
-
-The PRT contains the necessary information for the CloudAP plug-in to request Kerberos tickets on the user’s behalf:
-
-- User identity claims (allowing Entra ID to identify the user)  
-- Device identity and tenant binding (ensuring the correct tenant and device)  
-- Session key / proof key (supporting silent requests to Entra ID)  
-- On-premises domain attributes (such as UPN suffix or on-premises SID, enabling Entra ID to route Kerberos requests correctly)
-
-The TGT itself is not included in the PRT. Instead, the PRT allows Windows to request a fresh TGT from **kerberos.microsoftonline.com** as needed.
-
 ## End-to-end flow: SSO with Kerberos in Microsoft Entra ID
 
 1. **User sign-in**  
@@ -106,10 +95,10 @@ The TGT itself is not included in the PRT. Instead, the PRT allows Windows to re
 
 3. **Use the TGT**  
    - For cloud resources, the client may use Kerberos tickets or OAuth tokens, depending on the service.  
-   - For on-premises resources, if cloud Kerberos trust is enabled, Entra ID can provide service tickets that on-premises domain controllers accept.
+   - For on-premises resources, if cloud Kerberos trust is enabled, the cloud TGT can be passed to an on premises Domain Controller to get a TGT and can then be used to request service tickets as normal.
 
 4. **No separate credential prompt**  
-   The user enjoys seamless single sign-on, including to on-premises file shares, printers, and apps, because on-premises AD trusts the tickets that Entra ID has issued.
+   The user enjoys seamless single sign-on, including to on-premises file shares, printers, and apps, because on-premises AD trusts the initial ticket that Entra ID has issued.
 
 ## Required configuration
 
@@ -120,24 +109,24 @@ The TGT itself is not included in the PRT. Instead, the PRT allows Windows to re
 
 ### Windows Hello for Business (cloud Kerberos trust)
 
-- Enable Windows Hello for Business with cloud Kerberos trust so that Microsoft Entra ID can serve as the Kerberos authority.  
-- This provides passwordless sign-in and ensures that on-premises AD validates the Entra ID–issued tickets.
+- Enable Windows Hello for Business with cloud Kerberos trust so that Microsoft Entra ID can serve as a trusted Kerberos authority.  
+- This provides passwordless sign-in and ensures that on-premises AD validates the Entra ID–issued TGT.
 
 ### Kerberos service account in on-premises AD
 
-- A Kerberos service account (often named AZUREADSSOACC) is created in your on-premises AD. 
 - A Read Only Domain Controller object is created in your on-premises AD. 
+- A Kerberos service account (often named AZUREADSSOACC) is created in your on-premises AD. 
 - Microsoft Entra ID leverages the key material of this account to sign Kerberos tickets that on-premises DCs recognise.
 
 ### Device registration and PRT issuance
 
 - Windows devices must be Entra-joined or hybrid-joined so they can receive a PRT.  
-- The PRT is crucial for silent ticket acquisition from the **kerberos.microsoftonline.com** realm.
+- The PRT process is crucial for silent ticket acquisition from the **kerberos.microsoftonline.com** realm.
 
 ## Troubleshooting tips
 
 1. **Check for a TGT**  
-   Run `klist tickets` in Command Prompt or PowerShell to verify that a TGT for krbtgt/kerberos.microsoftonline.com is present.
+   Run `klist tickets` in Command Prompt or PowerShell to verify that a TGT for krbtgt/kerberos.microsoftonline.com is present.  Run `klist cloud_debug` to check the overall cloud TGT process.
 
 2. **Examine event logs**  
    - In Event Viewer, open Applications and Services Logs → Microsoft → Windows → AAD to see CloudAP logs.  
@@ -152,12 +141,12 @@ The TGT itself is not included in the PRT. Instead, the PRT allows Windows to re
 
 ## Conclusion
 
-Microsoft Entra ID (formerly Azure AD) acts as a **cloud KDC** by issuing Kerberos tickets in the **kerberos.microsoftonline.com** realm. The **PRT** on a Windows device enables automatic TGT acquisition whenever Kerberos authentication is required. Cloud Kerberos trust ensures on-premises domain controllers accept these tickets, delivering seamless SSO to both cloud and on-premises resources.
+Microsoft Entra ID (formerly Azure AD) acts as a **cloud KDC** by issuing Kerberos tickets in the **kerberos.microsoftonline.com** realm. The **PRT Process** on a Windows device enables automatic TGT acquisition whenever Kerberos authentication is required. Cloud Kerberos trust ensures on-premises domain controllers accept these tickets, delivering seamless SSO to both cloud and on-premises resources.
 
 **Key points**:
 
 - **kerberos.microsoftonline.com** is the realm used by Entra ID to issue cloud Kerberos tickets.  
-- The **PRT** contains the claims and keys the device needs to request a Kerberos TGT from Entra ID.  
+- The **PRT process** collects the information the device needs to request a Kerberos TGT from Entra ID.  
 - The device discovers the Kerberos endpoint from well-known OpenID Connect metadata.  
 - **Azure AD Connect** synchronises on-premises identity data, enabling Entra ID to create valid service tickets for those on-premises domains.  
-- **Cloud Kerberos trust** allows on-premises AD to validate and accept tickets from Entra ID, providing true single sign-on without additional prompts.
+- **Cloud Kerberos trust** allows on-premises AD to validate and accept the Cloud TGT from Entra ID, providing true single sign-on without additional prompts.
