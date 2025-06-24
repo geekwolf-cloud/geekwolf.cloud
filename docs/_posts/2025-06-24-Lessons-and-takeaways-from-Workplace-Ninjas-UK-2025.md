@@ -2,7 +2,7 @@
 layout: post
 title:  "Lessons and takeaways from Workplace Ninjas UK 2025"
 description: The things I learned from Workplace Ninjas UK 2025, some real nuggets and eye-opening threats that I'd not really thought about before
-date:   2025-06-24 10:24:13 +0000
+date:   2025-06-24 9:24:13 +0000
 category: entra-id
 tags: entra-id identity
 image: /android-chrome-192x192.png
